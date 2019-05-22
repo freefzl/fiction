@@ -17,12 +17,15 @@ class CreateBooksTable extends Migration
             $table->bigIncrements('id');
             $table->string('book_name');
             $table->string('author');
-            $table->unsignedBigInteger('type_id');
-            $table->foreign('type_id')->references('id')->on('types')->onDelete('cascade');
+            $table->integer('type_id');
             $table->text('description');
             $table->unsignedTinyInteger('status');
             $table->text('tags');
             $table->text('try_read');
+            $table->string('protagonist');//主角
+            $table->string('re_user');//点评人
+            $table->string('re_user_img');//点评人
+            $table->text('review');//点评
             $table->timestamps();
         });
     }

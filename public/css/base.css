@@ -1,0 +1,397 @@
+﻿﻿﻿body,dl,dd,dt,p,ol,ul,li,h1,h2,h3,h4,h5,h6,b,strong,em,input,textarea,button,select {
+	margin: 0;
+	padding: 0;
+}
+html,body {
+	height: 100%;
+}
+body {
+	color: #484848;
+	font: 14px/1 "microsoft yahei";
+	background: #fff;
+}
+i,s,u,em {
+	font-style: normal;
+	text-decoration: none;
+}
+h1,h2,h3,h4,h5,h6,b {
+	font-weight: normal;
+}
+input,textarea,button,select {
+	font-size: 14px;
+	font-family: "microsoft yahei";
+	outline: 0 none;
+}
+li {
+	list-style: none;
+}
+img {
+	border: none;
+	vertical-align: top;
+}
+a {
+	color: #666;
+	text-decoration: none;
+	transition: color .1s,background-color .1s,border .1s;
+}
+input::input-placeholder {
+	color: #888!important;
+} 
+::-webkit-input-placeholder {
+	color: #888!important; 
+}
+:-moz-placeholder {
+	color: #888!important; 
+}
+::-moz-placeholder {
+	color: #888!important; 
+}
+:-ms-input-placeholder {
+	color: #888!important; 
+}
+@font-face {
+  font-family: 'iconfont';  /* project id 917296 */
+  src: url('../fonts/iconfont.eot');
+  src: url('../fonts/iconfont.eot') format('embedded-opentype'),
+  url('../fonts/iconfont.woff2') format('woff2'),
+  url('../fonts/iconfont.woff') format('woff'),
+  url('../fonts/iconfont.ttf') format('truetype'),
+  url('../fonts/iconfont.svg#iconfont') format('svg');
+}
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.clearfix:before,
+.clearfix:after {
+	clear: both;
+	display: block;
+	visibility: hidden;
+	overflow: hidden;
+	height: 0;
+	content: " ";
+}
+.lf {
+	float: left;
+}
+.rf {
+	float: right;
+}
+.tips {
+	position: absolute;
+	z-index: 2000;
+	display: none;
+	height: 54px;
+	line-height: 54px;
+	background: rgba(0, 0, 0, 0.7);
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-ms-border-radius: 5px;
+	color: #fff;
+	font-size: 16px;
+}
+.tips i {
+	width: 0;
+	height: 0;
+}
+.tips span {
+	padding: 0 25px;
+	width:auto;
+	height:54px;
+}
+/*header*/
+
+
+.header{
+	width: 100%;
+	background: #fefefe;
+	box-shadow: 0 1px 4px rgba(0,0,0,.1);
+    position: relative;
+}
+
+.header .inner {
+	width: 1200px;
+	margin: 0 auto;
+}
+
+.header .tophead{
+	height: 85px;
+	border-bottom: 1px solid #e6e6e6;
+}
+
+.header .logo{
+	width: 180px;
+    height: 53px;
+    margin-top: 16px;
+    margin-right: 268px;
+    background: url(../images/logo.png) no-repeat;
+}
+
+.header .logo a{
+	display: block;
+	width: 180px;
+	height: 53px;
+	text-indent: -9999em;
+}
+
+.header .search {
+    width: 360px;
+    height: 38px;
+    margin-top: 23px;
+}
+
+.header .search form{
+    display: block;
+}
+
+.header .search .search-key{
+	float: left;
+    width: 284px;
+    height: 38px;
+    padding: 0 10px 0 18px;
+    border: 2px solid;
+    border-right: none;
+    border-radius: 100px 0 0 100px;
+    background: 0 0;
+    color: #888;
+}
+
+.header .search .search-btn{
+	float: left;
+	width: 44px;
+    height: 38px;
+    border: 2px solid;
+    border-left: none;
+    border-radius: 0 100px 100px 0;
+    background: #fff;
+    cursor: pointer;
+}
+
+.header .search .search-btn .iconfont{
+	font-weight: 700;
+	font-size: 18px;
+}
+
+.header .bookcase{
+	height: 85px;
+	line-height: 85px;
+}
+
+.header .bookcase a{
+	font-size: 16px;
+}
+
+.header .bookcase .iconfont{
+	margin-right: 5px;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.header .topnav{
+	overflow: hidden;
+
+}
+
+.header .topnav li{
+	float: left;
+	font-size: 16px;
+    line-height: 64px;
+    position: relative;
+    z-index: 1;
+    height: 64px;
+    margin-left: 43px;
+    cursor: pointer;
+}
+
+.header .topnav li.home{
+	margin-left: 10px
+}
+
+.header .topnav li.home .iconfont{
+	margin-right: 10px;
+}
+
+/*footer*/
+.footer {
+	padding: 20px 0;
+	width: 100%;
+	background: #fff;
+	overflow: hidden;
+}
+.footer p {
+	line-height: 2;
+	font-size: 16px;
+	color: #999;
+	text-align: center;
+}
+.footer p a {
+	color: #999;
+}
+.footer p a:hover {
+	color: #fc6e38;
+}
+
+/*bookshelf*/
+.bookshelf-mask {
+	display: block;
+	width: 100%;
+	height: 100%;
+	background: #000;
+	opacity: 0.5;
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 10000;
+	_position: absolute;
+	_top:expression(eval(document.documentElement.scrollTop));
+}
+.bookshelf-panel {
+	display: block;
+	margin-left: -320px;
+	margin-top: -240px;
+	width: 640px;
+	height: 480px;
+	background: #fff;
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	z-index: 10001;
+	_position: absolute;
+	_left:expression(eval(document.body.clientWidth-this.offsetWidth)/2);
+	_top:expression(eval(document.body.clientHeight-this.offsetHeight)/2);
+}
+.bookshelf-head {
+	height: 49px;
+	border-bottom: 1px solid #ebebeb;
+}
+.bookshelf-head h4 {
+	float: left;
+	margin-left: 20px;
+	line-height: 49px;
+	font-size: 18px;
+	font-weight: bold;
+	color: #333;
+}
+.bookshelf-head a {
+	float: right;
+	margin-top: 18px;
+	margin-right: 15px;
+	cursor: pointer;
+}
+.bookshelf-head a:hover {
+	background-position: 0 -24px;
+}
+.bookshelf-list {
+	height: 415px;
+	position: relative;
+	overflow-y: auto;
+	padding-bottom: 15px;
+}
+.bookshelf-list ul li {
+	position: relative;
+	padding: 15px 15px;
+	height: 107px;
+	border-bottom: 1px dashed #ebebeb;
+	width: 280px;
+	float: left;
+}
+/* .bookshelf-list ul li:last-child{
+	border: none;
+} */
+.bookshelf-list ul li:hover {
+	background: #fff8f8;
+}
+.bookshelf-list ul li .pic {
+	position: relative;
+	float: left;
+	margin-right: 15px;
+	width: 80px;
+	height: 107px;
+}
+.bookshelf-list ul li .pic img {
+	width: 100%;
+	height: 100%;
+	vertical-align: top;
+}
+.bookshelf-list ul li .pic i {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	display: block;
+	width: 100%;
+	height: 20px;
+	line-height: 20px;
+	text-align: center;
+	color: #fff;
+	font-size: 12px;
+}
+.bookshelf-list ul li .pic i.serial {
+	background: #489738;
+	background: rgba(72,151,56,.9);
+	color: #fff;
+}
+.bookshelf-list ul li .pic i.finish {
+	background: #c9142a;
+	background: rgba(201,20,42,.9);
+	color: #fff;
+}
+.bookshelf-list ul li .tit {
+	display: block;
+	width: 150px;
+	overflow: hidden;
+	margin-bottom: 6px;
+	line-height: 24px;
+	font-size: 16px;
+	height: 24px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.bookshelf-list ul li .update {
+	display: block;
+	margin-bottom: 19px;
+	line-height: 24px;
+}
+.bookshelf-list ul li .update a {
+	color: #00bf99;
+}
+.bookshelf-list ul li .read {
+	display: block;
+}
+.bookshelf-list ul li .read a {
+	display: inline-block;
+    width: 90px;
+    height: 28px;
+    line-height: 28px;
+    color: #ff6939;
+    text-align: center;
+    border: 1px solid #ff6939;
+    border-radius: 100px;
+}
+.bookshelf-list ul li .description{
+	margin-bottom: 8px;
+    height: 40px;
+    line-height: 20px;
+    font-size: 13px;
+    color: #999;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+.bookshelf-list ul li:hover .del{
+	display: block;
+}
+.bookshelf-list ul li .del {
+	display: none;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    cursor: pointer;
+    font-size: 20px;
+    color: #ddd;
+}

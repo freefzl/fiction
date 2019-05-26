@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Zt extends Model
+class NovelTag extends Model
 {
-    //
+    protected $fillable=['tagname'];
 }

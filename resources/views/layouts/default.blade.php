@@ -15,6 +15,7 @@
 
     <meta name="mobile-agent" content="format=xhtml;url=@yield('mobile', 'http://m.mind98.cn/')">
     <meta name="mobile-agent" content="format=html5;url=@yield('mobile', 'http://m.mind98.cn/')">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <script src="{{asset('js/jquery.js')}}"></script>
     <script src="{{asset('js/function.js')}}"></script>
     <style>
@@ -64,6 +65,9 @@
 </div>
 
 {{--<script src="{{ mix('js/app.js') }}"></script>--}}
+<script>
+    $.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}});
+</script>
 @yield('script')
 </body>
 </html>

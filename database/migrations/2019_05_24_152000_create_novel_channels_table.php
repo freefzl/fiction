@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateZtsTable extends Migration
+class CreateNovelChannelsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateZtsTable extends Migration
      */
     public function up()
     {
-        Schema::create('zts', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('image');
-            $table->text('description');
-            $table->text('tags');
+        Schema::create('novel_channels', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('channelname');
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ class CreateZtsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('zts');
+        Schema::dropIfExists('novel_channels');
     }
 }

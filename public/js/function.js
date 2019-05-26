@@ -121,22 +121,32 @@ var bookshelfInit = function() {
         if (data.count > 0) {
             $.ajax({
                 type: "post",
-                url: "/api.php?m=booksehlf",
+                url: "/booksehlf",
                 data: {
                     book_id : data.book
                 },
                 success: function(data,status) {
+
                     $res = JSON.parse(data);
+
                     if($res.state == "success"){
                         var list = "";
+                        var status_txt = ''
                         $(".bookshelf-list ul").html("");
                         for (var i = $res.data.length - 1; i >= 0; i--) {
+
+                            if($res.data[i]['status']){
+                                status_txt = '已完结'
+                            }else{
+                                status_txt = '连载中'
+                            }
+
                             list += "<li>";
-                            list += "<a class=\"pic\" href=\""+$res.data[i]['url']+"\"><img src=\""+$res.data[i]['thumb']+"\" alt=\""+$res.data[i]['bookname']+"\" target='_blank'><i class=\""+status+"\">"+$res.data[i]['status_txt']+"</i></a>";
-                            list += "<p class=\"tit\"><a href=\""+$res.data[i]['url']+"\" target='_blank'>"+$res.data[i]['bookname']+"</a></p>";
-                            list += "<p class=\"description\">"+$res.data[i]['description']+"</p>";
-                            list += "<p class=\"read\"><a href=\""+$res.data[i]['url']+"\" target='_blank'>继续阅读</a></p>";
-                            list += "<i class=\"del iconfont\" data-id=\""+$res.data[i]['id']+"\">&#xe60b;</i>";
+                            list += "<a class=\"pic\" href=\""+$res.data[i]['id']+".html\"><img src=\" http://img.cn/"+$res.data[i]['cover_img']+"\" alt=\""+$res.data[i]['name']+"\" target='_blank'><i class=\""+status+"\">"+status_txt+"</i></a>";
+                            list += "<p class=\"tit\"><a href=\""+$res.data[i]['id']+".html\" target='_blank'>"+$res.data[i]['name']+"</a></p>";
+                            list += "<p class=\"description\">"+$res.data[i]['synopsis']+"</p>";
+                            list += "<p class=\"read\"><a href=\""+$res.data[i]['id']+".html\" target='_blank'>继续阅读</a></p>";
+                            list += "<i class=\"del iconfont\" data-id=\""+$res.data[i]['id']+".html\">&#xe60b;</i>";
                             list += "</li>";
                         }
                         $(".bookshelf-list ul").html(list);

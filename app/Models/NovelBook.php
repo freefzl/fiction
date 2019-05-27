@@ -29,4 +29,7 @@ class NovelBook extends Model
     public function getAllBooks(){
         return $this->where(['is_delete'=>0])->get();
     }
+
+
+
 }

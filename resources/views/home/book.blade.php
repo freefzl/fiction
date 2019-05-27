@@ -18,17 +18,9 @@
                 <ul class="clearfix">
 
                     <li class="{{$_SERVER['REQUEST_URI']==='/book'?'on':''}}"><a href="/book" title="小说库">全部</a></li>
-                    <li class="{{$_SERVER['REQUEST_URI']==='/huanxiangyinen'?'on':''}}"><a href="/huanxiangyinen" title="幻想异能">幻想异能<span></span></a></li>
-                    <li class="{{$_SERVER['REQUEST_URI']==='/dushizhichang'?'on':''}}"><a href="/dushizhichang" title="都市职场">都市职场<span></span></a></li>
-                    <li class="{{$_SERVER['REQUEST_URI']==='/xuanhuanqihuan'?'on':''}}"><a href="/xuanhuanqihuan" title="玄幻奇幻">玄幻奇幻<span></span></a></li>
-                    <li class="{{$_SERVER['REQUEST_URI']==='/gudaiyanqing'?'on':''}}"><a href="/gudaiyanqing" title="古代言情">古代言情<span></span></a></li>
-                    <li class="{{$_SERVER['REQUEST_URI']==='/wuxiaxianxia'?'on':''}}"><a href="/wuxiaxianxia" title="武侠仙侠">武侠仙侠<span></span></a></li>
-                    <li class="{{$_SERVER['REQUEST_URI']==='/lishijunshi'?'on':''}}"><a href="/lishijunshi" title="历史军事">历史军事<span></span></a></li>
-                    <li class="{{$_SERVER['REQUEST_URI']==='/lingyikehuan'?'on':''}}"><a href="/lingyikehuan" title="灵异科幻">灵异科幻<span></span></a></li>
-                    <li class="{{$_SERVER['REQUEST_URI']==='/youxijingji'?'on':''}}"><a href="/youxijingji" title="游戏竞技">游戏竞技<span></span></a></li>
-                    <li class="{{$_SERVER['REQUEST_URI']==='/xiandaiyanqing'?'on':''}}"><a href="/xiandaiyanqing" title="现代言情">现代言情<span></span></a></li>
-                    <li class="{{$_SERVER['REQUEST_URI']==='/chuanyuezhongsheng'?'on':''}}"><a href="/chuanyuezhongsheng" title="穿越重生">穿越重生<span></span></a></li>
-                    <li class="{{$_SERVER['REQUEST_URI']==='/zongcaihaomen'?'on':''}}"><a href="/zongcaihaomen" title="总裁豪门">总裁豪门<span></span></a></li>
+                    @foreach($types as $type)
+                    <li class="{{$_SERVER['REQUEST_URI']==="/".$type->typedir.""?'on':''}}"><a href="/{{$type->typedir}}" title="{{$type->typename}}">{{$type->typename}}<span></span></a></li>
+                    @endforeach
                 </ul>
             </div>
         </div>

@@ -21,6 +21,7 @@ Route::get('/book/{id}','Home\BookController@xq');
 
 Route::get('/article','Home\ArticleController@index');
 Route::get('/top','Home\TopController@index');
+Route::get('/top/{name}','Home\TopController@type');
 
 Route::get('/zt','Home\ZtController@index');
 Route::get('/zt/{id}','Home\ZtController@ZtXq');

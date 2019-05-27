@@ -73,7 +73,7 @@
                     @foreach($cnxh['tags'] as $val)
                     <ul class="clearfix" style=" display: @if($loop->first) block @else  none @endif">
                         <li class="first">
-                            <a class="pic" href="/zt/{{$val->id}}.html"><img src="{{$val->tag_img}}" alt="{{$val->tagname}}小说"></a>
+                            <a class="pic" href="/zt/{{$val->id}}.html"><img src="{{env('IMG_URL').'/'.$val->tag_img}}" alt="{{$val->tagname}}小说"></a>
                             <h5><a href="/zt/{{$val->id}}.html" title="{{$val->tagname}}小说">{{$val->tagname}}</a></h5>
                             <p>{{$val->tag_synopsis}}</p>
                         </li>

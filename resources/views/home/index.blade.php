@@ -9,27 +9,28 @@
             <!--category-->
             <div class="category">
                 <ul class="clearfix">
-                    <li><a href="/huanxiangyinen/" title="幻想异能小说大全">幻想异能</a></li><li><a href="/dushizhichang/" title="都市职场小说大全">都市职场</a></li><li><a href="/xuanhuanqihuan/" title="玄幻奇幻小说大全">玄幻奇幻</a></li><li><a href="/gudaiyanqing/" title="古代言情小说大全">古代言情</a></li><li><a href="/wuxiaxianxia/" title="武侠仙侠小说大全">武侠仙侠</a></li><li><a href="/lishijunshi/" title="历史军事小说大全">历史军事</a></li><li><a href="/lingyikehuan/" title="灵异科幻小说大全">灵异科幻</a></li><li><a href="/youxijingji/" title="游戏竞技小说大全">游戏竞技</a></li><li><a href="/xiandaiyanqing/" title="现代言情小说大全">现代言情</a></li><li><a href="/chuanyuezhongsheng/" title="穿越重生小说大全">穿越重生</a></li><li><a href="/zongcaihaomen/" title="总裁豪门小说大全">总裁豪门</a></li>			</ul>
+                    @foreach($types as $type)
+                    <li><a href="/{{$type->typedir}}" title="{{$type->typename}}小说大全">{{$type->typename}}</a></li>
+                    @endforeach
+                </ul>
             </div>
             <!--focus-->
             <div class="focus">
                 <div class="banner">
                     <div class="banner-box">
                         <ul class="banner-img">
-                            <li><a href="/book/12264.html" title="情深不负遇见免费阅读 江流华笙小说全文在线阅读" target="_blank"><img src="{{asset('picture/5ca1e01fe1ef6.jpg')}}" alt="情深不负遇见"></a></li><li><a href="/book/12247.html" title="《余生不相望》完结版精彩阅读 阎少琨汤瑶小说在线阅读" target="_blank"><img src="{{asset('picture/5ca1e02d46ded.jpg')}}" alt="余生不相望"></a></li><li><a href="/book/12219.html" title="《许你来生不见不散》韩冰儿公孙青最新章节全文免费阅读" target="_blank"><img src="{{asset('picture/5ca1e0488c238.jpg')}}" alt="许你来生不见不散"></a></li><li><a href="/book/12175.html" title="《听说你爱我》大结局免费阅读 《听说你爱我》最新章节目录" target="_blank"><img src="{{asset('picture/5ca1e0689d6fd.jpg')}}" alt="听说你爱我"></a></li><li><a href="/book/12141.html" title="《许你一生风韵》完结版精彩阅读 苏韵韩子尘小说在线阅读" target="_blank"><img src="{{asset('picture/5ca1e09569c8f.jpg')}}" alt="许你一生风韵"></a></li>					</ul>
+                            @foreach($banner_books as $banner_book)
+                            <li><a href="/book/{{$banner_book->id}}.html" title="{{$banner_book->name}}免费阅读 {{$banner_book->author}}小说全文在线阅读" target="_blank"><img src="{{env('IMG_URL').'/'.$banner_book->banners}}" alt="{{$banner_book->name}}"></a></li>
+                            @endforeach
+                        </ul>
                     </div>
                     <ul class="banner-nav">
-                        <li class="selected">
-                            <h4>情深不负遇见</h4>
-                        </li><li>
-                            <h4>余生不相望</h4>
-                        </li><li>
-                            <h4>许你来生不见不散</h4>
-                        </li><li>
-                            <h4>听说你爱我</h4>
-                        </li><li>
-                            <h4>许你一生风韵</h4>
+                        @foreach($banner_books as $banner_book)
+                        <li  class="@if($loop->first) selected @endif">
+                            <h4>{{$banner_book->name}}</h4>
                         </li>
+                        @endforeach
+
                     </ul>
                 </div>
             </div>
@@ -42,13 +43,16 @@
                     <li>
                         <h4><a href="/book/18852.html" target="_blank">女总裁的超级高手by南狐本尊</a></h4>
                         <p>“谢了，顾总。”叶飞嘿嘿一笑，接过钥匙，眼睛一亮，玛莎拉蒂，真不错啊！看着叶飞离去的背影，顾倾城眯了眯眼，这个家伙真的靠谱么，如果母亲留下来的东西真的流出去的话，那可是惹出滔天麻烦的。随即，顾倾城望向</p>
-                    </li><li>
+                    </li>
+                    <li>
                         <h4><a href="/book/18838.html" target="_blank">超级阴阳眼by吵夜郎</a></h4>
                         <p>于占河瞪着血红的眼睛，跟林峰说，"想做什么，你尽管动手，要是能让淼儿活过来，让我怎么报答你都行！"于占河的话很管用，没人敢过去阻拦林峰，他们看着林峰，脸上满是疑惑的神色。谁也不相信，林峰仅仅用那么一个</p>
-                    </li><li>
+                    </li>
+                    <li>
                         <h4><a href="/book/18788.html" target="_blank">飞针神医by到来哥介</a></h4>
                         <p>第6章真是神医“城管就是一个噩梦！”小男孩说道，“快跑吧！”“城管这么厉害吗？”朱颜也是第一次听说城管，经小男孩这么一说，也只好拿起盒子，同小男孩一起跑了！“城管是什么级别，第几层的高手？”朱颜边跑边</p>
-                    </li>			</ul>
+                    </li>
+                </ul>
             </div>
         </div>
         <!--/box2-->
@@ -68,14 +72,16 @@
                             </p>
                             <p class="intro">《天降富婿》作者文笔很好，情节紧凑，很好看的小说，推荐看！</p>
                             <a class="view" href="/book/18909.html" target="_blank">小说详情</a>
-                        </li><li>
+                        </li>
+                        <li>
                             <h4><a href="/book/18830.html" target="_blank">相爱已枉然</a></h4>
                             <p class="author">庭前花</p>
                             <p class="info"><span class="type">总裁豪门</span>
                                 <span class="finish">已完结</span>						</p>
                             <p class="intro">《相爱已枉然》故事情节不说，人物描写太儿戏了。作者还是年轻了点。不懂成年人的世界。</p>
                             <a class="view" href="/book/18830.html" target="_blank">小说详情</a>
-                        </li><li>
+                        </li>
+                        <li>
                             <h4><a href="/book/18812.html" target="_blank">都市之极品仙王</a></h4>
                             <p class="author">林深见鹿</p>
                             <p class="info"><span class="type">都市职场</span>
@@ -83,7 +89,8 @@
                             </p>
                             <p class="intro">继续追，看得停不下来，很难找到适合男女主角拍成电视剧，小说里给人无限想象空间，故事曲折动人，虐心，但男主塑造的完美，专一呵护有佳，把女主宠上天，女主顽强独特魅力无限值得被爱，期待之后更精彩……</p>
                             <a class="view" href="/book/18812.html" target="_blank">小说详情</a>
-                        </li>				</ul>
+                        </li>
+                    </ul>
                 </div>
                 <div class="rec-list">
                     <ul>
@@ -92,53 +99,72 @@
                             <h5 class="tit"><a href="/book/18903.html" target="_blank">国民女神：凌总，请矜持</a></h5>
                             <p class="intro">第七章威压断裂“拍摄地址发我，先这样。”陆悠然简短说完后，便挂断电话。她吸了一口气，看着不远处夕阳渲染的一片红，心中掀起了一丝无奈。这样的日子，永远不会到头。高达五百米的悬崖边上，拍摄小组正在调控机器</p>
                             <p class="info"><span>作者：酥酥饼干呀</span><em>现代言情</em></p>
-                        </li><li>
+                        </li>
+                        <li>
                             <a class="pic" href="/book/18876.html" target="_blank"><img class="lazy" src="{{asset('picture/thumb_200_266_5aih5aa76zq+6l+977ya.jpg')}}" alt="娇妻难追：宝贝，爹地求辅助！"></a>
                             <h5 class="tit"><a href="/book/18876.html" target="_blank">娇妻难追：宝贝，爹地求辅助！</a></h5>
                             <p class="intro">小念这妈咪，真是让自己操心！唉……时小漓将平板放到一旁，从车上跳下来，“妈咪，你这是第13次撞车了吧，是撞上瘾还是撞上瘾了呢？”‘第……第十三次！’大汉以及他旁边的媳妇吃惊地看着她。“你……”时念愤愤</p>
                             <p class="info"><span>作者：宫六爷</span><em>总裁豪门</em></p>
-                        </li><li>
+                        </li>
+                        <li>
                             <a class="pic" href="/book/18841.html" target="_blank"><img class="lazy" src="{{asset('picture/5oir5bgf54s25oiq5lqg.jpg')}}" alt="我居然成了上门女婿"></a>
                             <h5 class="tit"><a href="/book/18841.html" target="_blank">我居然成了上门女婿</a></h5>
                             <p class="intro">苏家的中盛集团也是江南道的大集团公司，和大名集团差不多，双方既有合作又有竞争。听到苏颖的话，骆绍东笑道："等回到江南再说吧。"和苏颖吃完早点，又坐了一会儿，赵雄就来了，骆绍东招呼赵雄过来坐，赵雄走到骆</p>
                             <p class="info"><span>作者：当浮一大白i</span><em>都市职场</em></p>
-                        </li><li>
+                        </li>
+                        <li>
                             <a class="pic" href="/book/18831.html" target="_blank"><img class="lazy" src="{{asset('picture/thumb_200_266_5l6v6zeo6ze66ycg6l+9.jpg')}}" alt="侯门闺逆"></a>
                             <h5 class="tit"><a href="/book/18831.html" target="_blank">侯门闺逆</a></h5>
                             <p class="intro">三月春暖，喜事常来。苏鼎已经正式到国子监走马上任，苏家在京的几家丝绸铺子也进入了最后的筹备阶段，过些日子就可以开张了。因着有个在国子监当差的亲大伯，二房的两个双胞胎兄弟苏怀志和苏怀仁，也跟着大房的大堂</p>
                             <p class="info"><span>作者：不倒先生</span><em>现代言情</em></p>
-                        </li><li>
+                        </li>
+                        <li>
                             <a class="pic" href="/book/18813.html" target="_blank"><img class="lazy" src="{{asset('picture/thumb_200_266_5y+k56m5luk5lml5b2x.jpg')}}" alt="古穿今之影帝心尖宠"></a>
                             <h5 class="tit"><a href="/book/18813.html" target="_blank">古穿今之影帝心尖宠</a></h5>
                             <p class="intro">这四个字一出口，裘靖禾自己都觉得害臊，这才来这里几天啊，都被同化成这样了，居然敢邀请别的男子与自己共同沐浴了！若是被哥哥们知道了，怕又是一天的教训。裘靖禾心里有些失落，她孤身一人来到这儿，什么认识的人</p>
                             <p class="info"><span>作者：青一一</span><em>穿越重生</em></p>
-                        </li><li>
+                        </li>
+                        <li>
                             <a class="pic" href="/book/18810.html" target="_blank"><img class="lazy" src="{{asset('picture/thumb_200_266_5yy75aad5pkp5lq677ya.jpg')}}" alt="医妃撩人：王爷求负责"></a>
                             <h5 class="tit"><a href="/book/18810.html" target="_blank">医妃撩人：王爷求负责</a></h5>
                             <p class="intro">沈炼一怔，瞬间就抬起手，从后面钳着她的脖子，眼里翻滚着怒意：“苏悦芯，你好大的胆子！”“救我！我被下了药，刚才要不是我暂时封住自己的穴道，躺在床上的就是我了。”苏悦芯一边喘、息着一边说道。她的脸色绯红</p>
                             <p class="info"><span>作者：冰凉的橘子</span><em>现代言情</em></p>
-                        </li><li>
+                        </li>
+                        <li>
                             <a class="pic" href="/book/18807.html" target="_blank"><img class="lazy" src="{{asset('picture/5ako5oc755qe56gs5qc4.jpg')}}" alt="墨总的硬核小娇妻"></a>
                             <h5 class="tit"><a href="/book/18807.html" target="_blank">墨总的硬核小娇妻</a></h5>
                             <p class="intro">"洛千凝？！你怎么出来的？"洛嘉雪不敢相信的质问道。"嘉雪的意思是我不应该出来吗？不过也是，出门的时候恰巧发现我的房门被锁了，费了好大一番功夫才出来，听嘉雪的意思，似乎是知道我被锁在房间？"洛千凝笑着</p>
                             <p class="info"><span>作者：柠檬狐</span><em>总裁豪门</em></p>
-                        </li><li>
+                        </li>
+                        <li>
                             <a class="pic" href="/book/18802.html" target="_blank"><img class="lazy" src="{{asset('picture/thumb_200_266_6yca5asp56we6ym05o6m.jpg')}}" alt="通天神鉴"></a>
                             <h5 class="tit"><a href="/book/18802.html" target="_blank">通天神鉴</a></h5>
                             <p class="intro">周日下午就有课了，许东已经有了决定，在房间里把自己的衣物收拾了一下打包装好，然后去学校。周天奇和黄书瑜还在客厅里兴奋的讨论买什么车，许东出去时，他们也不理会，反正量定了许东翻不起什么浪来，找好了理由吞</p>
                             <p class="info"><span>作者：罗晓</span><em>都市职场</em></p>
-                        </li><li>
+                        </li>
+                        <li>
                             <a class="pic" href="/book/18799.html" target="_blank"><img class="lazy" src="{{asset('picture/thumb_200_266_5pqw5a6g6ygh5yky5aih.jpg')}}" alt="暖宠遇傲娇"></a>
                             <h5 class="tit"><a href="/book/18799.html" target="_blank">暖宠遇傲娇</a></h5>
                             <p class="intro">顾淼泉像往常无数次一样，把手轻轻搭在她头顶上，口吻异常温柔的问：“又受委屈了吧？”他原本既定下周二回来的，可在国外听说了唐重锦的事，他连工作的事都顾不上就坐了最早的一班飞机飞了回来。唐重锦吸了吸鼻子，</p>
                             <p class="info"><span>作者：沐飘飘</span><em>现代言情</em></p>
-                        </li>				</ul>
+                        </li>
+                    </ul>
                 </div>
             </div>
             <div class="latest-news">
                 <h3>小说资讯</h3>
                 <ul>
-                    <li><em>05-20</em><a href="/article/154910.html" target="_blank" title="吻我别说爱叶梓萱孟佑安小说全文阅读 吻我别说爱精彩章节">吻我别说爱叶梓萱孟佑安小说全文阅读 吻我别说爱精彩章节</a></li><li><em>05-20</em><a href="/article/154909.html" target="_blank" title="《今生，只想陪你左右》庄尔雅沈辰望小说在线阅读">《今生，只想陪你左右》庄尔雅沈辰望小说在线阅读</a></li><li><em>05-20</em><a href="/article/154908.html" target="_blank" title="《迷失岁月》刘毅林希儿小说在线阅读">《迷失岁月》刘毅林希儿小说在线阅读</a></li><li><em>05-20</em><a href="/article/154907.html" target="_blank" title="吻我别说爱免费阅读 叶梓萱孟佑安小说全文在线阅读">吻我别说爱免费阅读 叶梓萱孟佑安小说全文在线阅读</a></li><li><em>05-20</em><a href="/article/154906.html" target="_blank" title="今生，只想陪你左右全文免费阅读 今生，只想陪你左右庄尔雅沈辰望最新章节">今生，只想陪你左右全文免费阅读 今生，只想陪你左右庄尔雅沈辰望最新章节</a></li><li><em>05-20</em><a href="/article/154905.html" target="_blank" title="主角是叶凡洛雪嫣的小说在线阅读 轻狂少年郎免费阅读">主角是叶凡洛雪嫣的小说在线阅读 轻狂少年郎免费阅读</a></li><li><em>05-20</em><a href="/article/154904.html" target="_blank" title="迷失岁月免费阅读 刘毅林希儿小说全文在线阅读">迷失岁月免费阅读 刘毅林希儿小说全文在线阅读</a></li><li><em>05-20</em><a href="/article/154903.html" target="_blank" title="《轻狂少年郎》大结局免费阅读 《轻狂少年郎》最新章节目录">《轻狂少年郎》大结局免费阅读 《轻狂少年郎》最新章节目录</a></li><li><em>05-20</em><a href="/article/154902.html" target="_blank" title="今生，只想陪你左右全文免费阅读 今生，只想陪你左右庄尔雅沈辰望小说最新章节">今生，只想陪你左右全文免费阅读 今生，只想陪你左右庄尔雅沈辰望小说最新章节</a></li><li><em>05-20</em><a href="/article/154901.html" target="_blank" title="《吻我别说爱》叶梓萱孟佑安小说在线阅读">《吻我别说爱》叶梓萱孟佑安小说在线阅读</a></li>			</ul>
+                    <li><em>05-20</em><a href="/article/154910.html" target="_blank" title="吻我别说爱叶梓萱孟佑安小说全文阅读 吻我别说爱精彩章节">吻我别说爱叶梓萱孟佑安小说全文阅读 吻我别说爱精彩章节</a></li>
+                    <li><em>05-20</em><a href="/article/154909.html" target="_blank" title="《今生，只想陪你左右》庄尔雅沈辰望小说在线阅读">《今生，只想陪你左右》庄尔雅沈辰望小说在线阅读</a></li>
+                    <li><em>05-20</em><a href="/article/154908.html" target="_blank" title="《迷失岁月》刘毅林希儿小说在线阅读">《迷失岁月》刘毅林希儿小说在线阅读</a></li>
+                    <li><em>05-20</em><a href="/article/154907.html" target="_blank" title="吻我别说爱免费阅读 叶梓萱孟佑安小说全文在线阅读">吻我别说爱免费阅读 叶梓萱孟佑安小说全文在线阅读</a></li>
+                    <li><em>05-20</em><a href="/article/154906.html" target="_blank" title="今生，只想陪你左右全文免费阅读 今生，只想陪你左右庄尔雅沈辰望最新章节">今生，只想陪你左右全文免费阅读 今生，只想陪你左右庄尔雅沈辰望最新章节</a></li>
+                    <li><em>05-20</em><a href="/article/154905.html" target="_blank" title="主角是叶凡洛雪嫣的小说在线阅读 轻狂少年郎免费阅读">主角是叶凡洛雪嫣的小说在线阅读 轻狂少年郎免费阅读</a></li>
+                    <li><em>05-20</em><a href="/article/154904.html" target="_blank" title="迷失岁月免费阅读 刘毅林希儿小说全文在线阅读">迷失岁月免费阅读 刘毅林希儿小说全文在线阅读</a></li>
+                    <li><em>05-20</em><a href="/article/154903.html" target="_blank" title="《轻狂少年郎》大结局免费阅读 《轻狂少年郎》最新章节目录">《轻狂少年郎》大结局免费阅读 《轻狂少年郎》最新章节目录</a></li>
+                    <li><em>05-20</em><a href="/article/154902.html" target="_blank" title="今生，只想陪你左右全文免费阅读 今生，只想陪你左右庄尔雅沈辰望小说最新章节">今生，只想陪你左右全文免费阅读 今生，只想陪你左右庄尔雅沈辰望小说最新章节</a></li>
+                    <li><em>05-20</em><a href="/article/154901.html" target="_blank" title="《吻我别说爱》叶梓萱孟佑安小说在线阅读">《吻我别说爱》叶梓萱孟佑安小说在线阅读</a></li>
+                </ul>
             </div>
         </div>
         <div class="wrap box3 clearfix">
@@ -146,7 +172,17 @@
                 <h3>热门小说</h3>
                 <div id="carousel2" class="carousel">
                     <div class="carousel-img">
-                        <img class="lazy" src="{{asset('picture/5luk55sf77ym5y+q5ooz.png')}}" data-url="/book/18915.html" alt="今生，只想陪你左右"><img class="lazy" src="{{asset('picture/thumb_200_266_6l+35asx5bkb5pyi5awh.jpg')}}" data-url="/book/18914.html" alt="迷失岁月"><img class="lazy" src="{{asset('picture/thumb_200_266_6l2754uc5bcr5bm06yoo.jpg')}}" data-url="/book/18913.html" alt="轻狂少年郎"><img class="lazy" src="{{asset('picture/thumb_200_266_5zc75oir5yir6k+054ix.png')}}" data-url="/book/18912.html" alt="吻我别说爱"><img class="lazy" src="{{asset('picture/thumb_200_266_5yib5asr6zq+5yw777ym.png')}}" data-url="/book/18911.html" alt="刁夫难养，首席唯妻至上"><img class="lazy" src="{{asset('picture/54ix5yiw55eb5pe25oof.png')}}" data-url="/book/18910.html" alt="爱到痛时情难以"><img class="lazy" src="{{asset('picture/5asp6zmn5a+m5am5o6m.jpg')}}" data-url="/book/18909.html" alt="天降富婿"><img class="lazy" src="{{asset('picture/5yy75awz54uc5aad57+7.jpg')}}" data-url="/book/18908.html" alt="医女狂妃翻身记"><img class="lazy" src="{{asset('picture/6ycg6kkt5aih5aa777ym.jpg')}}" data-url="/book/18907.html" alt="逆袭娇妻，高冷总裁轻轻宠"><img class="lazy" src="{{asset('picture/5lih5y+k5q2m6a2c6kkl.jpg')}}" data-url="/book/18906.html" alt="万古武魂">				</div>
+                        <img class="lazy" src="{{asset('picture/5luk55sf77ym5y+q5ooz.png')}}" data-url="/book/18915.html" alt="今生，只想陪你左右">
+                        <img class="lazy" src="{{asset('picture/thumb_200_266_6l+35asx5bkb5pyi5awh.jpg')}}" data-url="/book/18914.html" alt="迷失岁月">
+                        <img class="lazy" src="{{asset('picture/thumb_200_266_6l2754uc5bcr5bm06yoo.jpg')}}" data-url="/book/18913.html" alt="轻狂少年郎">
+                        <img class="lazy" src="{{asset('picture/thumb_200_266_5zc75oir5yir6k+054ix.png')}}" data-url="/book/18912.html" alt="吻我别说爱">
+                        <img class="lazy" src="{{asset('picture/thumb_200_266_5yib5asr6zq+5yw777ym.png')}}" data-url="/book/18911.html" alt="刁夫难养，首席唯妻至上">
+                        <img class="lazy" src="{{asset('picture/54ix5yiw55eb5pe25oof.png')}}" data-url="/book/18910.html" alt="爱到痛时情难以">
+                        <img class="lazy" src="{{asset('picture/5asp6zmn5a+m5am5o6m.jpg')}}" data-url="/book/18909.html" alt="天降富婿">
+                        <img class="lazy" src="{{asset('picture/5yy75awz54uc5aad57+7.jpg')}}" data-url="/book/18908.html" alt="医女狂妃翻身记">
+                        <img class="lazy" src="{{asset('picture/6ycg6kkt5aih5aa777ym.jpg')}}" data-url="/book/18907.html" alt="逆袭娇妻，高冷总裁轻轻宠">
+                        <img class="lazy" src="{{asset('picture/5lih5y+k5q2m6a2c6kkl.jpg')}}" data-url="/book/18906.html" alt="万古武魂">
+                    </div>
                     <ul class="carousel-nav">
                         <li>
                             <h4><a href="/book/18915.html" target="_blank">今生，只想陪你左右</a></h4>
@@ -156,21 +192,24 @@
                             </p>
                             <p class="intro">《今生，只想陪你左右》非常喜欢的书，幽默、搞笑、热血，看得让人热血沸腾，不自觉的容了进去，看风大的书是一件非常享受的事。加油风大，我会永远支持你！！！</p>
                             <a class="view" href="/book/18915.html" target="_blank">小说详情</a>
-                        </li><li>
+                        </li>
+                        <li>
                             <h4><a href="/book/18914.html" target="_blank">迷失岁月</a></h4>
                             <p class="author">厚积薄发</p>
                             <p class="info"><span class="type">都市职场</span>
                                 <span class="finish">已完结</span>						</p>
                             <p class="intro">《迷失岁月》文笔还可以，内容也还不错。主要主角性格比较好吸引人。整体来说不错的小说</p>
                             <a class="view" href="/book/18914.html" target="_blank">小说详情</a>
-                        </li><li>
+                        </li>
+                        <li>
                             <h4><a href="/book/18913.html" target="_blank">轻狂少年郎</a></h4>
                             <p class="author">风起长林</p>
                             <p class="info"><span class="type">都市职场</span>
                                 <span class="finish">已完结</span>						</p>
                             <p class="intro">《轻狂少年郎》不错不错，本书非常好看，文笔极佳，情节有序，故事跌宕起伏，没有主角光环，感情线细腻，对每个人物的刻画都很用心，穿越类小说中，当之无愧的顶峰之作。作者智商之高，我等也只能把自己的智商按在地上摩擦了。咳咳。不行了，我要去吐一会儿。你们继续加油看吧！我已经无能为力了</p>
                             <a class="view" href="/book/18913.html" target="_blank">小说详情</a>
-                        </li><li>
+                        </li>
+                        <li>
                             <h4><a href="/book/18912.html" target="_blank">吻我别说爱</a></h4>
                             <p class="author">花姐客栈</p>
                             <p class="info"><span class="type">总裁豪门</span>
@@ -178,7 +217,8 @@
                             </p>
                             <p class="intro">《吻我别说爱》这本书整体来说非常不错的，尤其是闯十八层地狱构思比较标准，反正很好看</p>
                             <a class="view" href="/book/18912.html" target="_blank">小说详情</a>
-                        </li><li>
+                        </li>
+                        <li>
                             <h4><a href="/book/18911.html" target="_blank">刁夫难养，首席唯妻至上</a></h4>
                             <p class="author">血涩</p>
                             <p class="info"><span class="type">总裁豪门</span>
@@ -186,7 +226,8 @@
                             </p>
                             <p class="intro">《刁夫难养，首席唯妻至上》好看，感到作者写的很努力，但是主人公成长太过这里没有一丝挫折，感到太无敌了。</p>
                             <a class="view" href="/book/18911.html" target="_blank">小说详情</a>
-                        </li><li>
+                        </li>
+                        <li>
                             <h4><a href="/book/18910.html" target="_blank">爱到痛时情难以</a></h4>
                             <p class="author">那年晚风</p>
                             <p class="info"><span class="type">总裁豪门</span>
@@ -194,7 +235,8 @@
                             </p>
                             <p class="intro">《爱到痛时情难以》老夫巧遇获益此天书，只因看了一页耗尽亿万年修为还未得保住老夫的眼，最后功力耗尽陨落此地，望那后生将此书降服，必将传承赐予，老夫不干啊</p>
                             <a class="view" href="/book/18910.html" target="_blank">小说详情</a>
-                        </li><li>
+                        </li>
+                        <li>
                             <h4><a href="/book/18909.html" target="_blank">天降富婿</a></h4>
                             <p class="author">紫色沙漠</p>
                             <p class="info"><span class="type">都市职场</span>
@@ -202,14 +244,16 @@
                             </p>
                             <p class="intro">《天降富婿》作者文笔很好，情节紧凑，很好看的小说，推荐看！</p>
                             <a class="view" href="/book/18909.html" target="_blank">小说详情</a>
-                        </li><li>
+                        </li>
+                        <li>
                             <h4><a href="/book/18908.html" target="_blank">医女狂妃翻身记</a></h4>
                             <p class="author">辣菠萝</p>
                             <p class="info"><span class="type">现代言情</span>
                                 <span class="finish">已完结</span>						</p>
                             <p class="intro">虽然《医女狂妃翻身记》是有点无敌流，但是写的很有意思，也很好笑，经常能看到一些段子和套路什么的。主角虽然贱贱的，但是很有是非观。挺不错的一本书，不要被评论区里的某些人误导。总有不喜欢的人。</p>
                             <a class="view" href="/book/18908.html" target="_blank">小说详情</a>
-                        </li><li>
+                        </li>
+                        <li>
                             <h4><a href="/book/18907.html" target="_blank">逆袭娇妻，高冷总裁轻轻宠</a></h4>
                             <p class="author">碎冰冰</p>
                             <p class="info"><span class="type">现代言情</span>
@@ -217,14 +261,16 @@
                             </p>
                             <p class="intro">《逆袭娇妻，高冷总裁轻轻宠》剧情跌宕起伏，主人公有情有义，节奏爽快，热血澎湃，读起来让人爱不释手，看完一章，忍不住又想看下一章，更新也很稳定，期待后面的故事更加</p>
                             <a class="view" href="/book/18907.html" target="_blank">小说详情</a>
-                        </li><li>
+                        </li>
+                        <li>
                             <h4><a href="/book/18906.html" target="_blank">万古武魂</a></h4>
                             <p class="author">飞鼠</p>
                             <p class="info"><span class="type">玄幻奇幻</span>
                                 <span class="finish">已完结</span>						</p>
                             <p class="intro">写的真好，情节紧凑，跌宕起伏，</p>
                             <a class="view" href="/book/18906.html" target="_blank">小说详情</a>
-                        </li>				</ul>
+                        </li>
+                    </ul>
                 </div>
                 <div class="rec-list">
                     <ul>
@@ -233,38 +279,47 @@
                             <h5 class="tit"><a href="/book/18912.html" target="_blank">吻我别说爱</a></h5>
                             <p class="intro">叶梓淇莫名的有些心慌，为什么他要这样看着她？他不相信她吗？以往她这么说完，他都会狠狠质问叶梓萱的。微微攥紧手心，叶梓淇不露痕迹的垂下眼睑，可眼角随即就泌出了一滴眼泪。她身体微微颤抖着，像是受到了什么重</p>
                             <p class="info"><span>作者：花姐客栈</span><em>总裁豪门</em></p>
-                        </li><li>
+                        </li>
+                        <li>
                             <a class="pic" href="/book/18911.html" target="_blank"><img class="lazy" src="{{asset('picture/thumb_200_266_5yib5asr6zq+5yw777ym.png')}}" alt="刁夫难养，首席唯妻至上"></a>
                             <h5 class="tit"><a href="/book/18911.html" target="_blank">刁夫难养，首席唯妻至上</a></h5>
                             <p class="intro">辛念音舒服得直哼哼，原本火辣辣的地方，一下子就不疼了。“还不是你连累了我！”她撅了撅小嘴，咬牙切齿地道。“那也是你自找的。”顾旌谌凝了她一眼。辛念音沉默了一会儿，突然看向顾旌谌，很认真地道：“你肯定知</p>
                             <p class="info"><span>作者：血涩</span><em>总裁豪门</em></p>
-                        </li><li>
+                        </li>
+                        <li>
                             <a class="pic" href="/book/18910.html" target="_blank"><img class="lazy" src="{{asset('picture/54ix5yiw55eb5pe25oof.png')}}" alt="爱到痛时情难以"></a>
                             <h5 class="tit"><a href="/book/18910.html" target="_blank">爱到痛时情难以</a></h5>
                             <p class="intro">父亲母亲正为景苑偷听到当年的秘密心下忐忑，景父略有不安的道：“这个死丫头听到我们说的话了，当年的事，想必是瞒不住了。”“听到就听到了，有什么可怕的。”一旁的景母不屑道：“大不了，一不做二不休，把她了解</p>
                             <p class="info"><span>作者：那年晚风</span><em>总裁豪门</em></p>
-                        </li><li>
+                        </li>
+                        <li>
                             <a class="pic" href="/book/18909.html" target="_blank"><img class="lazy" src="{{asset('picture/5asp6zmn5a+m5am5o6m.jpg')}}" alt="天降富婿"></a>
                             <h5 class="tit"><a href="/book/18909.html" target="_blank">天降富婿</a></h5>
                             <p class="intro">在林昊正驱车赶往云端会所的时候，此时云端会所的周京却如坐针毡。刚才钟叔突然给他打来电话。说待会会有一批林家手下的人赶过来，而且少主也会过来！听钟叔电话里的语气，周京敏锐的察觉到了危险。像钟涛和林少这样</p>
                             <p class="info"><span>作者：紫色沙漠</span><em>都市职场</em></p>
-                        </li><li>
+                        </li>
+                        <li>
                             <a class="pic" href="/book/18908.html" target="_blank"><img class="lazy" src="{{asset('picture/5yy75awz54uc5aad57+7.jpg')}}" alt="医女狂妃翻身记"></a>
                             <h5 class="tit"><a href="/book/18908.html" target="_blank">医女狂妃翻身记</a></h5>
                             <p class="intro">第四章未婚夫婿夏府里的一条贱狗死了，自然扑不起任何浪花，没人去关注夏怜花和春浓二人，仿佛夏府里根本没有这两个人一样。夜。夏怜花背着春浓，一步一步的挪回那个到处一片狼藉的柴房，她的身体本就瘦弱，虽然春浓</p>
                             <p class="info"><span>作者：辣菠萝</span><em>现代言情</em></p>
-                        </li><li>
+                        </li>
+                        <li>
                             <a class="pic" href="/book/18907.html" target="_blank"><img class="lazy" src="{{asset('picture/6ycg6kkt5aih5aa777ym.jpg')}}" alt="逆袭娇妻，高冷总裁轻轻宠"></a>
                             <h5 class="tit"><a href="/book/18907.html" target="_blank">逆袭娇妻，高冷总裁轻轻宠</a></h5>
                             <p class="intro">第六章明目张胆的反抗林轩父亲走得早，沈玉玲平常做些散活，如今勉强有间林家的大院住着。家境相对于苏楠来说，也是有着明显的落差。本来就不富裕的家庭，孩子还出了这种意外，无疑是雪上加霜。倘若苏楠这个时候来提</p>
                             <p class="info"><span>作者：碎冰冰</span><em>现代言情</em></p>
-                        </li>				</ul>
+                        </li>
+                    </ul>
                 </div>
             </div>
             <div class="hot-tags">
                 <h3>热门专题</h3>
                 <p class="clearfix">
-                    <a href="/zt/35.html" title="虐恋小说" target="_blank">虐恋小说</a><a href="/zt/55.html" title="穿越小说" target="_blank">穿越小说</a><a href="/zt/54.html" title="校园小说" target="_blank">校园小说</a><a href="/zt/13.html" title="百合小说" target="_blank">百合小说</a><a href="/zt/8.html" title="言情小说" target="_blank">言情小说</a><a href="/zt/16.html" title="空间小说" target="_blank">空间小说</a><a href="/zt/31.html" title="鬼怪小说" target="_blank">鬼怪小说</a><a href="/zt/52.html" title="古言小说" target="_blank">古言小说</a><a href="/zt/53.html" title="灵异小说" target="_blank">灵异小说</a><a href="/zt/4.html" title="种田小说" target="_blank">种田小说</a><a href="/zt/11.html" title="总裁小说" target="_blank">总裁小说</a><a href="/zt/29.html" title="穿越种田小说" target="_blank">穿越种田小说</a><a href="/zt/19.html" title="历史小说" target="_blank">历史小说</a><a href="/zt/39.html" title="未来小说" target="_blank">未来小说</a><a href="/zt/30.html" title="重生小说" target="_blank">重生小说</a><a href="/zt/37.html" title="民国小说" target="_blank">民国小说</a><a href="/zt/41.html" title="贵族小说" target="_blank">贵族小说</a><a href="/zt/44.html" title="婚姻爱情小说" target="_blank">婚姻爱情小说</a><a href="/zt/42.html" title="宠婚小说" target="_blank">宠婚小说</a><a href="/zt/36.html" title="轮回重生小说" target="_blank">轮回重生小说</a><a href="/zt/6.html" title="虐恋情深小说" target="_blank">虐恋情深小说</a><a href="/zt/1.html" title="豪门世家小说" target="_blank">豪门世家小说</a><a href="/zt/3.html" title="仙侠小说" target="_blank">仙侠小说</a><a href="/zt/10.html" title="搞笑小说" target="_blank">搞笑小说</a><a href="/zt/26.html" title="情有独钟小说" target="_blank">情有独钟小说</a><a href="/zt/45.html" title="腹黑小说" target="_blank">腹黑小说</a><a href="/zt/5.html" title="娱乐圈小说" target="_blank">娱乐圈小说</a><a href="/zt/34.html" title="宫廷小说" target="_blank">宫廷小说</a>			</p>
+                    <a href="/zt/35.html" title="虐恋小说" target="_blank">虐恋小说</a>
+                    <a href="/zt/55.html" title="穿越小说" target="_blank">穿越小说</a>
+                    <a href="/zt/54.html" title="校园小说" target="_blank">校园小说</a><a href="/zt/13.html" title="百合小说" target="_blank">百合小说</a><a href="/zt/8.html" title="言情小说" target="_blank">言情小说</a><a href="/zt/16.html" title="空间小说" target="_blank">空间小说</a><a href="/zt/31.html" title="鬼怪小说" target="_blank">鬼怪小说</a><a href="/zt/52.html" title="古言小说" target="_blank">古言小说</a><a href="/zt/53.html" title="灵异小说" target="_blank">灵异小说</a><a href="/zt/4.html" title="种田小说" target="_blank">种田小说</a><a href="/zt/11.html" title="总裁小说" target="_blank">总裁小说</a><a href="/zt/29.html" title="穿越种田小说" target="_blank">穿越种田小说</a><a href="/zt/19.html" title="历史小说" target="_blank">历史小说</a><a href="/zt/39.html" title="未来小说" target="_blank">未来小说</a><a href="/zt/30.html" title="重生小说" target="_blank">重生小说</a><a href="/zt/37.html" title="民国小说" target="_blank">民国小说</a><a href="/zt/41.html" title="贵族小说" target="_blank">贵族小说</a><a href="/zt/44.html" title="婚姻爱情小说" target="_blank">婚姻爱情小说</a><a href="/zt/42.html" title="宠婚小说" target="_blank">宠婚小说</a><a href="/zt/36.html" title="轮回重生小说" target="_blank">轮回重生小说</a><a href="/zt/6.html" title="虐恋情深小说" target="_blank">虐恋情深小说</a><a href="/zt/1.html" title="豪门世家小说" target="_blank">豪门世家小说</a><a href="/zt/3.html" title="仙侠小说" target="_blank">仙侠小说</a><a href="/zt/10.html" title="搞笑小说" target="_blank">搞笑小说</a><a href="/zt/26.html" title="情有独钟小说" target="_blank">情有独钟小说</a><a href="/zt/45.html" title="腹黑小说" target="_blank">腹黑小说</a><a href="/zt/5.html" title="娱乐圈小说" target="_blank">娱乐圈小说</a><a href="/zt/34.html" title="宫廷小说" target="_blank">宫廷小说</a>
+                </p>
             </div>
         </div>
         <!--/box3-->

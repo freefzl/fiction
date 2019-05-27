@@ -31,7 +31,7 @@
                     </p>
                     <p class="intro">{{$book->synopsis}}</p>
                     <ul class="btns">
-                        <li class="read-online"><a id="reading" class="reading" data-url="" href="javascript:void(0)">在线阅读</a></li>                    <li class="add-bookshelf" data-bookid="19039"><a>放入书架</a></li>
+                        <li class="read-online"><a id="reading" class="reading" data-url="@if($book->is_online) {{$book->m_read_url}} @endif" href="javascript:void(0)">@if($book->is_online)在线阅读@else 微信阅读 @endif</a></li>                    <li class="add-bookshelf" data-bookid="19039"><a>放入书架</a></li>
                         <li class="go-review"><a>网友评论</a></li>
                         <li class="go-mobile">
                             <a href="#">
@@ -170,7 +170,7 @@
         var weixin_name = "龙珠阅读";
 
         $('.reading').on('click',function(){
-            
+
             // console.log($(this).attr('data-url'))
             if($(this).attr('data-url') != ''){
                 window.location.href= $(this).attr('data-url');

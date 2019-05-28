@@ -65,4 +65,9 @@ class IndexController extends Controller
 
         return view('home.index',compact('banner_books','types','tj_chapter','tj_books','rm_books','news','tjbs','rqbs','girls','boys','chapters','tags','tj_firsts','rm_firsts','alls'));
     }
+
+
+    public function link(){
+        $links = config('name.links');
+    }
 }

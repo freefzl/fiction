@@ -31,7 +31,7 @@
                 <li>
                     <a class="pic" href="/book/{{$book->id}}.html" target="_blank"><img class="lazy" src="{{env('IMG_URL').'/'.$book->cover_img}}" alt="{{$book->name}}"></a>
                     <h5 class="tit"><a href="/book/{{$book->id}}.html" target="_blank">{{$book->name}}</a></h5>
-                    <p class="info"><span>作者：{{$book->author}}</span><span>分类：总裁豪门</span>
+                    <p class="info"><span>作者：{{$book->author}}</span><span>分类：{{$book->type[0]->typename}}</span>
                         <i class="finish">{{ $book->status?'已完结':'连载中'}}</i>
                     </p>
                     <p class="intro">{{$book->synopsis}}</p>

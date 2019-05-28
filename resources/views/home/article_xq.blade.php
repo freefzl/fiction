@@ -20,7 +20,7 @@
                 </div>
                 <div class="description">{{$chapter[0]->description}}</div>
                 <div class="cover">
-                    <p class="pic"><img class="lazy" src="{{$chapter[0]->book->cover_img}}" alt="{{$chapter[0]->book->name}}">
+                    <p class="pic"><img class="lazy" src="{{env('IMG_URL').'/'.$chapter[0]->book->cover_img}}" alt="{{$chapter[0]->book->name}}">
                     <p class="stars">推荐指数：<span class="star"><i style="width:100%;">10分</i></span></p>
                     <p class="read"><a href="/book/{{$chapter[0]->book->id}}.html" target="_blank">{{$chapter[0]->book->name}}在线阅读</a></p>
                 </div>

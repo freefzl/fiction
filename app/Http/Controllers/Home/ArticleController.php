@@ -29,7 +29,9 @@ class ArticleController extends Controller
         $arr = explode('.',$id);
         $id =  (int)$arr[0];
 
-        $chapter = NovelChapter::where(['id'=>$id])->get();
+        $chapter = NovelChapter::where(['id'=>$id])->with(['book'=>function($query){
+            $query->with(['comment'])->get();
+        }])->get();
         $chapter = CreateTDK::getTitle($chapter);
         $chapter = CreateTDK::getDescription($chapter);
 
@@ -42,7 +44,7 @@ class ArticleController extends Controller
 
         $relateds = NovelChapter::where(['bid'=>$chapter[0]->bid])->inRandomOrder()->limit(10)->get();
         $relateds = CreateTDK::getTitle($relateds);
-
+        
         return view('home.article_xq',compact('chapter','cbl','up','down','relateds'));
     }
 

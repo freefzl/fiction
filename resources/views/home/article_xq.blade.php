@@ -16,7 +16,7 @@
             <div class="news-info">
                 <div class="title">
                     <h1>{{$chapter[0]->t_title}}</h1>
-                    <p><span>时间：<em>{{$chapter[0]->created_at}}</em></span><span>作者：<em>{{$chapter[0]->book->author}}</em></span></p>
+                    <p><span>时间：<em>{{$chapter[0]->created_at}}</em></span><span>编辑：<em>{{$chapter[0]->book->comment[0]->comment_name}}</em></span></p>
                 </div>
                 <div class="description">{{$chapter[0]->description}}</div>
                 <div class="cover">

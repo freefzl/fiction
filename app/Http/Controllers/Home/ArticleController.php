@@ -44,7 +44,7 @@ class ArticleController extends Controller
 
         $relateds = NovelChapter::where(['bid'=>$chapter[0]->bid])->inRandomOrder()->limit(10)->get();
         $relateds = CreateTDK::getTitle($relateds);
-        
+
         return view('home.article_xq',compact('chapter','cbl','up','down','relateds'));
     }
 

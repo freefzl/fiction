@@ -151,7 +151,7 @@ input::input-placeholder {
 .header .search .search-key{
 	float: left;
     width: 284px;
-    height: 38px;
+    height: 34px;
     padding: 0 10px 0 18px;
     border: 2px solid;
     border-right: none;

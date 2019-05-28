@@ -60,7 +60,7 @@ class IndexController extends Controller
         $chapters = CreateTDK::getTitle($chapters);
 
         //热门专题
-        $tags = NovelTag::all();
+        $tags = NovelTag::inRandomOrder()->limit(20)->get();
 
 
         $links = $this->link();

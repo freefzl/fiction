@@ -282,7 +282,9 @@
             <div class="friend-link">
                 <h5>友情链接</h5>
                 <ul class="clearfix">
-                    <li><a href="http://www.17qq.com/" title="个性签名" target="_blank">个性签名</a></li><li><a href="https://www.taiuu.com/" title="全本小说网" target="_blank">全本小说网</a></li><li><a href="http://www.taduo.net/" title="蓝翅" target="_blank">蓝翅</a></li><li><a href="http://www.700mh.com/" title="狐妖小红娘漫画" target="_blank">狐妖小红娘漫画</a></li><li><a href="https://www.myxzm.com/" title="蚂蚁文学" target="_blank">蚂蚁文学</a></li><li><a href="http://www.54read.com/" title="五四好书网" target="_blank">五四好书网</a></li>
+                    @foreach($links as $item)
+                    <li><a href="{{$item['link']}}" title="{{$item['name']}}" target="_blank">{{$item['name']}}</a></li>
+                    @endforeach
                 </ul>
             </div>
         </div>

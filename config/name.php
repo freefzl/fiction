@@ -72,5 +72,10 @@ return [
         '5ca1e09569c8f.jpg',
     ],
 
-
+    'links'=>[
+      [
+        'name'=>'baidu',
+        'link'=>'http://www.baidu.com',
+      ],
+    ],
 ];

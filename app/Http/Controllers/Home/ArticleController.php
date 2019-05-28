@@ -13,7 +13,7 @@ class ArticleController extends Controller
 {
     public function index()
     {
-        $chapters = NovelChapter::where(['goId'=>'0'])->with(['book'=>function($query){
+        $chapters = NovelChapter::where(['goId'=>'0'])->where(['is_pay'=>0])->with(['book'=>function($query){
             $query->with(['type'])->get();
         }])->inRandomOrder()->limit(20)->get();
         $articles = CreateTDK::getTitle($chapters);
@@ -29,7 +29,7 @@ class ArticleController extends Controller
         $arr = explode('.',$id);
         $id =  (int)$arr[0];
 
-        $chapter = NovelChapter::where(['id'=>$id])->with(['book'=>function($query){
+        $chapter = NovelChapter::where(['id'=>$id])->where(['goId'=>'0'])->where(['is_pay'=>0])->with(['book'=>function($query){
             $query->with(['comment'])->get();
         }])->get();
         $chapter = CreateTDK::getTitle($chapter);
@@ -42,7 +42,7 @@ class ArticleController extends Controller
         $down = NovelChapter::where(['id'=>$id+1])->get();
         $down = CreateTDK::getTitle($down);
 
-        $relateds = NovelChapter::where(['bid'=>$chapter[0]->bid])->inRandomOrder()->limit(10)->get();
+        $relateds = NovelChapter::where(['bid'=>$chapter[0]->bid])->where(['goId'=>'0'])->where(['is_pay'=>0])->inRandomOrder()->limit(10)->get();
         $relateds = CreateTDK::getTitle($relateds);
 
         return view('home.article_xq',compact('chapter','cbl','up','down','relateds'));

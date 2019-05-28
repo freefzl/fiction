@@ -63,11 +63,14 @@ class IndexController extends Controller
         $tags = NovelTag::all();
 
 
-        return view('home.index',compact('banner_books','types','tj_chapter','tj_books','rm_books','news','tjbs','rqbs','girls','boys','chapters','tags','tj_firsts','rm_firsts','alls'));
+        $links = $this->link();
+
+        return view('home.index',compact('banner_books','types','tj_chapter','tj_books','rm_books','news','tjbs','rqbs','girls','boys','chapters','tags','tj_firsts','rm_firsts','alls','links'));
     }
 
 
     public function link(){
         $links = config('name.links');
+        return $links;
     }
 }

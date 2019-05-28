@@ -20,6 +20,8 @@ Route::get('/book/{id}','Home\BookController@xq');
 
 
 Route::get('/article','Home\ArticleController@index');
+Route::get('/article/{id}','Home\ArticleController@xq');
+
 Route::get('/top','Home\TopController@index');
 Route::get('/top/{name}','Home\TopController@type');
 

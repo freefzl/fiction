@@ -14,6 +14,7 @@ class IndexController extends Controller
 {
     public function index()
     {
+
         //banner
         $banners = config('name.banner_img');
         $banner_books = NovelBook::inRandomOrder()->limit(5)->get();
@@ -72,5 +73,19 @@ class IndexController extends Controller
     public function link(){
         $links = config('name.links');
         return $links;
+    }
+
+
+    public function Search(Request $request){
+
+        $search = $request->q;
+
+        $books = NovelBook::where('name','like','%'.$search.'%')->with(['type'])->limit(30)->get();
+
+        if(!count($books)){
+            $rands = NovelBook::inRandomOrder()->with(['type'])->limit(16)->get();
+        }
+
+        return view('home.search',compact('books','search','rands'));
     }
 }

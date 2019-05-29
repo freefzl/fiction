@@ -1,5 +1,7 @@
 @extends('layouts.default')
-@section('title', '首页')
+@section('title', '小说资讯-'.$chapter[0]->t_title)
+@section('keywords', $chapter[0]->t_title.' '.$chapter[0]->book->protagonist.$chapter[0]->book->author)
+@section('description', $chapter[0]->book->synopsis)
 @section('mobile', 'http://www.baidu.com')
 
 @section('content')

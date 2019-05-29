@@ -1,5 +1,7 @@
 @extends('layouts.default')
-@section('title', '首页')
+@section('title', '专题 - '.$tag->tagname.'小说')
+@section('keywords', $tag->tagname.'小说'  )
+@section('description', $tag->tag_synopsis)
 @section('mobile', 'http://www.baidu.com')
 
 @section('content')

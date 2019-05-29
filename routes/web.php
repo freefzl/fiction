@@ -28,3 +28,5 @@ Route::get('/top/{name}','Home\TopController@type');
 Route::get('/zt','Home\ZtController@index');
 Route::get('/zt/{id}','Home\ZtController@ZtXq');
 
+Route::post('/search','Home\IndexController@Search');
+

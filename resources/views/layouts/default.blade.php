@@ -4,9 +4,8 @@
     <title>@yield('title', 'xiaoshuo') - 我的站点</title>
     {{--<link rel="stylesheet" href="{{ mix('css/app.css') }}">--}}
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>网络小说在线推荐-闲余时光尽享小说-享阅小说网</title>
-    <meta name="keywords" content="网络小说在线推荐" />
-    <meta name="description" content="享阅小说网有大量精品小说推荐，包含都市职场、玄幻奇幻、古代言情、幻想异能、武侠仙侠、历史军事、灵异科幻、游戏竞技、现代言情、穿越重生、总裁豪门等各类好看小说。" />
+    <meta name="keywords" content="@yield('keywords', '网络小说在线推荐')" />
+    <meta name="description" content="@yield('description', '网站有大量精品小说推荐，包含都市职场、玄幻奇幻、古代言情、幻想异能、武侠仙侠、历史军事、灵异科幻、游戏竞技、现代言情、穿越重生、总裁豪门等各类好看小说。')" />
     <meta name="shenma-site-verification" content="640cd821d750f66fb2c84259caecbccc_1547718180"/>
     <link href="/favicon.ico" rel="shortcut icon" />
     <link href="{{asset('css/base.css')}}" rel="stylesheet" type="text/css" />

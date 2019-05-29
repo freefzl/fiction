@@ -30,3 +30,7 @@ Route::get('/zt/{id}','Home\ZtController@ZtXq');
 
 Route::post('/search','Home\IndexController@Search');
 
+Route::fallback(function () {
+    return redirect('/');
+});
+

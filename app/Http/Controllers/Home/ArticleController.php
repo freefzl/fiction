@@ -18,7 +18,7 @@ class ArticleController extends Controller
         }])->inRandomOrder()->limit(20)->get();
         $articles = CreateTDK::getTitle($chapters);
         $articles = CreateTDK::getDescription($articles);
-        $count = NovelChapter::all()->count();
+        $count = NovelChapter::where(['goId'=>'0'])->where(['is_pay'=>0])->get()->count();
         $cbl = $this->ceBianLan();
 
         return view('home.article',compact('articles','cbl','count'));

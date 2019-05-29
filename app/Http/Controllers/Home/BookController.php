@@ -11,6 +11,9 @@ use App\Http\Controllers\Controller;
 
 class BookController extends Controller
 {
+
+
+
     public function index()
     {
         $books = NovelBook::where(['is_delete'=>0])->limit(30)->get();

@@ -32,6 +32,9 @@ class BookController extends Controller
         $id =  (int)$arr[0];
         $book = NovelBook::where(['id'=>$id])->with(['try','type','comment'])->first();
 
+        if($book==null){
+            return response()->view('errors.404');
+        }
         $tags = NovelTag::select('id','tagname')->whereIn('id',json_decode($book->tag_ids))->get();
 
         $cnxh = $this->cnxh();

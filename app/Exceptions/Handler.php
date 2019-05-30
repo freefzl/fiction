@@ -34,6 +34,10 @@ class Handler extends ExceptionHandler
      */
     public function report(Exception $exception)
     {
+        if ($exception) {
+//            dd($exception->getCode());
+            return response()->view('error.'.$exception->getStatusCode(), [],$exception->getStatusCode());
+        }
         parent::report($exception);
     }
 

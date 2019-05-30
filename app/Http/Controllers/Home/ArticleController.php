@@ -32,6 +32,10 @@ class ArticleController extends Controller
         $chapter = NovelChapter::where(['id'=>$id])->where(['goId'=>'0'])->where(['is_pay'=>0])->with(['book'=>function($query){
             $query->with(['comment'])->get();
         }])->get();
+        
+        if($chapter==null||!count($chapter)){
+            return response()->view('errors.404');
+        }
         $chapter = CreateTDK::getTitle($chapter);
         $chapter = CreateTDK::getDescription($chapter);
 

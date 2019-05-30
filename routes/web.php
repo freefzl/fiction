@@ -1,6 +1,6 @@
 <?php
 
-Route::domain('www.xiaoshuo.test')->group(function () {
+Route::domain('www.xiaoshuo.com')->group(function () {
     Route::get('/','Home\IndexController@index');
 
     Route::get('/book','Home\BookController@index');
@@ -34,10 +34,8 @@ Route::domain('www.xiaoshuo.test')->group(function () {
 });
 
 
-Route::domain('m.xiaoshuo.test')->group(function () {
-    Route::get('/', function () {
-        echo 111;
-    });
+Route::domain('m.xiaoshuo.com')->group(function () {
+    Route::get('/', 'Mobile\IndexController@index');
 });
 
 

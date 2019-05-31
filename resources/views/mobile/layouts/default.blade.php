@@ -11,7 +11,7 @@
     <link href="{{asset('css/mip.min.css')}}" type="text/css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{asset('css/mip.css')}}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
-    <link rel="canonical" href="http://m.mind98.cn/">
+    <link rel="canonical" href="http://m.xiaoshuo.test/">
     <style mip-custom>
         /* background */
         .mod-head h2:before,

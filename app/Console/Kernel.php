@@ -28,9 +28,12 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
-        $schedule->call(UpdateBooks::DealEarlyBooks())->daily();
-        $schedule->call(UpdateBooks::DealEarlyChapters())->daily();
-        $schedule->call(UpdateBooks::DealEarlyComments())->yearly();
+
+        /*$schedule->call(function () {
+
+        })->daily();
+        $schedule->call(UpdateBooks::DealEarlyComments())->yearly();*/
+        $schedule->command('update_books')->daily();
     }
 
     /**

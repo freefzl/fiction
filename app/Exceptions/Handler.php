@@ -36,7 +36,7 @@ class Handler extends ExceptionHandler
     {
         if ($exception) {
 //            dd($exception->getCode());
-            return response()->view('error.'.$exception->getStatusCode(), [],$exception->getStatusCode());
+            return response()->view('errors.404');
         }
         parent::report($exception);
     }

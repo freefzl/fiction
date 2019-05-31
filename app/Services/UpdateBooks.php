@@ -21,15 +21,20 @@ use GuzzleHttp\Exception\RequestException;
 
 class UpdateBooks{
 
-
+    public static $book_ids = [];
 
     public static function DealEarlyBooks()
     {
         //获取初始表books数据
-        $early_books =  EarlyBook::where(['is_yc'=>1])->get();
+        $early_books =  EarlyBook::where(['is_yc'=>1])->limit(1)->get();
 
-        if($early_books){
+
+
+        if(!$early_books->isEmpty()){
             foreach ($early_books as $early_book){
+
+                self::$book_ids[] = $early_book->id;
+
                 $type =  NovelType::where('typename','like','%'.$early_book->typename.'%')->first();
                 if(!$type){
                     $type = new NovelType();
@@ -86,8 +91,8 @@ class UpdateBooks{
 
 
     public static function DealEarlyChapters(){
-        $chapters = EarlyChapter::where(['is_yc'=>1])->get();
-        if($chapters){
+        $chapters = EarlyChapter::where(['is_yc'=>1])->whereIn('bid',self::$book_ids)->get();
+        if(!$chapters->isEmpty()){
             foreach ($chapters as $chapter){
                 $novel_chapter = new NovelChapter();
                 $novel_chapter->bid = $chapter->bid;
@@ -141,16 +146,23 @@ class UpdateBooks{
 
     public static function getTryId($id)
     {
-        $ids = NovelChapter::where(['bid'=>$id])->where(['goId'=>0])->pluck('id')->all();
-          $rand_one_id =  collect($ids)->random(1);
-          return $rand_one_id[0];
+
+        $ids = NovelChapter::where(['bid'=>$id])->where(['goId'=>'0'])->pluck('id')->all();
+
+        $rand_one_id =  collect($ids)->random(1);
+
+        return $rand_one_id[0];
+
     }
 
     public static function getCommitId()
     {
         $ids = Comment::pluck('id')->all();
+
         $rand_one_id =  collect($ids)->random(1);
+
         return $rand_one_id[0];
+
     }
 
 

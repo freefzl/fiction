@@ -122,6 +122,20 @@ class BookController extends Controller
         return view('home.book',compact('books','types'));
     }
 
+    public function qingchunxiaoyuan()
+    {
+        $books = NovelBook::where(['is_delete'=>0])->where(['type_id'=>20])->limit(30)->get();
+        $types = NovelType::all();
+        return view('home.book',compact('books','types'));
+    }
+
+    public function duanpianxiaoshuo()
+    {
+        $books = NovelBook::where(['is_delete'=>0])->where(['type_id'=>22])->limit(30)->get();
+        $types = NovelType::all();
+        return view('home.book',compact('books','types'));
+    }
+
 
     public function booksehlf(Request $request)
     {

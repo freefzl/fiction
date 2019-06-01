@@ -20,19 +20,19 @@
                     <i class="iconfont">&#xe626;</i>
                     <span>首页</span>
                 </a>
-                <a href="/top/" data-type="mip">
+                <a href="/top" data-type="mip">
                     <i class="iconfont">&#xe7bd;</i>
                     <span>排行榜</span>
                 </a>
-                <a href="/book/" data-type="mip">
+                <a href="/book" data-type="mip">
                     <i class="iconfont">&#xe809;</i>
                     <span>小说库</span>
                 </a>
-                <a href="/zt/" data-type="mip">
+                <a href="/zt" data-type="mip">
                     <i class="iconfont">&#xe70f;</i>
                     <span>专题</span>
                 </a>
-                <a href="/article/" data-type="mip">
+                <a href="/article" data-type="mip">
                     <i class="iconfont">&#xe63a;</i>
                     <span>资讯</span>
                 </a>

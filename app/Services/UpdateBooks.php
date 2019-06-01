@@ -35,6 +35,14 @@ class UpdateBooks{
 
                 self::$book_ids[] = $early_book->id;
 
+                if($early_book->typename == '0'|| $early_book->typename == '1'||$early_book->typename ==''){
+                    $early_book->typename = '现代言情';
+                }elseif($early_book->typename == '现言'){
+                    $early_book->typename = '现代言情';
+                }elseif($early_book->typename == '古言'){
+                    $early_book->typename = '古代言情';
+                }
+
                 $type =  NovelType::where('typename','like','%'.$early_book->typename.'%')->first();
                 if(!$type){
                     $type = new NovelType();

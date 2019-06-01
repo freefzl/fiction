@@ -1,5 +1,5 @@
 @extends('layouts.default')
-@section('title', '小说库-'.$book->name)
+@section('title', '小说库 - '.$book->name)
 @section('keywords', $book->name.' '.$book->author.$book->protagonist)
 @section('description', $book->synopsis)
 @section('mobile', 'http://www.baidu.com')

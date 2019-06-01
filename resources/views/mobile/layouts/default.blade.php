@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="Cache-Control" content="no-transform">
     <meta http-equiv="Cache-Control" content="no-siteapp">
-    <title>网络小说在线推荐-闲余时光尽享小说-享阅小说网</title>
-    <meta name="keywords" content="网络小说在线推荐" />
-    <meta name="description" content="享阅小说网有大量精品小说推荐，包含都市职场、玄幻奇幻、古代言情、幻想异能、武侠仙侠、历史军事、灵异科幻、游戏竞技、现代言情、穿越重生、总裁豪门等各类好看小说。" />
+    <title>@yield('title', '首页')-我的站点</title>
+    <meta name="keywords" content="@yield('keywords', '网络小说在线推荐')" />
+    <meta name="description" content="@yield('description', '网站有大量精品小说推荐，包含都市职场、玄幻奇幻、古代言情、幻想异能、武侠仙侠、历史军事、灵异科幻、游戏竞技、现代言情、穿越重生、总裁豪门等各类好看小说。')" />
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
     <link href="{{asset('css/mip.min.css')}}" type="text/css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{asset('css/mip.css')}}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
-    <link rel="canonical" href="http://m.xiaoshuo.test/">
+    <link rel="canonical" href="http://m.xiaoshuo.com/">
     <style mip-custom>
         /* background */
         .mod-head h2:before,
@@ -88,6 +88,7 @@
         }
     </script>
 </mip-stats-baidu>
+<mip-data>
 <script src="{{asset('js/mip.js')}}"></script>
 <script src="{{asset('js/mip-form.js')}}"></script>
 <script src="{{asset('js/mip-history.js')}}"></script>
@@ -96,6 +97,9 @@
 <script src="{{asset('js/mip-list.js')}}"></script>
 <script src="{{asset('js/mip-mustache.js')}}"></script>
 <script src="{{asset('js/mip-vd-tabs.js')}}"></script>
+    <script src="{{asset('js/mip-showmore.js')}}"></script>
+    <script src="{{asset('js/mip-html-os.js')}}"></script>
+</mip-data>
 
 <!-- <link rel="stylesheet" href="{{asset('')}}css/style.css">
 

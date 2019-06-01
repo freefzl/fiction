@@ -15,6 +15,8 @@ Route::domain('www.xiaoshuo.com')->group(function () {
     Route::get('/xiandaiyanqing','Home\BookController@xiandaiyanqing');
     Route::get('/chuanyuezhongsheng','Home\BookController@chuanyuezhongsheng');
     Route::get('/zongcaihaomen','Home\BookController@zongcaihaomen');
+    Route::get('/qingchunxiaoyuan','Home\BookController@qingchunxiaoyuan');
+    Route::get('/duanpianxiaoshuo','Home\BookController@duanpianxiaoshuo');
     Route::post('/booksehlf','Home\BookController@booksehlf');
     Route::get('/book/{id}','Home\BookController@xq');
 
@@ -37,6 +39,21 @@ Route::domain('www.xiaoshuo.com')->group(function () {
 Route::domain('m.xiaoshuo.com')->group(function () {
     Route::get('/', 'Mobile\IndexController@index');
     Route::get('/book', 'Mobile\BookController@index');
+    Route::get('/huanxiangyinen','Mobile\BookController@huanxiangyinen');
+    Route::get('/dushizhichang','Mobile\BookController@dushizhichang');
+    Route::get('/xuanhuanqihuan','Mobile\BookController@xuanhuanqihuan');
+    Route::get('/gudaiyanqing','Mobile\BookController@gudaiyanqing');
+    Route::get('/wuxiaxianxia','Mobile\BookController@wuxiaxianxia');
+    Route::get('/lishijunshi','Mobile\BookController@lishijunshi');
+    Route::get('/lingyikehuan','Mobile\BookController@lingyikehuan');
+    Route::get('/youxijingji','Mobile\BookController@youxijingji');
+    Route::get('/xiandaiyanqing','Mobile\BookController@xiandaiyanqing');
+    Route::get('/chuanyuezhongsheng','Mobile\BookController@chuanyuezhongsheng');
+    Route::get('/zongcaihaomen','Mobile\BookController@zongcaihaomen');
+    Route::get('/qingchunxiaoyuan','Mobile\BookController@qingchunxiaoyuan');
+    Route::get('/duanpianxiaoshuo','Mobile\BookController@duanpianxiaoshuo');
+    Route::post('/booksehlf','Mobile\BookController@booksehlf');
+    Route::get('/book/{id}','Mobile\BookController@xq');
 });
 
 

@@ -1,12 +1,14 @@
 <body class="home">
 <!--header-->
-<div class="header">
-    <h1 class="logo">享阅小说网</h1>
-    <div class="icon-grouop">
-        <span class="icon-search" on="tap:search.toggle"><i class="iconfont">&#xe651;</i></span>
-        <span class="icon-menu" on="tap:menu.toggle"><i class="iconfont">&#xe62a;</i></span>
+
+    <div class="header">
+        <h1 class="logo">享阅小说网</h1>
+        <div class="icon-grouop">
+            <span class="icon-search" on="tap:search.toggle"><i class="iconfont">&#xe651;</i></span>
+            <span class="icon-menu" on="tap:menu.toggle"><i class="iconfont">&#xe62a;</i></span>
+        </div>
     </div>
-</div>
+
 <!--menu-->
 <mip-lightbox
         id="menu"
@@ -16,23 +18,23 @@
     <div class="menu show">
         <div class="menu-panel">
             <div class="menu-list">
-                <a href="/" data-type="mip">
+                <a href="/" >
                     <i class="iconfont">&#xe626;</i>
                     <span>首页</span>
                 </a>
-                <a href="/top" data-type="mip">
+                <a href="/top" >
                     <i class="iconfont">&#xe7bd;</i>
                     <span>排行榜</span>
                 </a>
-                <a href="/book" data-type="mip">
+                <a href="/book" >
                     <i class="iconfont">&#xe809;</i>
                     <span>小说库</span>
                 </a>
-                <a href="/zt" data-type="mip">
+                <a href="/zt" >
                     <i class="iconfont">&#xe70f;</i>
                     <span>专题</span>
                 </a>
-                <a href="/article" data-type="mip">
+                <a href="/article" >
                     <i class="iconfont">&#xe63a;</i>
                     <span>资讯</span>
                 </a>

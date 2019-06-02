@@ -34,7 +34,15 @@
                 </ul>
             </div>
             <div class="pages">
-                <a href="{{$books['prev_page_url']}}" class="p-prev">上一页</a><span class="pageindex">第 {{$books['current_page']}} 页</span><a href="{{$books['next_page_url']}}" class="p-next">下一页</a>
+
+
+                @if($books['current_page']==1)
+                    <span class="pageindex">第 {{$books['current_page']}} 页</span><a href="{{$books['next_page_url']}}" class="p-next">下一页</a>
+                @elseif($books['current_page']==$books['last_page'])
+                    <a href="{{$books['prev_page_url']}}" class="p-prev">上一页</a><span class="pageindex">第 {{$books['current_page']}} 页</span>
+                @else
+                    <a href="{{$books['prev_page_url']}}" class="p-prev">上一页</a><span class="pageindex">第 {{$books['current_page']}} 页</span><a href="{{$books['next_page_url']}}" class="p-next">下一页</a>
+                @endif
             </div>
             <!--/main-->
         </div>

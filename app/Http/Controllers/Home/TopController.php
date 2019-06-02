@@ -89,6 +89,16 @@ class TopController extends Controller
                 $books = NovelBook::where(['type_id'=>$type->id])->orderBy('id','desc')->limit(10)->get();
                 $books->typename = $type->typename;
                 break;
+            case 'qingchunxiaoyuan':
+                $type = NovelType::where(['typedir'=>$name])->first();
+                $books = NovelBook::where(['type_id'=>$type->id])->orderBy('id','desc')->limit(10)->get();
+                $books->typename = $type->typename;
+                break;
+            case 'duanpianxiaoshuo':
+                $type = NovelType::where(['typedir'=>$name])->first();
+                $books = NovelBook::where(['type_id'=>$type->id])->orderBy('id','desc')->limit(10)->get();
+                $books->typename = $type->typename;
+                break;
             default:
                 $books=[];
         }

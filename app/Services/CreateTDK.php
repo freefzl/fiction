@@ -11,9 +11,7 @@ namespace App\Services;
 class CreateTDK{
 
     public static function getTitle($model){
-
         foreach ($model as $k=>$item){
-
             $title = [
               ''.$item->book->name.' 小说免费试读 '.$item->book->protagonist.'小说阅读',
               ''.$item->book->name.' '.$item->book->protagonist.'在线阅读',

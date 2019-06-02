@@ -21,103 +21,117 @@ use GuzzleHttp\Exception\RequestException;
 
 class UpdateBooks{
 
-    public static $book_ids = [];
 
-    public static function DealEarlyBooks()
-    {
-        //获取初始表books数据
-        $early_books =  EarlyBook::where(['is_yc'=>1])->limit(1)->get();
-
-
-
-        if(!$early_books->isEmpty()){
-            foreach ($early_books as $early_book){
-
-                self::$book_ids[] = $early_book->id;
-
-                if($early_book->typename == '0'|| $early_book->typename == '1'||$early_book->typename ==''){
-                    $early_book->typename = '现代言情';
-                }elseif($early_book->typename == '现言'){
-                    $early_book->typename = '现代言情';
-                }elseif($early_book->typename == '古言'){
-                    $early_book->typename = '古代言情';
-                }
-
-                $type =  NovelType::where('typename','like','%'.$early_book->typename.'%')->first();
-                if(!$type){
-                    $type = new NovelType();
-                    $type->typename = $early_book->typename;
-                    $type->save();
-                }
-
-                $channel =  NovelChannel::where('channelname','like','%'.$early_book->channelname.'%')->first();
-                if(!$channel){
-                    $channel = new NovelChannel();
-                    $channel->channelname = $early_book->channelname;
-                    $channel->save();
-                }
-
-
-                if($early_book->status=='已完结'){
-                    $status = 1;
-                }else{
-                    $status = 0;
-                }
-                $book = NovelBook::where('name','like','%'.$early_book->name.'%')->first();
-                if(!$book){
-                    $filename = static::downFile($early_book->cover_img,storage_path('app/public/'),md5($early_book->cover_img));
-                    $book = new NovelBook();
-                    $book->name = $early_book->name;
-                    $book->status = $early_book->status;
-                    $book->chapter_number = $early_book->info_chapters_num;
-                    $book->author = substr($early_book->author,9);
-                    $book->words  = $early_book->words  ;
-                    $book->protagonist = $early_book->protagonist;
-                    $book->cover_img = $filename['file_name'];
-                    $book->status = $status;
-                    $book->synopsis = $early_book->synopsis;
-                    $book->type_id = $type->id;
-                    $book->channel_id = $channel->id;
-                    $book->tag_ids = static::getTags();
-                    $book->pubdate = $early_book->update_date;
-                    $book->try_id = static ::getTryId($early_book->id);
-                    $book->is_online = $early_book->referral_link?1:0;
-                    $book->pc_read_url = '';
-                    $book->m_read_url = $early_book->referral_link;
-                    $book->comment_id = static ::getCommitId();
-                    $book->save();
-
-                }
-
-                $early_book->is_yc = 2 ;
-                $early_book->save();
-            }
-        }
-
-        return $a = '1';
-    }
 
 
     public static function DealEarlyChapters(){
-        $chapters = EarlyChapter::where(['is_yc'=>1])->whereIn('bid',self::$book_ids)->get();
-        if(!$chapters->isEmpty()){
-            foreach ($chapters as $chapter){
-                $novel_chapter = new NovelChapter();
-                $novel_chapter->bid = $chapter->bid;
-                $novel_chapter->chapter_id = $chapter->chapterId;
-                $novel_chapter->title = $chapter->chapterName;
-                $novel_chapter->chapterContent = $chapter->chapterContent;
-                $novel_chapter->is_pay = $chapter->is_pay;
-                $novel_chapter->goId = $chapter->goId;
-                $novel_chapter->save();
-                $chapter->is_yc = 2 ;
-                $chapter->save();
+
+
+        for($i=0;$i<4000;$i++){
+            $chapters = EarlyChapter::where(['is_yc'=>1])->limit(1000)->get();
+
+            if(!$chapters->isEmpty()){
+                foreach ($chapters as $chapter){
+                    $novel_chapter = new NovelChapter();
+                    $novel_chapter->bid = $chapter->bid;
+                    $novel_chapter->chapter_id = $chapter->chapterId;
+                    $novel_chapter->title = $chapter->chapterName;
+                    $novel_chapter->chapterContent = $chapter->chapterContent;
+                    $novel_chapter->is_pay = $chapter->is_pay;
+                    $novel_chapter->goId = $chapter->goId;
+                    $novel_chapter->save();
+                    $chapter->is_yc = 2 ;
+                    $chapter->save();
+                }
             }
+            break;
         }
+
 
 
         return $a = '1';
     }
+
+
+    public static function DealEarlyBooks()
+    {
+        for($i=0;$i<4000;$i++){
+            //获取初始表books数据
+            $early_books =  EarlyBook::where(['is_yc'=>1])->limit(1000)->get();
+
+
+
+            if(!$early_books->isEmpty()){
+                foreach ($early_books as $early_book){
+
+                    if($early_book->typename == '0'|| $early_book->typename == '1'||$early_book->typename ==''){
+                        $early_book->typename = '现代言情';
+                    }elseif($early_book->typename == '现言'){
+                        $early_book->typename = '现代言情';
+                    }elseif($early_book->typename == '古言'){
+                        $early_book->typename = '古代言情';
+                    }
+
+                    $type =  NovelType::where('typename','like','%'.$early_book->typename.'%')->first();
+                    if(!$type){
+                        $type = new NovelType();
+                        $type->typename = $early_book->typename;
+                        $type->save();
+                    }
+
+                    $channel =  NovelChannel::where('channelname','like','%'.$early_book->channelname.'%')->first();
+                    if(!$channel){
+                        $channel = new NovelChannel();
+                        $channel->channelname = $early_book->channelname;
+                        $channel->save();
+                    }
+
+
+                    if($early_book->status=='已完结'){
+                        $status = 1;
+                    }else{
+                        $status = 0;
+                    }
+                    $book = NovelBook::where('name','like','%'.$early_book->name.'%')->first();
+                    if(!$book){
+                        $filename = static::downFile($early_book->cover_img,storage_path('app/public/'),md5($early_book->cover_img));
+                        $book = new NovelBook();
+                        $book->name = $early_book->name;
+                        $book->status = $early_book->status;
+                        $book->chapter_number = $early_book->info_chapters_num;
+                        $book->author = substr($early_book->author,9);
+                        $book->words  = $early_book->words  ;
+                        $book->protagonist = $early_book->protagonist;
+                        $book->cover_img = $filename['file_name'];
+                        $book->status = $status;
+                        $book->synopsis = $early_book->synopsis;
+                        $book->type_id = $type->id;
+                        $book->channel_id = $channel->id;
+                        $book->tag_ids = static::getTags()??'';
+                        $book->pubdate = $early_book->update_date;
+                        $book->try_id = static ::getTryId($early_book->id)??'';
+                        $book->is_online = 0;
+                        $book->pc_read_url = '';
+                        $book->m_read_url = $early_book->referral_link;
+                        $book->comment_id = static ::getCommitId()??'';
+                        $book->save();
+
+                    }
+
+                    $early_book->is_yc = 2 ;
+                    $early_book->save();
+                }
+            }
+            break;
+        }
+
+
+
+        return $a = '1';
+    }
+
+
+
 
 
     public static function DealEarlyComments(){
@@ -157,20 +171,28 @@ class UpdateBooks{
 
         $ids = NovelChapter::where(['bid'=>$id])->where(['goId'=>'0'])->pluck('id')->all();
 
-        $rand_one_id =  collect($ids)->random(1);
 
-        return $rand_one_id[0];
 
+        if(count($ids)!=0){
+            $rand_one_id =  collect($ids)->random(1);
+
+            return $rand_one_id[0];
+        }
+
+        return false;
     }
 
     public static function getCommitId()
     {
         $ids = Comment::pluck('id')->all();
 
-        $rand_one_id =  collect($ids)->random(1);
+        if(count($ids)!=0){
+            $rand_one_id =  collect($ids)->random(1);
 
-        return $rand_one_id[0];
+            return $rand_one_id[0];
+        };
 
+        return false;
     }
 
 

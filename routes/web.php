@@ -54,6 +54,16 @@ Route::domain('m.xiaoshuo.com')->group(function () {
     Route::get('/duanpianxiaoshuo','Mobile\BookController@duanpianxiaoshuo');
     Route::post('/booksehlf','Mobile\BookController@booksehlf');
     Route::get('/book/{id}','Mobile\BookController@xq');
+
+
+    Route::get('/zt','Mobile\ZtController@index');
+    Route::get('/zt/{id}','Mobile\ZtController@ZtXq');
+
+    Route::get('/top','Mobile\TopController@index');
+    Route::get('/top/{name}','Mobile\TopController@type');
+
+    Route::get('/article','Mobile\ArticleController@index');
+    Route::get('/article/{id}','Mobile\ArticleController@xq');
 });
 
 

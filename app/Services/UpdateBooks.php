@@ -43,8 +43,9 @@ class UpdateBooks{
                     $chapter->is_yc = 2 ;
                     $chapter->save();
                 }
+            }else{
+                break;
             }
-            break;
         }
 
 
@@ -121,8 +122,10 @@ class UpdateBooks{
                     $early_book->is_yc = 2 ;
                     $early_book->save();
                 }
+            }else{
+                break;
             }
-            break;
+
         }
 
 

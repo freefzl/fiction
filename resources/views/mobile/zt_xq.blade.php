@@ -12,7 +12,7 @@
         <div class="mod mod-tags-info">
             <div class="tags-info">
                 <dl class="clearfix">
-                    <dt><mip-img src="{{env('IMG_URL').'.'.$tag->tag_img}}" alt="{{$tag->tagname}}小说专题"></mip-img></dt>
+                    <dt><mip-img src="{{env('IMG_URL').'/'.$tag->tag_img}}" alt="{{$tag->tagname}}小说专题"></mip-img></dt>
                     <dd>
                         <h2>{{$tag->tagname}}小说</h2>
                         <p><span>更新时间：{{$tag->updated_at}}</span><span>共<em>{{$count}}</em>本相关小说</span></p>
@@ -41,7 +41,7 @@
                 <ul class="clearfix">
                     @foreach($books as $k=>$item)
                     <li class="s{{$k}}">
-                        <div class="pic"><mip-img layout="responsive" width="200" height="266" src="{{env('IMG_URL').'.'.$item->cover_img}}" alt="{{$item->name}}"></mip-img></div>
+                        <div class="pic"><mip-img layout="responsive" width="200" height="266" src="{{env('IMG_URL').'/'.$item->cover_img}}" alt="{{$item->name}}"></mip-img></div>
                         <a class="tit" href="/book/{{$item->id}}.html" title="{{$item->name}}" >{{$item->name}}</a>
                         <p class="intro">{{$item->synopsis}}</p>
                         <p class="info"><span><i class="iconfont">&#xe600;</i>{{$item->author}}</span><em class="type">{{$item->type[0]->typename}}</em>
@@ -64,7 +64,7 @@
                     @foreach($new_tags as $item)
                     <li>
                         <a href="/zt/{{$item->id}}.html">
-                            <mip-img src="{{env('IMG_URL').'.'.$item->tag_img}}" alt="{{$item->tagname}}小说"></mip-img>
+                            <mip-img src="{{env('IMG_URL').'/'.$item->tag_img}}" alt="{{$item->tagname}}小说"></mip-img>
                             <span>{{$item->tagname}}小说</span>
                         </a>
                     </li>

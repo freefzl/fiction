@@ -52,7 +52,8 @@
         <div class="search-mask"></div>
         <div class="search-panel">
             <div class="bar">
-                <mip-form  method="post" url="http://m.mind98.cn/index.php?g=Search" target="_blank" >
+                <mip-form  method="post" url="/search" target="_blank" >
+                    {{ csrf_field() }}
                     <input type="text" name="q" id="q" placeholder="请输入书名/作者" class="search-key">
                     <input type="hidden" name="modelid" value="13">
                     <button type="submit" class="search-btn" id="search-btn">Go</button>

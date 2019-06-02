@@ -64,6 +64,8 @@ Route::domain('m.xiaoshuo.com')->group(function () {
 
     Route::get('/article','Mobile\ArticleController@index');
     Route::get('/article/{id}','Mobile\ArticleController@xq');
+
+    Route::post('/search','Mobile\IndexController@Search');
 });
 
 

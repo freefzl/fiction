@@ -12,7 +12,7 @@ class CreateTDK{
 
     public static function getTitle($model){
         foreach ($model as $k=>$item){
-            if(!count($item->book)){
+            if($item->book!=null){
                 $title = [
                     ''.$item->book->name.' 小说免费试读 '.$item->book->protagonist.'小说阅读',
                     ''.$item->book->name.' '.$item->book->protagonist.'在线阅读',
@@ -47,7 +47,7 @@ class CreateTDK{
 
     public static function getDescription($model){
         foreach ($model as $k=>$item){
-            if(!count($item->book)){
+            if($item->book!=null){
                 $description = [
                     ''.$item->book->name.' 是作者'.$item->book->author.' 创作的 '.$item->book->type[0]->typename.' 类小说，讲述的是'.$item->book->protagonist.' 之间的故事，情节跌宕起伏，引人入胜，是'.$item->book->author.' 为数不多的经典著作，内容新颖，文笔成熟，非常值得一看。章节节选：'.mb_substr(strip_tags($item->chapterContent),0,30).' ',
                     '主角叫'.$item->book->protagonist.' 的小说是'.$item->book->name.' ，这本小说的作者是'.$item->book->author.' 创作的'.$item->book->type[0]->typename.' 类型的小说，文中的故事非常感人，文笔极佳，实力推荐。小说精彩段落试读：'.mb_substr(strip_tags($item->chapterContent),0,30).' ',

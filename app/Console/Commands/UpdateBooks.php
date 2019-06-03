@@ -38,6 +38,6 @@ class UpdateBooks extends Command
     public function handle()
     {
         \App\Services\UpdateBooks::DealEarlyChapters();
-//        \App\Services\UpdateBooks::DealEarlyBooks();
+        \App\Services\UpdateBooks::DealEarlyBooks();
     }
 }

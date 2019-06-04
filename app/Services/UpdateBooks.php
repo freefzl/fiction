@@ -95,7 +95,8 @@ class UpdateBooks{
                     }
                     $book = NovelBook::where('name','like','%'.$early_book->name.'%')->first();
                     if(!$book){
-                        $filename = static::downFile($early_book->cover_img,storage_path('app/public/'),md5($early_book->cover_img));
+//                        $filename = static::downFile($early_book->cover_img,storage_path('app/public/'),md5($early_book->cover_img));
+                        $arr = explode('/',$early_book->cover_img);
                         $book = new NovelBook();
                         $book->name = $early_book->name;
                         $book->status = $early_book->status;
@@ -103,7 +104,7 @@ class UpdateBooks{
                         $book->author = substr($early_book->author,9);
                         $book->words  = $early_book->words  ;
                         $book->protagonist = $early_book->protagonist;
-                        $book->cover_img = $filename['file_name'];
+                        $book->cover_img = end($arr);
                         $book->status = $status;
                         $book->synopsis = $early_book->synopsis;
                         $book->type_id = $type->id;

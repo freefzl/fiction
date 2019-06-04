@@ -183,7 +183,7 @@ class UpdateBooks{
             return $rand_one_id[0];
         }*/
 
-        if(count($ids)!=0){
+        if($ids){
             return $ids->id;
         }
 

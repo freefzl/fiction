@@ -56,9 +56,9 @@ class UpdateBooks{
 
     public static function DealEarlyBooks()
     {
-        for($i=0;$i<4000;$i++){
+        for($i=0;$i<10000;$i++){
             //获取初始表books数据
-            $early_books =  EarlyBook::where(['is_yc'=>1])->limit(1000)->get();
+            $early_books =  EarlyBook::where(['is_yc'=>1])->limit(10)->get();
 
 
 
@@ -173,14 +173,18 @@ class UpdateBooks{
     public static function getTryId($id)
     {
 
-        $ids = NovelChapter::where(['bid'=>$id])->where(['goId'=>'0'])->pluck('id')->all();
+        $ids = NovelChapter::where(['bid'=>$id])->where(['is_pay'=>0])->where(['goId'=>'0'])->first();
+//        $ids = NovelChapter::where(['bid'=>$id])->where(['is_pay'=>0])->where(['goId'=>'0'])->pluck('id')->all();
 
 
-
-        if(count($ids)!=0){
+        /*if(count($ids)!=0){
             $rand_one_id =  collect($ids)->random(1);
 
             return $rand_one_id[0];
+        }*/
+
+        if(count($ids)!=0){
+            return $ids->id;
         }
 
         return false;

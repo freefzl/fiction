@@ -56,13 +56,13 @@ class UpdateBooks{
 
     public static function DealEarlyBooks()
     {
-        for($i=0;$i<10000;$i++){
+
             //获取初始表books数据
-            $early_books =  EarlyBook::where(['is_yc'=>1])->limit(10)->get();
+            $early_books =  EarlyBook::where(['is_yc'=>1])->get();
 
 
 
-            if(!$early_books->isEmpty()){
+            if($early_books->count()){
                 foreach ($early_books as $early_book){
 
                     if($early_book->typename == '0'|| $early_book->typename == '1'||$early_book->typename ==''){
@@ -123,9 +123,7 @@ class UpdateBooks{
                     $early_book->is_yc = 2 ;
                     $early_book->save();
                 }
-            }else{
-                break;
-            }
+
 
         }
 

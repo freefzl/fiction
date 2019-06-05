@@ -14,54 +14,63 @@ class IndexController extends Controller
 {
     public function index()
     {
-        dd(1);
+
         //banner
         $banners = config('name.banner_img');
-        $banner_books = NovelBook::inRandomOrder()->limit(5)->get();
+        $banner_books = NovelBook::orderBy('id','desc')->limit(50)->get();
+        $banner_books=$banner_books->random(5)->all();
+
         foreach ($banner_books as $k=>$banner_book){
             $banner_books[$k]['banners'] = $banners[$k];
         }
 
         $types = NovelType::all();
 
-        $tj_chapter =  NovelChapter::inRandomOrder()->limit(3)->get();
+        $tj_chapter =  NovelChapter::where(['goId'=>0])->orderBy('id','desc')->limit(50)->get();
+        $tj_chapter=$tj_chapter->random(3)->all();
+
         $tj_chapter = CreateTDK::getTitle($tj_chapter);
+
         $tj_chapter = CreateTDK::getDescription($tj_chapter);
+
 //        dd($tj_chapter->toArray());
         //推荐小说
-        $tj_firsts = NovelBook::inRandomOrder()->limit(3)->get();
-        $tj_books = NovelBook::with(['type'])->inRandomOrder()->limit(6)->get();
+        $tj_firsts = NovelBook::orderBy('id','desc')->limit(50)->get();
+        $tj_firsts=$tj_firsts->random(3)->all();
+
+        $tj_books = NovelBook::with(['type'])->limit(50)->get();
+        $tj_books=$tj_books->random(6)->all();
         //热门小说
-        $rm_firsts = NovelBook::inRandomOrder()->limit(3)->get();
-        $rm_books = NovelBook::inRandomOrder()->limit(6)->get();
+        $rm_firsts = NovelBook::limit(3)->get();
+        $rm_books = NovelBook::limit(6)->get();
         //最新小说
 //        $types
-        $alls = NovelBook::inRandomOrder()->limit(16)->get();
+        $alls = NovelBook::limit(16)->get();
 
 
         $news = NovelType::limit(10)->get();
 
         foreach ($news as $k=>$type){
-            $news[$k]->books = NovelBook::where(['type_id'=>$type->id])->inRandomOrder()->limit(16)->get();
+            $news[$k]->books = NovelBook::where(['type_id'=>$type->id])->limit(16)->get();
         }
 
 //        dd($news->toArray());
 
         //推荐榜
-        $tjbs = NovelBook::inRandomOrder()->limit(10)->get();
+        $tjbs = NovelBook::limit(10)->get();
         //人气榜
-        $rqbs = NovelBook::inRandomOrder()->limit(10)->get();
+        $rqbs = NovelBook::limit(10)->get();
         //女生榜
-        $girls = NovelBook::where(['channel_id'=>2])->inRandomOrder()->limit(10)->get();
+        $girls = NovelBook::where(['channel_id'=>2])->limit(10)->get();
         //男生榜
-        $boys = NovelBook::where(['channel_id'=>1])->inRandomOrder()->limit(10)->get();
+        $boys = NovelBook::where(['channel_id'=>1])->limit(10)->get();
 
         //小说资讯
-        $chapters = NovelChapter::inRandomOrder()->orderBy('created_at','desc')->limit(10)->get();
+        $chapters = NovelChapter::orderBy('created_at','desc')->limit(10)->get();
         $chapters = CreateTDK::getTitle($chapters);
 
         //热门专题
-        $tags = NovelTag::inRandomOrder()->limit(20)->get();
+        $tags = NovelTag::limit(20)->get();
 
 
         $links = $this->link();

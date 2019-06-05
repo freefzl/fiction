@@ -50,7 +50,7 @@ class UpdateBooks{
 
 
 
-        return $a = '1';
+        return true;
     }
 
 
@@ -130,7 +130,7 @@ class UpdateBooks{
 
 
 
-        return $a = '1';
+        return true;
     }
 
 

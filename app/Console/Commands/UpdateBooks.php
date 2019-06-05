@@ -37,8 +37,13 @@ class UpdateBooks extends Command
      */
     public function handle()
     {
-//        \App\Services\UpdateBooks::DealEarlyChapters();
-        \App\Services\UpdateBooks::DealEarlyBooks();
-//        \App\Services\UpdateBooks::getTryId();
+        $true = \App\Services\UpdateBooks::DealEarlyChapters();
+        if($true){
+            $is = \App\Services\UpdateBooks::DealEarlyBooks();
+        }
+        if($is){
+            \App\Services\UpdateBooks::getTryId();
+        }
+        return 'ok';
     }
 }

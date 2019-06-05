@@ -17,8 +17,7 @@ class IndexController extends Controller
 
         //banner
         $banners = config('name.banner_img');
-        $banner_books = NovelBook::orderBy('id','desc')->limit(50)->get();
-        $banner_books=$banner_books->random(5)->all();
+        $banner_books = NovelBook::orderBy('id','desc')->limit(5)->get();
 
         foreach ($banner_books as $k=>$banner_book){
             $banner_books[$k]['banners'] = $banners[$k];
@@ -26,8 +25,7 @@ class IndexController extends Controller
 
         $types = NovelType::all();
 
-        $tj_chapter =  NovelChapter::where(['goId'=>0])->orderBy('id','desc')->limit(50)->get();
-        $tj_chapter=$tj_chapter->random(3)->all();
+        $tj_chapter =  NovelChapter::where(['goId'=>0])->orderBy('id','desc')->limit(3)->get();
 
         $tj_chapter = CreateTDK::getTitle($tj_chapter);
 
@@ -35,11 +33,9 @@ class IndexController extends Controller
 
 //        dd($tj_chapter->toArray());
         //推荐小说
-        $tj_firsts = NovelBook::orderBy('id','desc')->limit(50)->get();
-        $tj_firsts=$tj_firsts->random(3)->all();
+        $tj_firsts = NovelBook::orderBy('id','desc')->limit(3)->get();
 
-        $tj_books = NovelBook::with(['type'])->limit(50)->get();
-        $tj_books=$tj_books->random(6)->all();
+        $tj_books = NovelBook::with(['type'])->limit(6)->get();
         //热门小说
         $rm_firsts = NovelBook::limit(3)->get();
         $rm_books = NovelBook::limit(6)->get();
@@ -66,7 +62,7 @@ class IndexController extends Controller
         $boys = NovelBook::where(['channel_id'=>1])->limit(10)->get();
 
         //小说资讯
-        $chapters = NovelChapter::orderBy('created_at','desc')->limit(10)->get();
+        $chapters = NovelChapter::orderBy('id','desc')->limit(10)->get();
         $chapters = CreateTDK::getTitle($chapters);
 
         //热门专题

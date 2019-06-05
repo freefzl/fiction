@@ -8,20 +8,29 @@ use App\Models\NovelTag;
 use App\Services\CreateTDK;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Cache;
 
 class ArticleController extends Controller
 {
     public function index()
     {
 
-        $chapters = NovelChapter::where(['goId'=>'0'])->where(['is_pay'=>0])->with(['book'=>function($query){
-            $query->with(['type'])->get();
-        }])->orderBy('updated_at','desc')->paginate(20);
+
+
+
+        $chapters= NovelChapter::where(['goId'=>'0'])->where(['is_pay'=>0])->with(['book'=>function($query){
+                    $query->with(['type'])->get();
+                }])->orderBy('id','desc')->simplePaginate(20);
+
+
+
+
+
         $articles = CreateTDK::getTitle($chapters);
         $articles = CreateTDK::getDescription($articles);
         $articles= $articles->toArray();
 
-
+        
         $cbl = $this->ceBianLan();
 
         return view('mobile.article',compact('articles','cbl'));
@@ -49,7 +58,7 @@ class ArticleController extends Controller
         $down = NovelChapter::where(['id'=>$id+1])->get();
         $down = CreateTDK::getTitle($down);
 
-        $relateds = NovelChapter::where(['bid'=>$chapter[0]->bid])->where(['goId'=>'0'])->where(['is_pay'=>0])->inRandomOrder()->limit(10)->get();
+        $relateds = NovelChapter::where(['bid'=>$chapter[0]->bid])->where(['goId'=>'0'])->where(['is_pay'=>0])->limit(10)->get();
         $relateds = CreateTDK::getTitle($relateds);
 
         return view('mobile.article_xq',compact('chapter','cbl','up','down','relateds'));
@@ -60,11 +69,11 @@ class ArticleController extends Controller
         //热门资讯
         $rmzxs = NovelChapter::where(['goId'=>'0'])->with(['book'=>function($query){
             $query->with(['type'])->get();
-        }])->inRandomOrder()->limit(10)->get();
+        }])->limit(10)->get();
         $data['rmzxs'] = CreateTDK::getTitle($rmzxs);
 
         //最新小说
-        $data['zxxss'] = NovelBook::inRandomOrder()->limit(8)->get();
+        $data['zxxss'] = NovelBook::limit(8)->get();
 
         return $data;
     }

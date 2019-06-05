@@ -18,26 +18,26 @@ class IndexController extends Controller
 
         //banner
         $banners = config('name.banner_img');
-        $banner_books = NovelBook::inRandomOrder()->limit(5)->get();
+        $banner_books = NovelBook::limit(5)->get();
         foreach ($banner_books as $k=>$banner_book){
             $banner_books[$k]['banners'] = $banners[$k];
         }
 
         //编辑推荐
 
-        $bjtj = NovelBook::inRandomOrder()->limit(8)->get();
+        $bjtj = NovelBook::limit(8)->get();
 
         //热门小说
-        $rmxs = NovelBook::inRandomOrder()->limit(8)->get();
+        $rmxs = NovelBook::limit(8)->get();
 
         //最新专题
-        $zxzt = NovelTag::inRandomOrder()->limit(6)->get();
+        $zxzt = NovelTag::limit(6)->get();
 
         //最新小说
-        $zxxs = NovelBook::with(['type'])->orderBy('updated_at','desc')->limit(8)->get();
+        $zxxs = NovelBook::with(['type'])->orderBy('id','desc')->limit(8)->get();
 
         //最新资讯
-        $zxzx = NovelChapter::orderBy('updated_at','desc')->limit(8)->get();
+        $zxzx = NovelChapter::orderBy('id','desc')->limit(8)->get();
         $zxzx = CreateTDK::getTitle($zxzx);
 
 
@@ -47,7 +47,7 @@ class IndexController extends Controller
 
         foreach ($phb as $k=>$type){
 
-            $phb[$k]['books'] = NovelBook::with(['type'])->inRandomOrder()->limit(8)->get();
+            $phb[$k]['books'] = NovelBook::with(['type'])->limit(8)->get();
         }
 
 
@@ -70,7 +70,7 @@ class IndexController extends Controller
         $books = NovelBook::where('name','like','%'.$search.'%')->with(['type'])->limit(30)->get();
 
         if(!count($books)){
-            $rands = NovelBook::inRandomOrder()->with(['type'])->limit(16)->get();
+            $rands = NovelBook::with(['type'])->limit(16)->get();
         }
 
         return view('mobile.search',compact('books','search','rands'));

@@ -14,7 +14,7 @@ class IndexController extends Controller
 {
     public function index()
     {
-
+        dd(1);
         //banner
         $banners = config('name.banner_img');
         $banner_books = NovelBook::inRandomOrder()->limit(5)->get();

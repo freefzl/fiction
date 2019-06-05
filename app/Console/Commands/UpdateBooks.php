@@ -39,5 +39,6 @@ class UpdateBooks extends Command
     {
 //        \App\Services\UpdateBooks::DealEarlyChapters();
         \App\Services\UpdateBooks::DealEarlyBooks();
+//        \App\Services\UpdateBooks::getTryId();
     }
 }

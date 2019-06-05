@@ -111,7 +111,7 @@ class UpdateBooks{
                         $book->channel_id = $channel->id;
                         $book->tag_ids = static::getTags()??'';
                         $book->pubdate = $early_book->update_date;
-                        $book->try_id = static ::getTryId($early_book->id)??'';
+                        $book->try_id = 0;
                         $book->is_online = 0;
                         $book->pc_read_url = '';
                         $book->m_read_url = $early_book->referral_link;
@@ -170,24 +170,15 @@ class UpdateBooks{
     }
 
 
-    public static function getTryId($id)
+    public static function getTryId()
     {
-
-        $ids = NovelChapter::where(['bid'=>$id])->where(['is_pay'=>0])->where(['goId'=>'0'])->first();
-//        $ids = NovelChapter::where(['bid'=>$id])->where(['is_pay'=>0])->where(['goId'=>'0'])->pluck('id')->all();
-
-
-        /*if(count($ids)!=0){
-            $rand_one_id =  collect($ids)->random(1);
-
-            return $rand_one_id[0];
-        }*/
-
-        if($ids){
-            return $ids->id;
+        $ids = NovelBook::where(['try_id'=>0])->pluck('id')->all();
+        foreach ($ids as $id){
+            $one = NovelChapter::where(['bid'=>$id])->where(['goId'=>0])->where(['is_pay'=>0])->first();
+            NovelBook::where(['id'=>$id])->update(['try_id'=>$one->id]);
         }
 
-        return false;
+        return $a = 'ok';
     }
 
     public static function getCommitId()

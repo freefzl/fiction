@@ -174,10 +174,13 @@ class UpdateBooks{
         $ids = NovelBook::where(['try_id'=>0])->pluck('id')->all();
         foreach ($ids as $id){
             $one = NovelChapter::where(['bid'=>$id])->where(['goId'=>0])->where(['is_pay'=>0])->first();
-            NovelBook::where(['id'=>$id])->update(['try_id'=>$one->id]);
+            if($one){
+                NovelBook::where(['id'=>$id])->update(['try_id'=>$one->id]);
+            }
+
         }
 
-        return $a = 'ok';
+        return true;
     }
 
     public static function getCommitId()

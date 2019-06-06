@@ -58,7 +58,7 @@ class ArticleController extends Controller
         $down = NovelChapter::where(['id'=>$id+1])->get();
         $down = CreateTDK::getTitle($down);
 
-        $relateds = NovelChapter::where(['goId'=>'0'])->where(['is_pay'=>0])->limit(10)->get();
+        $relateds = NovelChapter::where(['bid'=>$chapter[0]->bid])->where(['goId'=>'0'])->where(['is_pay'=>0])->limit(10)->get();
         $relateds = CreateTDK::getTitle($relateds);
 
         return view('mobile.article_xq',compact('chapter','cbl','up','down','relateds'));

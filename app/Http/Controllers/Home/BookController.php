@@ -30,8 +30,8 @@ class BookController extends Controller
 
         $arr = explode('.',$id);
         $id =  (int)$arr[0];
-        $book = NovelBook::where(['id'=>$id])->with(['try','type','comment'])->first();
 
+        $book = NovelBook::where(['id'=>$id])->with(['try','type','comment'])->first();
         if($book==null){
             return response()->view('errors.404');
         }

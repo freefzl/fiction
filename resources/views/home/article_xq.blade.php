@@ -11,13 +11,14 @@
         <div class="bread">
             <span>您的位置 : </span>
             <a href="/" title="享阅小说网">首页</a>
-            &gt; <a href="/article/" >小说资讯</a> &gt;
+            &gt; <a href="/article" >小说资讯</a> &gt;
         </div>
         <div class="wrap clearfix">
             <!--primary-->
             <div class="news-info">
                 <div class="title">
                     <h1>{{$chapter[0]->t_title}}</h1>
+
                     <p><span>时间：<em>{{$chapter[0]->created_at}}</em></span><span>编辑：<em>{{$chapter[0]->book->comment[0]->comment_name}}</em></span></p>
                 </div>
                 <div class="description">{{$chapter[0]->description}}</div>
@@ -29,21 +30,31 @@
                 <div class="content"><h3>{{$chapter[0]->book->name}} {{$chapter[0]->book->title}}  免费试读</h3>
                     {!! $chapter[0]->chapterContent !!}
                 </div>
+
                 <div class="book">
                     <dl class="clearfix">
                         <dt><a href="/book/{{$chapter[0]->book->id}}.html" target="_blank"><img class="lazy" src="{{env('IMG_URL').'/'.$chapter[0]->book->cover_img}}" alt="{{$chapter[0]->book->name}}"></a></dt>
                         <dd>
+
                             <h4><a href="/book/{{$chapter[0]->book->id}}.html">{{$chapter[0]->book->name}}</a></h4>
                             <p class="info"><span>作者：{{$chapter[0]->book->author}}</span><span>类型：{{$chapter[0]->book->type[0]->typename}}</span><span>状态：{{$chapter[0]->book->status?'已完结':'连载中'}}</span></p>
                             <p class="intro">{{$chapter[0]->book->synopsis}}</p>
                             <p class="star"><i style="width:100%;"></i></p>
+
                             <a class="view" href="/book/{{$chapter[0]->book->id}}.html" target="_blank">小说详情</a>
+
                         </dd>
                     </dl>				</div>				<div class="porn">
                     <ul class="clearfix">
+                        @if(count($up))
                         <li>上一篇：<a class="pre_a" href="/article/{{$up[0]->id}}.html" >{{$up[0]->t_title}}</a> </li>
+                        @endif
+                        @if(count($down))
                         <li>下一篇：<a class="pre_a" href="/article/{{$down[0]->id}}.html" >{{$down[0]->t_title}}</a> </li>
+                        @endif
+
                     </ul>
+
                 </div>
                 <div class="related">
                     <h3>相关文章</h3>

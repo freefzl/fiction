@@ -33,7 +33,7 @@ class ArticleController extends Controller
         $chapter = NovelChapter::where(['id'=>$id])->where(['goId'=>'0'])->where(['is_pay'=>0])->with(['book'=>function($query){
             $query->with(['comment'])->get();
         }])->get();
-        
+
         if($chapter==null||!count($chapter)){
             return response()->view('errors.404');
         }
@@ -48,6 +48,7 @@ class ArticleController extends Controller
         $down = CreateTDK::getTitle($down);
 
         $relateds = NovelChapter::where(['bid'=>$chapter[0]->bid])->where(['goId'=>'0'])->where(['is_pay'=>0])->limit(10)->get();
+
         $relateds = CreateTDK::getTitle($relateds);
 
         return view('home.article_xq',compact('chapter','cbl','up','down','relateds'));

@@ -15,13 +15,14 @@ class ArticleController extends Controller
     {
         $chapters = NovelChapter::where(['goId'=>'0'])->where(['is_pay'=>0])->with(['book'=>function($query){
             $query->with(['type'])->get();
-        }])->limit(20)->get();
+        }])->paginate(30);
 
         $articles = CreateTDK::getTitle($chapters);
         $articles = CreateTDK::getDescription($articles);
 
         $cbl = $this->ceBianLan();
         $articles = $articles->toArray();
+
         return view('home.article',compact('articles','cbl'));
     }
 

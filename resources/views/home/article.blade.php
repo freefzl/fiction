@@ -16,9 +16,9 @@
     <div class="wrap clearfix">
         <!--primary-->
         <div class="news-list">
-            <h2>共<em></em>篇文章</h2>
+            <h2>共<em>{{$articles['total']}}</em>篇文章</h2>
             <ul>
-                @foreach($articles as $article)
+                @foreach($articles['data'] as $article)
                 <li>
                     <a class="pic" href="/article/{{$article['id']}}.html" target="_blank"><img class="lazy" src="{{env('IMG_URL').'/'.$article['book']['cover_img']}}" alt="{{$article['t_title']}}"></a>
                     <h5 class="tit"><a href="/article/{{$article['id']}}.html" target="_blank">{{mb_substr($article['t_title'],0,40)}}...</a></h5>

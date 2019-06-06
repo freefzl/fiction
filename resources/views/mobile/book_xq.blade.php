@@ -92,7 +92,7 @@
         <!--editor-->
         <div class="mod mod-editor">
             <div class="editor clearfix">
-                <div class="face"><mip-img src="/statics/novel/images/face.jpg" alt="南巷清风"></mip-img></div>
+                <div class="face"><mip-img src="{{env('IMG_URL').'/'.$book->comment[0]->comment_img}}" alt="{{$book->comment[0]->comment_name}}"></mip-img></div>
                 <div class="info">
                     <p>编辑<span>{{$book->comment[0]->comment_name}}</span>点评：</p>
                     <p class="text">{{$book->comment[0]->comment_content}}</p>

@@ -35,10 +35,10 @@ class IndexController extends Controller
         //推荐小说
         $tj_firsts = NovelBook::orderBy('id','desc')->limit(3)->get();
 
-        $tj_books = NovelBook::with(['type'])->limit(6)->get();
+        $tj_books = NovelBook::with(['type'])->inRandomOrder()->limit(6)->get();
         //热门小说
         $rm_firsts = NovelBook::limit(3)->get();
-        $rm_books = NovelBook::limit(6)->get();
+        $rm_books = NovelBook::inRandomOrder()->limit(6)->get();
         //最新小说
 //        $types
         $alls = NovelBook::limit(16)->get();
@@ -53,9 +53,9 @@ class IndexController extends Controller
 //        dd($news->toArray());
 
         //推荐榜
-        $tjbs = NovelBook::limit(10)->get();
+        $tjbs = NovelBook::inRandomOrder()->limit(10)->get();
         //人气榜
-        $rqbs = NovelBook::limit(10)->get();
+        $rqbs = NovelBook::inRandomOrder()->limit(10)->get();
         //女生榜
         $girls = NovelBook::where(['channel_id'=>2])->limit(10)->get();
         //男生榜

@@ -48,7 +48,7 @@ class ArticleController extends Controller
         $down = NovelChapter::where(['id'=>$id+1])->get();
         $down = CreateTDK::getTitle($down);
 
-        $relateds = NovelChapter::where(['bid'=>$chapter[0]->bid])->where(['goId'=>'0'])->where(['is_pay'=>0])->limit(10)->get();
+        $relateds = NovelChapter::where(['bid'=>$chapter[0]->bid])->where(['goId'=>'0'])->where(['is_pay'=>0])->inRandomOrder()->limit(10)->get();
 
         $relateds = CreateTDK::getTitle($relateds);
 
@@ -60,14 +60,14 @@ class ArticleController extends Controller
         //热门资讯
         $rmzxs = NovelChapter::where(['goId'=>'0'])->with(['book'=>function($query){
             $query->with(['type'])->get();
-        }])->limit(10)->get();
+        }])->inRandomOrder()->limit(10)->get();
         $data['rmzxs'] = CreateTDK::getTitle($rmzxs);
 
         //热门专题
-        $data['rmzts'] = NovelTag::limit(3)->get();
+        $data['rmzts'] = NovelTag::inRandomOrder()->limit(3)->get();
 
         //推荐小说
-        $data['tjxss'] = NovelBook::limit(5)->get();
+        $data['tjxss'] = NovelBook::inRandomOrder()->limit(5)->get();
 
         return $data;
     }

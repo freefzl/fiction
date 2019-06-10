@@ -71,6 +71,8 @@ class UpdateBooks{
                         $early_book->typename = '现代言情';
                     }elseif($early_book->typename == '古言'){
                         $early_book->typename = '古代言情';
+                    }elseif($early_book->typename == '幻言'){
+                        $early_book->typename = '幻想异能';
                     }
 
                     $type =  NovelType::where('typename','like','%'.$early_book->typename.'%')->first();

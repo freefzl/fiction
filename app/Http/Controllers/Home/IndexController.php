@@ -53,9 +53,9 @@ class IndexController extends Controller
 //        dd($news->toArray());
 
         //推荐榜
-        $tjbs = NovelBook::limit(10)->get();
+        $tjbs = NovelBook::inRandomOrder()->limit(10)->get();
         //人气榜
-        $rqbs = NovelBook::limit(10)->get();
+        $rqbs = NovelBook::inRandomOrder()->limit(10)->get();
         //女生榜
         $girls = NovelBook::where(['channel_id'=>2])->limit(10)->get();
         //男生榜

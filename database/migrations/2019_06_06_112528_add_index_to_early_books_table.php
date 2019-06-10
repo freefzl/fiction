@@ -17,6 +17,7 @@ class AddIndexToEarlyBooksTable extends Migration
             $table->index('name');
             $table->index('info_id');
             $table->index('author');
+            $table->index('is_yc');
         });
     }
 
@@ -28,7 +29,7 @@ class AddIndexToEarlyBooksTable extends Migration
     public function down()
     {
         Schema::table('early_books', function (Blueprint $table) {
-            $table->dropIndex(['name','info_id','author']);
+            $table->dropIndex(['name','info_id','author','is_yc']);
         });
     }
 }

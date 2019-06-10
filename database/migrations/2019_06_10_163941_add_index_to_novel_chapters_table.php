@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddIndexToEarlyChaptersTable extends Migration
+class AddIndexToNovelChaptersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class AddIndexToEarlyChaptersTable extends Migration
      */
     public function up()
     {
-        Schema::table('early_chapters', function (Blueprint $table) {
+        Schema::table('novel_chapters', function (Blueprint $table) {
             $table->index('bid');
-            $table->index('info_id');
-            $table->index('chapterId');
-            $table->index('chapterName');
+            $table->index('chapter_id');
+            $table->index('title');
             $table->index('is_pay');
             $table->index('goId');
-            $table->index('is_yc');
         });
     }
 
@@ -31,8 +29,8 @@ class AddIndexToEarlyChaptersTable extends Migration
      */
     public function down()
     {
-        Schema::table('early_chapters', function (Blueprint $table) {
-            $table->dropIndex(['bid','info_id','chapterId','chapterName','is_pay','goId','is_yc']);
+        Schema::table('novel_chapters', function (Blueprint $table) {
+            $table->dropIndex(['bid','chapter_id','title','is_pay','goId']);
         });
     }
 }

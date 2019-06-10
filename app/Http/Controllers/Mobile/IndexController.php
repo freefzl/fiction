@@ -37,7 +37,7 @@ class IndexController extends Controller
         $zxxs = NovelBook::with(['type'])->orderBy('id','desc')->limit(8)->get();
 
         //最新资讯
-        $zxzx = NovelChapter::orderBy('id','desc')->limit(8)->get();
+        $zxzx = NovelChapter::where(['is_pay'=>0])->where(['goId'=>0])->orderBy('id','desc')->limit(8)->get();
         $zxzx = CreateTDK::getTitle($zxzx);
 
 

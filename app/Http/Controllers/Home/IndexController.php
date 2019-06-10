@@ -62,7 +62,7 @@ class IndexController extends Controller
         $boys = NovelBook::where(['channel_id'=>1])->limit(10)->get();
 
         //小说资讯
-        $chapters = NovelChapter::orderBy('id','desc')->limit(10)->get();
+        $chapters = NovelChapter::where(['is_pay'=>0])->where(['goId'=>0])->orderBy('id','desc')->limit(10)->get();
         $chapters = CreateTDK::getTitle($chapters);
 
         //热门专题

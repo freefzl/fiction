@@ -48,7 +48,7 @@ class ArticleController extends Controller
         $down = NovelChapter::where(['id'=>$id+1])->get();
         $down = CreateTDK::getTitle($down);
 
-        $relateds = NovelChapter::where(['bid'=>$chapter[0]->bid])->where(['goId'=>'0'])->where(['is_pay'=>0])->limit(200)->get();
+        $relateds = NovelChapter::where(['bid'=>$chapter[0]->bid])->where(['goId'=>'0'])->where(['is_pay'=>0])->where('id','<>',$chapter[0]->bid)->limit(200)->get();
         $relateds = $relateds->random(10);
         $relateds = CreateTDK::getTitle($relateds);
 

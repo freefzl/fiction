@@ -33,18 +33,18 @@ class IndexController extends Controller
 
 //        dd($tj_chapter->toArray());
         //推荐小说
-        $tj_firsts = NovelBook::inRandomOrder()->limit(3)->get();
+        $tj_firsts = NovelBook::orderBy('id','desc')->limit(3)->get();
 
-        $tj_books = NovelBook::with(['type'])->inRandomOrder()->limit(6)->get();
+        $tj_books = NovelBook::with(['type'])->limit(6)->get();
         //热门小说
-        $rm_firsts = NovelBook::inRandomOrder()->limit(3)->get();
-        $rm_books = NovelBook::inRandomOrder()->limit(6)->get();
+        $rm_firsts = NovelBook::limit(3)->get();
+        $rm_books = NovelBook::limit(6)->get();
         //最新小说
 //        $types
-        $alls = NovelBook::inRandomOrder()->limit(16)->get();
+        $alls = NovelBook::limit(16)->get();
 
 
-        $news = NovelType::inRandomOrder()->limit(10)->get();
+        $news = NovelType::limit(10)->get();
 
         foreach ($news as $k=>$type){
             $news[$k]->books = NovelBook::where(['type_id'=>$type->id])->limit(16)->get();
@@ -53,9 +53,9 @@ class IndexController extends Controller
 //        dd($news->toArray());
 
         //推荐榜
-        $tjbs = NovelBook::inRandomOrder()->limit(10)->get();
+        $tjbs = NovelBook::limit(10)->get();
         //人气榜
-        $rqbs = NovelBook::inRandomOrder()->limit(10)->get();
+        $rqbs = NovelBook::limit(10)->get();
         //女生榜
         $girls = NovelBook::where(['channel_id'=>2])->limit(10)->get();
         //男生榜
@@ -85,7 +85,7 @@ class IndexController extends Controller
 
         $search = $request->q;
 
-        $books = NovelBook::where('name','like','%'.$search.'%')->with(['type'])->inRandomOrder()->limit(30)->get();
+        $books = NovelBook::where('name','like','%'.$search.'%')->with(['type'])->limit(30)->get();
 
         if(!count($books)){
             $rands = NovelBook::inRandomOrder()->with(['type'])->limit(16)->get();

@@ -48,8 +48,8 @@ class ArticleController extends Controller
         $down = NovelChapter::where(['id'=>$id+1])->get();
         $down = CreateTDK::getTitle($down);
 
-        $relateds = NovelChapter::where(['bid'=>$chapter[0]->bid])->where(['goId'=>'0'])->where(['is_pay'=>0])->limit(10)->get();
-
+        $relateds = NovelChapter::where(['bid'=>$chapter[0]->bid])->where(['goId'=>'0'])->where(['is_pay'=>0])->limit(200)->get();
+        $relateds = $relateds->random(10);
         $relateds = CreateTDK::getTitle($relateds);
 
         return view('home.article_xq',compact('chapter','cbl','up','down','relateds'));
@@ -60,7 +60,8 @@ class ArticleController extends Controller
         //热门资讯
         $rmzxs = NovelChapter::where(['goId'=>'0'])->with(['book'=>function($query){
             $query->with(['type'])->get();
-        }])->limit(10)->get();
+        }])->limit(200)->get();
+        $rmzxs = $rmzxs->random(10);
         $data['rmzxs'] = CreateTDK::getTitle($rmzxs);
 
         //热门专题

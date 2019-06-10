@@ -22,7 +22,7 @@
                 <div class="book-text lf">
                     <h1 class="title">
                         <em>{{$book->name}}</em>
-                        <a href="/author/12271.html">{{$book->author}} 著</a>
+                        <a href="#">{{$book->author}} 著</a>
                     </h1>
                     <p class="tag-box clearfix">
                         <i class="item">{{$book->status?'已完结':'连载中'}}</i>

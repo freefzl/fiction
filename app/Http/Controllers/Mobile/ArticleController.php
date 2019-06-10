@@ -20,7 +20,7 @@ class ArticleController extends Controller
 
         $chapters= NovelChapter::where(['goId'=>'0'])->where(['is_pay'=>0])->with(['book'=>function($query){
                     $query->with(['type'])->get();
-                }])->inRandomOrder()->simplePaginate(20);
+                }])->orderBy('id','desc')->simplePaginate(20);
 
 
 
@@ -58,7 +58,7 @@ class ArticleController extends Controller
         $down = NovelChapter::where(['id'=>$id+1])->get();
         $down = CreateTDK::getTitle($down);
 
-        $relateds = NovelChapter::where(['bid'=>$chapter[0]->bid])->where(['goId'=>'0'])->where(['is_pay'=>0])->inRandomOrder()->limit(10)->get();
+        $relateds = NovelChapter::where(['bid'=>$chapter[0]->bid])->where(['goId'=>'0'])->where(['is_pay'=>0])->limit(10)->get();
         $relateds = CreateTDK::getTitle($relateds);
 
         return view('mobile.article_xq',compact('chapter','cbl','up','down','relateds'));
@@ -69,11 +69,11 @@ class ArticleController extends Controller
         //热门资讯
         $rmzxs = NovelChapter::where(['goId'=>'0'])->with(['book'=>function($query){
             $query->with(['type'])->get();
-        }])->inRandomOrder()->limit(10)->get();
+        }])->limit(10)->get();
         $data['rmzxs'] = CreateTDK::getTitle($rmzxs);
 
         //最新小说
-        $data['zxxss'] = NovelBook::inRandomOrder()->limit(8)->get();
+        $data['zxxss'] = NovelBook::limit(8)->get();
 
         return $data;
     }

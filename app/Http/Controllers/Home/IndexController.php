@@ -85,7 +85,7 @@ class IndexController extends Controller
 
         $search = $request->q;
 
-        $books = NovelBook::where('name','like','%'.$search.'%')->with(['type'])->limit(30)->get();
+        $books = NovelBook::where('name','like','%'.$search.'%')->with(['type'])->inRandomOrder()->limit(30)->get();
 
         if(!count($books)){
             $rands = NovelBook::inRandomOrder()->with(['type'])->limit(16)->get();

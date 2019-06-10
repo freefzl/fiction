@@ -28,6 +28,7 @@ class ArticleController extends Controller
 
     public function xq($id)
     {
+
         $arr = explode('.',$id);
         $id =  (int)$arr[0];
 
@@ -35,7 +36,7 @@ class ArticleController extends Controller
             $query->with(['comment'])->get();
         }])->get();
 
-        if($chapter==null||!count($chapter)||$chapter[0]->chapterContent==null){
+        if($chapter==null||count($chapter)==0||$chapter[0]->chapterContent==null){
             return response()->view('errors.404');
         }
         $chapter = CreateTDK::getTitle($chapter);

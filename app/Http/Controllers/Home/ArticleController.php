@@ -35,7 +35,7 @@ class ArticleController extends Controller
             $query->with(['comment'])->get();
         }])->get();
 
-        if($chapter==null||!count($chapter)||$chapter->is_pay==0){
+        if($chapter==null||!count($chapter)||$chapter[0]->chapterContent==null){
             return response()->view('errors.404');
         }
         $chapter = CreateTDK::getTitle($chapter);

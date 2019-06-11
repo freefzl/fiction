@@ -25,7 +25,7 @@ class IndexController extends Controller
 
         $types = NovelType::all();
 
-        $tj_chapter =  NovelChapter::where(['goId'=>0])->orderBy('id','desc')->limit(3)->get();
+        $tj_chapter =  NovelChapter::where(['is_pay'=>0])->where(['goId'=>0])->orderBy('id','desc')->limit(3)->get();
 
         $tj_chapter = CreateTDK::getTitle($tj_chapter);
 
@@ -61,6 +61,7 @@ class IndexController extends Controller
         //男生榜
         $boys = NovelBook::where(['channel_id'=>1])->limit(10)->get();
 
+        $try_ids = NovelBook::pluck('try_id')->all();
         //小说资讯
         $chapters = NovelChapter::where(['is_pay'=>0])->where(['goId'=>0])->orderBy('id','desc')->limit(200)->get();
         $chapters = $chapters->random(10);
@@ -72,7 +73,7 @@ class IndexController extends Controller
 
         $links = $this->link();
 
-        return view('home.index',compact('banner_books','types','tj_chapter','tj_books','rm_books','news','tjbs','rqbs','girls','boys','chapters','tags','tj_firsts','rm_firsts','alls','links'));
+        return view('home.index',compact('banner_books','types','tj_chapter','tj_books','rm_books','news','tjbs','rqbs','girls','boys','chapters','tags','tj_firsts','rm_firsts','alls','links','try_ids'));
     }
 
 

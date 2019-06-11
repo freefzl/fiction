@@ -44,7 +44,7 @@
                 <ul class="clearfix">
                     @foreach($tj_chapter as $item)
                     <li>
-                        <h4><a href="/book/{{$item->id}}.html" target="_blank">{{mb_substr($item->t_title,0,15)}}</a></h4>
+                        <h4><a href="/article/{{$item->id}}.html" target="_blank">{{mb_substr($item->t_title,0,15)}}</a></h4>
                         <p>{{$item->description}}</p>
                     </li>
                     @endforeach

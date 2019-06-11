@@ -41,7 +41,7 @@ class ArticleController extends Controller
         }])->get();
 
         $try_ids = NovelBook::pluck('try_id')->all();
-        dd(in_array($id,$try_ids));
+
         if($chapter==null||count($chapter)==0||$chapter[0]->chapterContent==null||in_array($id,$try_ids)){
             return abort(404);
         }

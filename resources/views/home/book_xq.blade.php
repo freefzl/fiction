@@ -60,6 +60,14 @@
                         <button>展开阅读全文</button>
                     </div>
                 </div>
+                <div class="attentions">
+                    <h3>相关内容推荐：</h3>
+                    <ul class="clearfix">
+                        @foreach($chapter as $item)
+                        <li><a href="/article/{{$item->id}}.html" title="{{$item->t_title}}" target="_blank">{{$item->t_title}}</a></li>
+                        @endforeach
+                    </ul>
+                </div>
 
                 <!--chapters-->
 

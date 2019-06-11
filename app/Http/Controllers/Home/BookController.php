@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Home;
 
 use App\Models\NovelBook;
+use App\Models\NovelChapter;
 use App\Models\NovelTag;
 use App\Models\NovelType;
+use App\Services\CreateTDK;
 use App\Services\UpdateBooks;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -37,10 +39,13 @@ class BookController extends Controller
         }
         $tags = NovelTag::select('id','tagname')->whereIn('id',json_decode($book->tag_ids))->get();
 
+        $chapter = NovelChapter::where(['bid'=>$id])->where(['is_pay'=>0])->where(['goId'=>0])->limit(100)->get();
+        $chapter = $chapter->random(6);
+        $chapter = CreateTDK::getTitle($chapter);
         $cnxh = $this->cnxh();
         $rmzt = $this->rmzt();
         $tjxs = $this->tjxs();
-        return view('home.book_xq',compact('book','tags','cnxh','rmzt','tjxs'));
+        return view('home.book_xq',compact('book','tags','cnxh','rmzt','tjxs','chapter'));
     }
 
     public function huanxiangyinen()

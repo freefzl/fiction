@@ -33,6 +33,8 @@ Route::domain('www.xiaoshuo.com')->group(function () {
     Route::post('/search/','Home\IndexController@Search');
 
     Route::get('/chapter/','Home\ChapterController@index');
+    Route::get('/chapter/{tid}-{did}-{sid}','Home\ChapterController@index');
+
 });
 
 

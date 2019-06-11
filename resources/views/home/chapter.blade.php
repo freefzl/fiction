@@ -18,18 +18,29 @@
             <div class="clearfix">
                 <p>小说类型：</p>
                 <ul class="clearfix">
-                    <li class="{{$_SERVER['REQUEST_URI']==='/chapter'?'on':''}}"><a href="/chapter" title="小说库">全部</a></li>
+                    <li class="@if($tid==0) on @endif"><a href="/chapter/0-{{$did}}-{{$sid}}.html" title="小说库">全部</a></li>
                     @foreach($types as $type)
-                        <li class="{{$_SERVER['REQUEST_URI']==="/".$type->typedir.""?'on':''}}"><a href="/chapter" title="{{$type->typename}}">{{$type->typename}}<span></span></a></li>
+                        <li class="@if($tid==$type->id) on @endif"><a href="/chapter/{{$type->id}}-{{$did}}-{{$sid}}.html" title="{{$type->typename}}">{{$type->typename}}<span></span></a></li>
                     @endforeach
+                </ul>
+            </div>
+            <div class="clearfix">
+                <p>更新时间：</p>
+                <ul class="clearfix">
+                    <li class="@if($did==0) on @endif"><a href="/chapter/{{$tid}}-0-{{$sid}}.html">全部</a></li>
+                    <li class="@if($did==1) on @endif"><a href="/chapter/{{$tid}}-1-{{$sid}}.html">今天</a></li>
+                    <li class="@if($did==2) on @endif"><a href="/chapter/{{$tid}}-2-{{$sid}}.html">三日内</a></li>
+                    <li class="@if($did==3) on @endif"><a href="/chapter/{{$tid}}-3-{{$sid}}.html">七日内</a></li>
+                    <li class="@if($did==4) on @endif"><a href="/chapter/{{$tid}}-4-{{$sid}}.html">一月内</a></li>
                 </ul>
             </div>
             <div class="clearfix">
                 <p>写作进程：</p>
                 <ul class="clearfix">
-                    <li class="on"><a href="/book/book-0-0-0.html">全部</a></li>
-                    <li class=""><a href="/book/book-0-1-0.html">连载中</a></li>
-                    <li class=""><a href="/book/book-0-2-0.html">已完本</a></li> </ul>
+                    <li class="@if($sid==0) on @endif"><a href="/chapter/{{$tid}}-{{$did}}-0.html">全部</a></li>
+                    <li class="@if($sid==1) on @endif"><a href="/chapter/{{$tid}}-{{$did}}-1.html">连载中</a></li>
+                    <li class="@if($sid==2) on @endif"><a href="/chapter/{{$tid}}-{{$did}}-2.html">已完本</a></li>
+                </ul>
             </div>
         </div>
 

@@ -37,7 +37,7 @@ class ArticleController extends Controller
         }])->get();
 
         if($chapter==null||count($chapter)==0||$chapter[0]->chapterContent==null){
-            return response()->view('errors.404');
+            return abort(404);
         }
         $chapter = CreateTDK::getTitle($chapter);
         $chapter = CreateTDK::getDescription($chapter);

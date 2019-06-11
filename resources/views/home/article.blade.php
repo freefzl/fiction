@@ -19,12 +19,14 @@
             <h2>共<em>{{$articles['total']}}</em>篇文章</h2>
             <ul>
                 @foreach($articles['data'] as $article)
+                    @if(!in_array($article['id'],$try_ids))
                 <li>
                     <a class="pic" href="/article/{{$article['id']}}.html" target="_blank"><img class="lazy" src="{{env('IMG_URL').'/'.$article['book']['cover_img']}}" alt="{{$article['t_title']}}"></a>
                     <h5 class="tit"><a href="/article/{{$article['id']}}.html" target="_blank">{{mb_substr($article['t_title'],0,40)}}...</a></h5>
                     <p class="info"><span>发布时间：<em>{{$article['created_at']}}</em></span><span>编辑：{{$article['book']['author']}}</span></p>
                     <p class="text">{!! $article['description'] !!}</p>
                 </li>
+                    @endif
                 @endforeach
             </ul>
 

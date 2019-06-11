@@ -23,7 +23,11 @@ class ArticleController extends Controller
         $cbl = $this->ceBianLan();
         $articles = $articles->toArray();
 
-        return view('home.article',compact('articles','cbl'));
+
+        $try_ids = NovelBook::pluck('try_id')->all();
+
+
+        return view('home.article',compact('articles','cbl','try_ids'));
     }
 
     public function xq($id)

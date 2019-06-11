@@ -32,7 +32,7 @@ Route::domain('www.xiaoshuo.com')->group(function () {
 
     Route::post('/search/','Home\IndexController@Search');
 
-
+    Route::get('/chapter/','Home\ChapterController@index');
 });
 
 
@@ -70,5 +70,5 @@ Route::domain('m.xiaoshuo.com')->group(function () {
 
 
 Route::fallback(function () {
-    return redirect('/');
+    return abort(404);
 });

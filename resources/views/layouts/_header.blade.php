@@ -23,26 +23,28 @@
         <div class="topnav">
             <ul>
                 <li class="home on"><a href="/" title="首页">首页</a></li>
-                <li><a href="/book" title="小说库">小说库</a></li>
-                <li><a href="/article" title="小说资讯">小说资讯</a></li>
-                <li><a href="/top" title="排行榜">排行榜</a></li>
+                <li><a href="/book/" title="小说库">小说库</a></li>
+                <li><a href="/chapter/" title="小说章节">小说章节</a></li>
+                <li><a href="/article/" title="小说资讯">小说资讯</a></li>
+                <li><a href="/top/" title="排行榜">排行榜</a></li>
                 <li>
-                    <a href="/huanxiangyinen" title="幻想异能">幻想异能</a>
-                </li><li>
-                    <a href="/dushizhichang" title="都市职场">都市职场</a>
-                </li><li>
-                    <a href="/xuanhuanqihuan" title="玄幻奇幻">玄幻奇幻</a>
-                </li><li>
-                    <a href="/gudaiyanqing" title="古代言情">古代言情</a>
-                </li><li>
-                    <a href="/wuxiaxianxia" title="武侠仙侠">武侠仙侠</a>
-                </li><li>
-                    <a href="/lishijunshi" title="历史军事">历史军事</a>
-                </li><li>
-                    <a href="/lingyikehuan" title="灵异科幻">灵异科幻</a>
-                </li><li>
-                    <a href="/youxijingji" title="游戏竞技">游戏竞技</a>
+                    <a href="/huanxiangyinen/" title="幻想异能">幻想异能</a>
                 </li>
+                <li>
+                    <a href="/dushizhichang/" title="都市职场">都市职场</a>
+                </li>
+                <li>
+                    <a href="/xuanhuanqihuan/" title="玄幻奇幻">玄幻奇幻</a>
+                </li><li>
+                    <a href="/gudaiyanqing/" title="古代言情">古代言情</a>
+                </li><li>
+                    <a href="/wuxiaxianxia/" title="武侠仙侠">武侠仙侠</a>
+                </li><li>
+                    <a href="/lishijunshi/" title="历史军事">历史军事</a>
+                </li><li>
+                    <a href="/lingyikehuan/" title="灵异科幻">灵异科幻</a>
+                </li>
+
             </ul>
         </div>
     </div>

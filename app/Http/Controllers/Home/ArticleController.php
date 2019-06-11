@@ -36,7 +36,9 @@ class ArticleController extends Controller
             $query->with(['comment'])->get();
         }])->get();
 
-        if($chapter==null||count($chapter)==0||$chapter[0]->chapterContent==null){
+        $bids = NovelBook::pluck('id')->all();
+
+        if($chapter==null||count($chapter)==0||$chapter[0]->chapterContent==null||in_array($id,$bids)){
             return abort(404);
         }
         $chapter = CreateTDK::getTitle($chapter);

@@ -25,8 +25,8 @@ class IndexController extends Controller
 
         $types = NovelType::all();
 
-        $tj_chapter =  NovelChapter::where(['is_pay'=>0])->where(['goId'=>0])->inRandomOrder()->limit(3)->get();
-
+        $tj_chapter =  NovelChapter::where(['is_pay'=>0])->where(['goId'=>0])->orderBy('id','desc')->limit(1000)->get();
+        $tj_chapter = $tj_chapter->random(10);
         $tj_chapter = CreateTDK::getTitle($tj_chapter);
 
         $tj_chapter = CreateTDK::getDescription($tj_chapter);

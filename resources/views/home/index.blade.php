@@ -93,7 +93,7 @@
                 <h3>小说资讯</h3>
                 <ul>
                     @foreach($chapters as $item)
-                        @if(!in_array($article['id'],$try_ids))
+                        @if(!in_array($item->id,$try_ids))
                     <li><em>{{date('m-d',strtotime($item->created_at))}}</em><a href="/article/{{$item->id}}.html" target="_blank" title="{{$item->t_title}} ">{{$item->t_title}}</a></li>
                         @endif
                     @endforeach

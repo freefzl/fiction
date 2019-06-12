@@ -56,6 +56,7 @@
 </head>
 
 <body  style="height:100%;">
+
 @include('layouts._header')
 
 <div class="container">

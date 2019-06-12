@@ -12,7 +12,7 @@
             &gt; <a href="/book/" >小说库</a> &gt; <a href="{{url($book->type[0]->typedir)}}" >{{$book->type[0]->typename}}</a> &gt;
             {{$book->name}}
 
-            <p>更新时间：{{$book->try[0]->updated_at}}</p>
+            <p>更新时间：{{$book->updated_at}}</p>
         </div>
         <div class="wrap clearfix">
             <!--bsse-->

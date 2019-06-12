@@ -33,10 +33,18 @@ class BookController extends Controller
         $arr = explode('.',$id);
         $id =  (int)$arr[0];
 
-        $book = NovelBook::where(['id'=>$id])->with(['try','type','comment'])->first();
+        $book = NovelBook::where(['id'=>$id])->with(['type','comment'])->first();
         if($book==null){
             return abort(404);
         }
+
+        $try_ids = json_decode($book->try_id);
+        $try_chapters=[];
+        foreach ($try_ids as $try_id){
+            $try_chapters[] = NovelChapter::where(['id'=>$try_id])->first();
+        }
+
+
         $tags = NovelTag::select('id','tagname')->whereIn('id',json_decode($book->tag_ids))->get();
 
         $chapter = NovelChapter::where(['bid'=>$id])->where(['is_pay'=>0])->where(['goId'=>0])->limit(100)->get();
@@ -45,7 +53,7 @@ class BookController extends Controller
         $cnxh = $this->cnxh();
         $rmzt = $this->rmzt();
         $tjxs = $this->tjxs();
-        return view('home.book_xq',compact('book','tags','cnxh','rmzt','tjxs','chapter'));
+        return view('home.book_xq',compact('book','tags','cnxh','rmzt','tjxs','chapter','try_chapters'));
     }
 
     public function huanxiangyinen()

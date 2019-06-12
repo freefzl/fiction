@@ -15,7 +15,7 @@ class ArticleController extends Controller
     {
         $chapters = NovelChapter::where(['goId'=>'0'])->where(['is_pay'=>0])->with(['book'=>function($query){
             $query->with(['type'])->get();
-        }])->paginate(30);
+        }])->orderBy('id','desc')->paginate(30);
 
         $articles = CreateTDK::getTitle($chapters);
         $articles = CreateTDK::getDescription($articles);
@@ -39,10 +39,8 @@ class ArticleController extends Controller
         $chapter = NovelChapter::where(['id'=>$id])->where(['goId'=>'0'])->where(['is_pay'=>0])->with(['book'=>function($query){
             $query->with(['comment'])->get();
         }])->get();
-
-        $try_ids = NovelBook::pluck('try_id')->all();
-
-        if($chapter==null||count($chapter)==0||$chapter[0]->chapterContent==null){
+        
+        if($chapter==null||count($chapter)==0||$chapter[0]->chapterContent==null||$chapter[0]->book==null){
             return abort(404);
         }
         $chapter = CreateTDK::getTitle($chapter);

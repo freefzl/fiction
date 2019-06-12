@@ -175,9 +175,11 @@ class UpdateBooks{
     {
         $ids = NovelBook::where(['try_id'=>0])->pluck('id')->all();
         foreach ($ids as $id){
-            $one = NovelChapter::where(['bid'=>$id])->where(['goId'=>0])->where(['is_pay'=>0])->first();
-            if($one){
-                NovelBook::where(['id'=>$id])->update(['try_id'=>$one->id]);
+            $one = NovelChapter::where(['bid'=>$id])->where(['goId'=>0])->where(['is_pay'=>0])->limit(2)->get();
+            $try_ids = $one->pluck('id')->all();
+
+            if($try_ids){
+                NovelBook::where(['id'=>$id])->update(['try_id'=>json_encode($try_ids)]);
             }
 
         }

@@ -12,6 +12,7 @@ class CreateTDK{
 
     public static function getTitle($model){
         foreach ($model as $k=>$item){
+//            dump($item->toArray());
             if($item->book!=null){
                 $title = [
                     ''.$item->book->name.' 小说免费试读 '.$item->book->protagonist.'小说阅读',

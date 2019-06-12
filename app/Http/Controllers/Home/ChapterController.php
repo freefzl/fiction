@@ -45,7 +45,7 @@ class ChapterController extends Controller
                 $model = $model->where(['status'=>1]);
             }
         }
-        $model = $model->with(['type'])->paginate(30)->toArray();
+        $model = $model->with(['type'])->orderBy('id','desc')->paginate(30)->toArray();
 //        dump($model);
         $types = NovelType::all();
         return view('home.chapter',compact('types','sid','tid','did','model'));

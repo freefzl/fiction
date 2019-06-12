@@ -13,9 +13,9 @@ class NovelBook extends Model
         return $this->hasMany(NovelChapter::class);
     }
 
-    public function try(){
+    /*public function try(){
         return $this->hasMany(NovelChapter::class,'id','try_id');
-    }
+    }*/
 
     public function comment(){
         return $this->hasMany(Comment::class,'id','comment_id');

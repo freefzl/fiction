@@ -11,7 +11,7 @@
             <a href="/" title="享阅小说网">享阅小说网</a>
             &gt; <a href="/book/" >小说库</a> &gt; <a href="{{url($book->type[0]->typedir)}}" >{{$book->type[0]->typename}}</a> &gt;
             {{$book->name}}
-            <p>更新时间：{{$book->try[0]->updated_at}}</p>
+            <p>更新时间：{{$book->updated_at}}</p>
         </div>
         <div class="wrap clearfix">
             <!--bsse-->
@@ -54,7 +54,11 @@
                 <div class="reading-content">
                     <h3>精彩章节试读：</h3>
                     <div class="content">
-                        {!! $book->try[0]->chapterContent !!}
+                        @foreach($try_chapters as $item)
+                            <h3>{{$item->title}}</h3>
+                            {!! $item->chapterContent !!}
+                        @endforeach
+
                     </div>
                     <div class="show-more" id="show-more">
                         <button>展开阅读全文</button>

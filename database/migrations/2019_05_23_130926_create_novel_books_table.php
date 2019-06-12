@@ -27,7 +27,7 @@ class CreateNovelBooksTable extends Migration
             $table->integer('channel_id')->nullable();
             $table->integer('tag_id')->nullable();
             $table->timestamp('pubdate')->nullable();
-            $table->timestamp('try_id')->nullable();
+            $table->text('try_id')->nullable();
             $table->tinyInteger('is_delete')->nullable();
             $table->tinyInteger('is_online')->nullable();
             $table->string('pc_read_url')->nullable();

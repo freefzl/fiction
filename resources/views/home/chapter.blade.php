@@ -47,16 +47,16 @@
         <div class="book-list">
             <h2>全部小说</h2>
             <ul class="clearfix">
-
+                @foreach($model['data'] as $item)
                 <li>
-                    <a class="pic" href="/book/19039.html" target="_blank"><img class="lazy" src="static/picture/5p+t5oof5qyi77ya6ycu.jpg" alt="染情欢：逮个美男当驸马"></a>
-                    <h5 class="tit"><a href="/book/19039.html" target="_blank">染情欢：逮个美男当驸马</a></h5>
-                    <p class="info"><span>作者：妖鸠露</span><span>分类：总裁豪门</span>
-                        <i class="finish">已完结</i>							</p>
-                    <p class="intro">古越大将已经被容潜一刀砍了头，现如今群龙无首，肌肉发达的异域杀手乱了阵脚。猛烈的厮杀现在才开始。一盏茶后，这群人被北冥锡的人击杀完毕。血流成河，整片沙地都蔓延着浓郁的血腥味。北冥锡的人只留下两个，他口</p>
-                    <a class="view" href="/book/19039.html" target="_blank">小说详情</a>
+                    <a class="pic" href="/chapter/{{$item['id']}}.html" target="_blank"><img class="lazy" src="{{env('IMG_URL').'/'.$item['cover_img']}}" alt="{{$item['name']}}"></a>
+                    <h5 class="tit"><a href="/chapter/{{$item['id']}}.html" target="_blank">{{$item['name']}}</a></h5>
+                    <p class="info"><span>作者：{{$item['author']}}</span><span>分类：{{$item['type'][0]['typename']}}</span>
+                        <i class="finish">{{$item['status']?'已完结':'连载中'}}</i>							</p>
+                    <p class="intro">{{$item['synopsis']}}</p>
+                    <a class="view" href="/chapter/{{$item['id']}}.html" target="_blank">小说详情</a>
                 </li>
-
+                @endforeach
             </ul>
         </div>
         <!--main-->

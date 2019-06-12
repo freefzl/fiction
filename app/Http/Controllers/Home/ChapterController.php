@@ -57,7 +57,7 @@ class ChapterController extends Controller
         $arr = explode('.',$id);
         $id =  (int)$arr[0];
 
-        $book = NovelBook::where(['id'=>$id])->with(['try','type','comment'])->first();
+        $book = NovelBook::where(['id'=>$id])->with(['type','comment'])->first();
         if($book==null){
             return abort(404);
         }
@@ -96,7 +96,7 @@ class ChapterController extends Controller
         $arr = explode('.',$id);
         $id =  (int)$arr[0];
 
-        $book = NovelBook::where(['id'=>$id])->with(['try','type','comment'])->first();
+        $book = NovelBook::where(['id'=>$id])->with(['type','comment'])->first();
         if($book==null){
             return abort(404);
         }

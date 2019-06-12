@@ -57,7 +57,7 @@
 
 <body  style="height:100%;">
 
-@include('layouts._header')
+@include('layouts._footer')
 
 <div class="container">
     @yield('content')

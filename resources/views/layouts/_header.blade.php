@@ -1,4 +1,3 @@
-<!--new header-->
 <div class="header">
     <div class="inner">
         <div class="tophead">
@@ -49,4 +48,3 @@
         </div>
     </div>
 </div>
-<!--/new header-->

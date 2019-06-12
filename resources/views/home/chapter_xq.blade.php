@@ -78,6 +78,14 @@
                         @endforeach
                         {{--<li><a href='/chapter/{{$book->id}}/list.html'  target="_blank">查看全部章节</a></li>--}}
                     </ul>
+
+                    <h3>最新章节：</h3>
+                    <ul class="clearfix">
+                        @foreach($new_chapter as $item)
+                            <li><a class="my_chapter" target="_blank" href="@if($item->is_pay) javascript:void(0) @else /article/{{$item->id}}.html @endif" data-url="@if($item->is_pay)@else {{$item->id}} @endif"  >{{$item->title}} @if($item->is_pay) <img style="margin-top: 15px" width="15px" src="{{asset('images/icon_zs.png')}}"> <span style="color: #ff69b4">{{$item->goId}}</span> @endif</a></li>
+                        @endforeach
+                        {{--<li><a href='/chapter/{{$book->id}}/list.html'  target="_blank">查看全部章节</a></li>--}}
+                    </ul>
                     <div style="text-align: center"><a style="display: inline-block;width: 160px;height: 38px;margin-top: 20px;text-align: center;vertical-align: middle;border-width: 1px;border-style: solid;border-radius: 22px;cursor: pointer;font-size: 16px;line-height: 38px;" href='/chapter/{{$book->id}}/list.html'  target="_blank">查看全部章节</a></div>
                 </div>
 
@@ -208,6 +216,20 @@
             }
         });
 
+        $('.my_chapter').on('click',function(){
+
+            // console.log($(this).attr('data-url'))
+            if($(this).attr('data-url') != ''){
+            }else{
+                layer.open({
+                    type: 1,
+                    title: '',
+                    area: ['460px', '320px'],
+                    shadeClose: true,
+                    content: '<div style="width:100%;text-align:center;margin-top:1.5rem;font-size:14px"><img style="width:200px;height:200px" src="{{env('IMG_URL').'/'.'images/5d2e90b1f64c855c6741c8fefc8250e4.jpg'}}"><p style="padding-top:10px">扫一扫二维码 或者</p><p style="padding-top:10px">关注微信公众号：<span style="color:red">'+weixin_name+'</span></p><p style="padding-top:10px">回复：<span style="color:red">染情欢：逮个美男当驸马</span>  阅读全文</p></div>'
+                });
+            }
+        });
     </script>
 
 @stop

@@ -42,7 +42,7 @@ class ArticleController extends Controller
 
         $try_ids = NovelBook::pluck('try_id')->all();
 
-        if($chapter==null||count($chapter)==0||$chapter[0]->chapterContent==null||in_array($id,$try_ids)){
+        if($chapter==null||count($chapter)==0||$chapter[0]->chapterContent==null){
             return abort(404);
         }
         $chapter = CreateTDK::getTitle($chapter);

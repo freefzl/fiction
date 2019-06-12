@@ -74,7 +74,8 @@
                     <h3>所有章节：</h3>
                     <ul class="clearfix">
                         @foreach($chapter as $item)
-                        <li><a href='@if($item->is_pay) # @else /article/{{$item->id}}.html @endif'  target="_blank">{{$item->title}}</a></li>
+                        <li><a class="my_chapter" target="_blank" href="@if($item->is_pay) javascript:void(0) @else /article/{{$item->id}}.html @endif" data-url="@if($item->is_pay)@else {{$item->id}} @endif"  >{{$item->title}}</a></li>
+
                         @endforeach
                     </ul>
 
@@ -196,6 +197,21 @@
             if($(this).attr('data-url') != ''){
                 window.location.href= $(this).attr('data-url');
                 return false;
+            }else{
+                layer.open({
+                    type: 1,
+                    title: '',
+                    area: ['460px', '320px'],
+                    shadeClose: true,
+                    content: '<div style="width:100%;text-align:center;margin-top:1.5rem;font-size:14px"><img style="width:200px;height:200px" src="{{env('IMG_URL').'/'.'images/5d2e90b1f64c855c6741c8fefc8250e4.jpg'}}"><p style="padding-top:10px">扫一扫二维码 或者</p><p style="padding-top:10px">关注微信公众号：<span style="color:red">'+weixin_name+'</span></p><p style="padding-top:10px">回复：<span style="color:red">染情欢：逮个美男当驸马</span>  阅读全文</p></div>'
+                });
+            }
+        });
+
+        $('.my_chapter').on('click',function(){
+
+            // console.log($(this).attr('data-url'))
+            if($(this).attr('data-url') != ''){
             }else{
                 layer.open({
                     type: 1,

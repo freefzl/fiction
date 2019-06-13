@@ -43,13 +43,13 @@ class IndexController extends Controller
         $rm_books = NovelBook::inRandomOrder()->limit(6)->get();
         //最新小说
 //        $types
-        $alls = NovelBook::limit(16)->get();
+        $alls = NovelBook::orderBy('id','desc')->limit(16)->get();
 
 
         $news = NovelType::limit(10)->get();
 
         foreach ($news as $k=>$type){
-            $news[$k]->books = NovelBook::where(['type_id'=>$type->id])->limit(16)->get();
+            $news[$k]->books = NovelBook::where(['type_id'=>$type->id])->orderBy('id','desc')->limit(16)->get();
         }
 
 //        dd($news->toArray());

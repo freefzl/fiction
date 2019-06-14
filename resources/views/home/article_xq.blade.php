@@ -14,7 +14,7 @@
     <meta property="og:novel:book_name" content="{{$chapter[0]->book->name}}"/>
     <meta property="og:novel:read_url" content="{{env('APP_URL').'/article/'.$chapter[0]->id.'.html'}}"/>
     <meta property="og:url" content="{{env('APP_URL').'/article/'.$chapter[0]->id.'.html'}}"/>
-    <meta property="og:novel:status" content=" {{$chapter[0]->book->updated_at}}"/>
+    <meta property="og:novel:status" content=" {{$chapter[0]->book->status?'已完结':'连载中'}}"/>
     <meta property="og:novel:update_time" content="{{$chapter[0]->book->created_at}}"/>
     <meta property="og:novel:latest_chapter_name" content="{{$new_chapter[0]->t_title}}"/>
     <meta property="og:novel:latest_chapter_url" content="{{env('APP_URL').'/article/'.$new_chapter[0]->id.'.html'}}"/>

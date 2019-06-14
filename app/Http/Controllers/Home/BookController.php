@@ -151,6 +151,8 @@ class BookController extends Controller
     {
         $books = NovelBook::where(['is_delete'=>0])->where(['type_id'=>5])->inRandomOrder()->limit(30)->get();
         $types = NovelType::all();
+        $type = NovelType::where(['id'=>5])->first();
+        $books->typename = $type->typename;
         return view('home.book',compact('books','types'));
     }
 
@@ -158,7 +160,7 @@ class BookController extends Controller
     {
         $books = NovelBook::where(['is_delete'=>0])->where(['type_id'=>20])->inRandomOrder()->limit(30)->get();
         $types = NovelType::all();
-        $type = NovelType::where(['id'=>5])->first();
+        $type = NovelType::where(['id'=>20])->first();
         $books->typename = $type->typename;
         return view('home.book',compact('books','types'));
     }

@@ -74,7 +74,7 @@
                     <h3>所有章节：</h3>
                     <ul class="clearfix">
                         @foreach($chapter as $item)
-                        <li><a class="my_chapter" target="_blank" href="@if($item->is_pay) javascript:void(0) @else /article/{{$item->id}}.html @endif" data-url="@if($item->is_pay)@else {{$item->id}} @endif"  >{{ mb_strlen($item->title)>=15?mb_substr($item->title,0,15).'..':$item->title}} @if($item->is_pay) <img style="margin-top: 15px" width="15px" src="{{asset('images/icon_zs.png')}}"> <span style="color: #ff69b4">{{$item->goId}}</span> @endif</a></li>
+                        <li><a class="my_chapter" target="_blank" href="@if($item->is_pay) javascript:void(0) @else /article/{{$item->id}}.html @endif" data-url="@if($item->is_pay)@else {{$item->id}} @endif"  >{{ mb_strlen($item->title)>=11?mb_substr($item->title,0,11).'..':$item->title}} @if($item->is_pay) <img style="margin-top: 15px" width="15px" src="{{asset('images/icon_zs.png')}}"> <span style="color: #ff69b4">{{$item->goId}}</span> @endif</a></li>
 
                         @endforeach
                     </ul>

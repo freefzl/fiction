@@ -1,8 +1,8 @@
 @extends('layouts.default')
 
-@section('title', $chapter[0]->book->name.'章节列表_'.$chapter[0]->book->protagonist.'小说在线阅读_{网站名}')
+@section('title', $chapter[0]->t_title)
 @section('keywords', $chapter[0]->t_title.' '.$chapter[0]->book->protagonist.$chapter[0]->book->author)
-@section('description', '{网站名}提供《'.$chapter[0]->book->name.'》最新章节目录的索引，更新超级快，无病毒无木马，页面干净清爽，希望大家收藏!')
+@section('description', $chapter[0]->description)
 @section('mobile', 'http://www.baidu.com')
 
 

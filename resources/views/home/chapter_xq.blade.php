@@ -23,7 +23,7 @@
         <div class="bread">
             <span>您的位置 : </span>
             <a href="/" title="享阅小说网">享阅小说网</a>
-            &gt; <a href="/book/" >小说库</a> &gt; <a href="{{url($book->type[0]->typedir)}}" >{{$book->type[0]->typename}}</a> &gt;
+            &gt; <a href="/book/" >章节目录</a> &gt; <a href="{{url($book->type[0]->typedir)}}" >{{$book->type[0]->typename}}</a> &gt;
             {{$book->name}}
 
             <p>更新时间：{{$book->updated_at}}</p>

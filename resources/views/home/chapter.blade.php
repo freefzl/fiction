@@ -54,7 +54,7 @@
                     <p class="info"><span>作者：{{$item['author']}}</span><span>分类：{{$item['type'][0]['typename']}}</span>
                         <i class="finish">{{$item['status']?'已完结':'连载中'}}</i>							</p>
                     <p class="intro">{{$item['synopsis']}}</p>
-                    <a class="view" href="/chapter/{{$item['id']}}.html" target="_blank">小说详情</a>
+                    <a class="view" href="/chapter/{{$item['id']}}.html" target="_blank">章节详情</a>
                 </li>
                 @endforeach
             </ul>

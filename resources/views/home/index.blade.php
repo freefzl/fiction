@@ -73,7 +73,7 @@
                                 <span class="@if($tj_first->status) finish @else serial @endif">{{$tj_first->status?'已完结':'连载中'}}</span>
                             </p>
                             <p class="intro">{{$tj_first->synopsis}}</p>
-                            <a class="view" href="/book/{{$tj_first->id}}.html" target="_blank">小说详情</a>
+                            <a class="view" href="/book/{{$tj_first->id}}.html" target="_blank">章节详情</a>
                         </li>
                         @endforeach
                     </ul>
@@ -122,7 +122,7 @@
                                     <span class="@if($item->status) finish @else serial @endif">{{$item->status?'已完结':'连载中'}}</span>
                                 </p>
                                 <p class="intro">{{$item->synopsis}}</p>
-                                <a class="view" href="/book/{{$item->id}}.html" target="_blank">小说详情</a>
+                                <a class="view" href="/book/{{$item->id}}.html" target="_blank">章节详情</a>
                             </li>
                         @endforeach
 

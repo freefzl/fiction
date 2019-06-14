@@ -57,10 +57,9 @@ class ArticleController extends Controller
         $relateds = $relateds->random(10);
         $relateds = CreateTDK::getTitle($relateds);
 
-        $new_chapter = NovelChapter::where(['bid'=>$chapter[0]->bid])->where(['goId'=>'0'])->where(['is_pay'=>0])->OrderBy('id','desc')->limit(1)->get();
-        $new_chapter = CreateTDK::getTitle($new_chapter);
 
-        return view('home.article_xq',compact('chapter','cbl','up','down','relateds','new_chapter'));
+
+        return view('home.article_xq',compact('chapter','cbl','up','down','relateds'));
     }
 
 

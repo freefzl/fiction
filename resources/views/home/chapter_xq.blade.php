@@ -3,7 +3,21 @@
 @section('keywords', $book->name.' '.$book->author.$book->protagonist)
 @section('description', $book->synopsis.',各位书友要是觉得《'.$book->name.'》还不错的话请不要忘记向您QQ群和微博里的朋友推荐哦！《'.$book->name.'》最新章节,《'.$book->name.'》全文阅读。')
 @section('mobile', 'http://www.baidu.com')
-
+@section('meta')
+    <meta property="og:type" content="novel"/>
+    <meta property="og:title" content="{{$book->name}}章节列表_{{$book->protagonist}}小说在线阅读_{网站名}"/>
+    <meta property="og:description" content="{{$book->synopsis}}"/>
+    <meta property="og:image" content="{{env('IMG_URL').'/'.$book->cover_img}}"/>
+    <meta property="og:novel:category" content="{{$book->type[0]->typename}}"/>
+    <meta property="og:novel:author" content="{{$book->author}}"/>
+    <meta property="og:novel:book_name" content="{{$book->name}}"/>
+    <meta property="og:novel:read_url" content="{{env('APP_URL').'/article/'.$book->id.'.html'}}"/>
+    <meta property="og:url" content="{{env('APP_URL').'/article/'.$book->id.'.html'}}"/>
+    <meta property="og:novel:status" content=" {{$book->status?'已完结':'连载中'}}"/>
+    <meta property="og:novel:update_time" content="{{$book->updated_at}}"/>
+    <meta property="og:novel:latest_chapter_name" content="{{$last_new_chapter->title}}"/>
+    <meta property="og:novel:latest_chapter_url" content="{{env('APP_URL').'/article/'.$last_new_chapter->id.'.html'}}"/>
+@stop
 @section('content')
     <div class="container clearfix">
         <div class="bread">

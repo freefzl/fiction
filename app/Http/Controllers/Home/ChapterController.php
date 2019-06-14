@@ -70,7 +70,9 @@ class ChapterController extends Controller
         $rmzt = $this->rmzt();
         $tjxs = $this->tjxs();
 
-        return view('home.chapter_xq',compact('book','tags','cnxh','rmzt','tjxs','chapter','new_chapter'));
+        $last_new_chapter = NovelChapter::where(['bid'=>$chapter[0]->bid])->where(['goId'=>'0'])->where(['is_pay'=>0])->OrderBy('id','desc')->limit(1)->first();
+
+        return view('home.chapter_xq',compact('book','tags','cnxh','rmzt','tjxs','chapter','new_chapter','last_new_chapter'));
     }
 
 

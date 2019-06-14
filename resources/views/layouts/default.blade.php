@@ -6,6 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="@yield('keywords', '网络小说在线推荐')" />
     <meta name="description" content="@yield('description', '网站有大量精品小说推荐，包含都市职场、玄幻奇幻、古代言情、幻想异能、武侠仙侠、历史军事、灵异科幻、游戏竞技、现代言情、穿越重生、总裁豪门等各类好看小说。')" />
+    @yield('meta')
     <meta name="shenma-site-verification" content="640cd821d750f66fb2c84259caecbccc_1547718180"/>
     <link href="/favicon.ico" rel="shortcut icon" />
     <link href="{{asset('css/base.css')}}" rel="stylesheet" type="text/css" />
@@ -17,6 +18,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <script src="{{asset('js/jquery.js')}}"></script>
     <script src="{{asset('js/function.js')}}"></script>
+
     <style>
         .book-info .guess ol li:hover,.book-info .guess ul li p em,.book-info .tags a,.book-list h2,.book-list ul li .intro a,.book-list ul li .update a,.bookshelf-list ul li .update a,.box1 .category li a:hover,.box2 .top-news li h4 a,.box3 .carousel-nav li .info span.type,.box3 .hot-book .more a,.box3 .rec-list ul li .info em,.box3 .rec-list ul li .intro a,.header .bookcase .iconfont,.header .bookcase a:hover,.header .search .search-btn,.news-info .book dd .update a,.news-info .cover .read a,.news-info .porn li a,.news-list ul li .text a,.search-list ul li .intro a,.search-list ul li .update a,.top-list>ul>li .intro a,.top-list>ul>li .update a,a:hover ,.book-base .btns a,.show-more button,.search-list .result span,.search-list .result em,.book-info .review .more a:hover,.header .bookcase a,.bookshelf-list ul li .read a,.bookshelf-list ul li .del:hover{
             color: #00bf99}

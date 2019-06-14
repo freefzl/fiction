@@ -39,7 +39,7 @@ class ArticleController extends Controller
         $chapter = NovelChapter::where(['id'=>$id])->where(['goId'=>'0'])->where(['is_pay'=>0])->with(['book'=>function($query){
             $query->with(['comment'])->get();
         }])->get();
-        
+
         if($chapter==null||count($chapter)==0||$chapter[0]->chapterContent==null||$chapter[0]->book==null){
             return abort(404);
         }
@@ -53,11 +53,14 @@ class ArticleController extends Controller
         $down = NovelChapter::where(['id'=>$id+1])->get();
         $down = CreateTDK::getTitle($down);
 
-        $relateds = NovelChapter::where(['bid'=>$chapter[0]->bid])->where(['goId'=>'0'])->where(['is_pay'=>0])->where('id','<>',$id)->limit(200)->get();
+        $relateds = NovelChapter::where(['bid'=>$chapter[0]->bid])->where(['goId'=>'0'])->where(['is_pay'=>0])->limit(200)->get();
         $relateds = $relateds->random(10);
         $relateds = CreateTDK::getTitle($relateds);
 
-        return view('home.article_xq',compact('chapter','cbl','up','down','relateds'));
+        $new_chapter = NovelChapter::where(['bid'=>$chapter[0]->bid])->where(['goId'=>'0'])->where(['is_pay'=>0])->OrderBy('id','desc')->limit(1)->get();
+        $new_chapter = CreateTDK::getTitle($new_chapter);
+
+        return view('home.article_xq',compact('chapter','cbl','up','down','relateds','new_chapter'));
     }
 
 

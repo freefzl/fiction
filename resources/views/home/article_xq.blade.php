@@ -1,8 +1,24 @@
 @extends('layouts.default')
-@section('title', '小说资讯-'.$chapter[0]->t_title)
+
+@section('title', $chapter[0]->book->name.'章节列表_'.$chapter[0]->book->protagonist.'小说在线阅读_{网站名}')
 @section('keywords', $chapter[0]->t_title.' '.$chapter[0]->book->protagonist.$chapter[0]->book->author)
-@section('description', $chapter[0]->book->synopsis)
+@section('description', '{网站名}提供《'.$chapter[0]->book->name.'》最新章节目录的索引，更新超级快，无病毒无木马，页面干净清爽，希望大家收藏!')
 @section('mobile', 'http://www.baidu.com')
+@section('meta')
+    <meta property="og:type" content="novel"/>
+    <meta property="og:title" content="{{$chapter[0]->book->name}}章节列表_{{$chapter[0]->book->protagonist}}小说在线阅读_{网站名}"/>
+    <meta property="og:description" content="{{$chapter[0]->book->synopsis}}"/>
+    <meta property="og:image" content="{{env('IMG_URL').'/'.$chapter[0]->book->cover_img}}"/>
+    <meta property="og:novel:category" content="{{$chapter[0]->book->type[0]->typename}}"/>
+    <meta property="og:novel:author" content="{{$chapter[0]->book->author}}"/>
+    <meta property="og:novel:book_name" content="{{$chapter[0]->book->name}}"/>
+    <meta property="og:novel:read_url" content="{{env('APP_URL').'/article/'.$chapter[0]->id.'.html'}}"/>
+    <meta property="og:url" content="{{env('APP_URL').'/article/'.$chapter[0]->id.'.html'}}"/>
+    <meta property="og:novel:status" content=" {{$chapter[0]->book->updated_at}}"/>
+    <meta property="og:novel:update_time" content="{{$chapter[0]->book->created_at}}"/>
+    <meta property="og:novel:latest_chapter_name" content="{{$new_chapter[0]->t_title}}"/>
+    <meta property="og:novel:latest_chapter_url" content="{{env('APP_URL').'/article/'.$new_chapter[0]->id.'.html'}}"/>
+@stop
 
 @section('content')
 

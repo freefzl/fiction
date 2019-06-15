@@ -23,7 +23,7 @@
         <div class="bread">
             <span>您的位置 : </span>
             <a href="/" title="享阅小说网">享阅小说网</a>
-            &gt; <a href="/book/" >章节目录</a> &gt; <a href="{{url($book->type[0]->typedir)}}" >{{$book->type[0]->typename}}</a> &gt;
+            &gt; <a href="/chapter/" >章节目录</a> &gt; <a href="{{url($book->type[0]->typedir)}}" >{{$book->type[0]->typename}}</a> &gt;
             {{$book->name}}
 
             <p>更新时间：{{$book->updated_at}}</p>
@@ -100,7 +100,7 @@
                         @endforeach
                         {{--<li><a href='/chapter/{{$book->id}}/list.html'  target="_blank">查看全部章节</a></li>--}}
                     </ul>
-                    <div style="text-align: center"><a style="display: inline-block;width: 160px;height: 38px;margin-top: 20px;text-align: center;vertical-align: middle;border-width: 1px;border-style: solid;border-radius: 22px;cursor: pointer;font-size: 16px;line-height: 38px;" href='/chapter/{{$book->id}}/list.html'  target="_blank">查看全部章节</a></div>
+                    <div style="text-align: center"><a style="display: inline-block;width: 160px;height: 38px;margin-top: 20px;text-align: center;vertical-align: middle;border-width: 1px;border-style: solid;border-radius: 22px;cursor: pointer;font-size: 16px;line-height: 38px;" href='/{{$book->id}}/list.html'  target="_blank">查看全部章节</a></div>
                 </div>
 
                 <!--chapters-->

@@ -50,11 +50,11 @@ class CreateTDK{
         foreach ($model as $k=>$item){
             if($item->book!=null){
                 $description = [
-                    ''.$item->book->name.' 是作者'.$item->book->author.' 创作的 '.$item->book->type[0]->typename.' 类小说，讲述的是'.$item->book->protagonist.' 之间的故事，情节跌宕起伏，引人入胜，是'.$item->book->author.' 为数不多的经典著作，内容新颖，文笔成熟，非常值得一看。章节节选：'.mb_substr(strip_tags($item->chapterContent),0,30).' ',
-                    '主角叫'.$item->book->protagonist.' 的小说是'.$item->book->name.' ，这本小说的作者是'.$item->book->author.' 创作的'.$item->book->type[0]->typename.' 类型的小说，文中的故事非常感人，文笔极佳，实力推荐。小说精彩段落试读：'.mb_substr(strip_tags($item->chapterContent),0,30).' ',
-                    '小说主人公是'.$item->book->protagonist.' 的小说叫做'.$item->book->name.' ，本小说的作者是'.$item->book->author.' 写的一本'.$item->book->type[0]->typename.' 风格的小说，文笔极佳，实力推荐。小说精彩段落试读：'.mb_substr(strip_tags($item->chapterContent),0,30).' ',
-                    '精品小说'.$item->book->name.' 由'.$item->book->author.' 最新写的一本'.$item->book->type[0]->typename.' 风格的小说，本小说的主角'.$item->book->protagonist.' ，内容主要讲述：'.mb_substr(strip_tags($item->chapterContent),0,30).' ',
-                    ''.$item->book->name.' 是一本非常好看的'.$item->book->type[0]->typename.' 小说，小说的作者是'.$item->book->author.' ，主角是'.$item->book->protagonist.' ，小说主要讲述的是：'.mb_substr(strip_tags($item->chapterContent),0,30).' ',
+                    ''.$item->book->name.'是作者'.$item->book->author.'创作的 '.$item->book->type[0]->typename.'类小说，讲述的是'.$item->book->protagonist.'之间的故事，情节跌宕起伏，引人入胜，是'.$item->book->author.'为数不多的经典著作，内容新颖，文笔成熟，非常值得一看。章节节选：'.mb_substr(strip_tags($item->chapterContent),0,30).' ',
+                    '主角叫'.$item->book->protagonist.'的小说是'.$item->book->name.'，这本小说的作者是'.$item->book->author.'创作的'.$item->book->type[0]->typename.'类型的小说，文中的故事非常感人，文笔极佳，实力推荐。小说精彩段落试读：'.mb_substr(strip_tags($item->chapterContent),0,30).' ',
+                    '小说主人公是'.$item->book->protagonist.'的小说叫做'.$item->book->name.'，本小说的作者是'.$item->book->author.' 写的一本'.$item->book->type[0]->typename.'风格的小说，文笔极佳，实力推荐。小说精彩段落试读：'.mb_substr(strip_tags($item->chapterContent),0,30).' ',
+                    '精品小说'.$item->book->name.'由'.$item->book->author.'最新写的一本'.$item->book->type[0]->typename.'风格的小说，本小说的主角'.$item->book->protagonist.' ，内容主要讲述：'.mb_substr(strip_tags($item->chapterContent),0,30).' ',
+                    ''.$item->book->name.' 是一本非常好看的'.$item->book->type[0]->typename.' 小说，小说的作者是'.$item->book->author.'，主角是'.$item->book->protagonist.'，小说主要讲述的是：'.mb_substr(strip_tags($item->chapterContent),0,30).' ',
                 ];
                 $model[$k]->description = $description[$item->id%5];
             }

@@ -21,9 +21,10 @@ class ChapterController extends Controller
 //        dump($tid,$did,$sid);
 
         $model = NovelBook::select();
-
+        $typename=null;
         if($tid){
             $model = $model->where(['type_id'=>$tid]);
+            $typename = NovelType::where(['id'=>$tid])->first()->toArray();
         }
 
         if($did){
@@ -46,6 +47,7 @@ class ChapterController extends Controller
             }
         }
         $model = $model->with(['type'])->orderBy('id','desc')->paginate(30)->toArray();
+        $model['typename'] = $typename;
 //        dump($model);
         $types = NovelType::all();
         return view('home.chapter',compact('types','sid','tid','did','model'));

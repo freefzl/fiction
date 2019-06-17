@@ -87,7 +87,7 @@
                 <div class="attentions">
                     <h3>读友们正在关注：</h3>
                     <ul class="clearfix">
-                        @if(!count($chapter))
+                        @if(count($chapter))
                         @foreach($chapter as $item)
                         <li><a href='/article/{{$item->id}}.html'  target="_blank">{{$item->title}}</a></li>
                         @endforeach
@@ -97,7 +97,7 @@
 
                     <h3>最新章节：</h3>
                     <ul class="clearfix">
-                        @if(!count($new_chapter))
+                        @if(count($new_chapter))
                         @foreach($new_chapter as $item)
                             <li><a class="my_chapter" target="_blank" href="@if($item->is_pay) javascript:void(0) @else /article/{{$item->id}}.html @endif" data-url="@if($item->is_pay)@else {{$item->id}} @endif"  >{{ mb_strlen($item->title)>=11?mb_substr($item->title,0,11).'..':$item->title}} @if($item->is_pay) <img style="margin-top: 15px" width="15px" src="{{asset('images/icon_zs.png')}}"> <span style="color: #ff69b4">{{$item->goId}}</span> @endif</a></li>
                         @endforeach

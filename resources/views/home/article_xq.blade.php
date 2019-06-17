@@ -1,6 +1,6 @@
 @extends('layouts.default')
 
-@section('title', $chapter[0]->t_title)
+@section('title', $chapter[0]->t_title.'_')
 @section('keywords', $chapter[0]->t_title.','.$chapter[0]->book->protagonist.','.$chapter[0]->book->author)
 @section('description', $chapter[0]->description)
 @section('mobile', env('M_APP_URL').'article/'.$chapter[0]->id)

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>@yield('title', '绝世武魂最新章节_男频小说排行榜推荐') - {{env('APP_NAME')}}</title>
+    <title>@yield('title', '绝世武魂最新章节_男频小说排行榜推荐'){{env('APP_NAME')}}</title>
     {{--<link rel="stylesheet" href="{{ mix('css/app.css') }}">--}}
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="@yield('keywords', '网络小说在线推荐')" />

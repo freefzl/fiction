@@ -34,6 +34,7 @@ class BookController extends Controller
         $id =  (int)$arr[0];
 
         $book = NovelBook::where(['id'=>$id])->with(['type','comment'])->first();
+        dd($book);
         if($book==null||$book->try_id==0){
             return abort(404);
         }

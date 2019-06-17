@@ -1,6 +1,6 @@
 <?php
 
-Route::domain('www.xiaoshuo.com')->group(function () {
+Route::domain('www.xiaoshuo.test')->group(function () {
     Route::get('/','Home\IndexController@index');
 
     Route::get('/book/','Home\BookController@index');

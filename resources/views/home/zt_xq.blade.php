@@ -2,7 +2,7 @@
 @section('title', '专题_'.$tag->tagname.'小说_')
 @section('keywords', $tag->tagname.'小说'  )
 @section('description', $tag->tag_synopsis)
-@section('mobile', env('M_APP_URL').'zt/'.$tag->id)
+@section('mobile', env('M_APP_URL').'zt/'.$tag->id.'.html')
 
 @section('content')
 

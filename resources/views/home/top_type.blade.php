@@ -2,7 +2,7 @@
 @section('title', $books->typename.'排行榜_')
 @section('keywords', '小说,'.$books->typename.'排行榜')
 @section('description', '网站有大量精品小说推荐，包含都市职场、玄幻奇幻、古代言情、幻想异能、武侠仙侠、历史军事、灵异科幻、游戏竞技、现代言情、穿越重生、总裁豪门等各类好看小说。')
-@section('mobile', env('M_APP_URL').'top/'.$books->typedir)
+@section('mobile', env('M_APP_URL').'top/'.$books->typedir.'/')
 
 @section('content')
 
@@ -11,16 +11,16 @@
         <div class="bread">
             <span>您的位置 : </span>
             <a href="/" title="{{env('APP_NAME')}}">首页</a>  &gt;
-            <a href="{{url('top')}}" >排行榜</a> &gt;
+            <a href="/top/" >排行榜</a> &gt;
         </div>
         <div class="wrap clearfix">
             <!--side-->
             <div class="top-nav">
                 <p>小说排行榜</p>
                 <ul class="clearfix">
-                    <li class="{{$_SERVER['REQUEST_URI']==="/top"?'on':''}}"><a href="/top">小说排行榜总览</a></li>
+                    <li class="{{$_SERVER['REQUEST_URI']==="/top/"?'on':''}}"><a href="/top">小说排行榜总览</a></li>
                     @foreach($types as $type)
-                    <li class="{{$_SERVER['REQUEST_URI']==="/top/$type->typedir"?'on':''}}"><a href="/top/{{$type->typedir}}" title="{{$type->typename}}">{{$type->typename}}小说排行<span></span></a></li>
+                    <li class="{{$_SERVER['REQUEST_URI']==="/top/$type->typedir"?'on':''}}"><a href="/top/{{$type->typedir}}/" title="{{$type->typename}}">{{$type->typename}}小说排行<span></span></a></li>
                     @endforeach
                 </ul>
             </div>

@@ -66,6 +66,7 @@ class BookController extends Controller
         $books = NovelBook::where(['is_delete'=>0])->where(['type_id'=>2])->inRandomOrder()->limit(30)->get();
         $type = NovelType::where(['id'=>2])->first();
         $books->typename = $type->typename;
+        $books->typedir = $type->typedir;
 
         $types = NovelType::all();
 
@@ -78,6 +79,7 @@ class BookController extends Controller
         $types = NovelType::all();
         $type = NovelType::where(['id'=>4])->first();
         $books->typename = $type->typename;
+        $books->typedir = $type->typedir;
         return view('home.book',compact('books','types'));
     }
 
@@ -87,6 +89,7 @@ class BookController extends Controller
         $types = NovelType::all();
         $type = NovelType::where(['id'=>6])->first();
         $books->typename = $type->typename;
+        $books->typedir = $type->typedir;
         return view('home.book',compact('books','types'));
     }
 
@@ -96,6 +99,7 @@ class BookController extends Controller
         $types = NovelType::all();
         $type = NovelType::where(['id'=>7])->first();
         $books->typename = $type->typename;
+        $books->typedir = $type->typedir;
         return view('home.book',compact('books','types'));
     }
 
@@ -105,6 +109,7 @@ class BookController extends Controller
         $types = NovelType::all();
         $type = NovelType::where(['id'=>8])->first();
         $books->typename = $type->typename;
+        $books->typedir = $type->typedir;
         return view('home.book',compact('books','types'));
     }
 
@@ -114,6 +119,7 @@ class BookController extends Controller
         $types = NovelType::all();
         $type = NovelType::where(['id'=>9])->first();
         $books->typename = $type->typename;
+        $books->typedir = $type->typedir;
         return view('home.book',compact('books','types'));
     }
 
@@ -123,6 +129,7 @@ class BookController extends Controller
         $types = NovelType::all();
         $type = NovelType::where(['id'=>10])->first();
         $books->typename = $type->typename;
+        $books->typedir = $type->typedir;
         return view('home.book',compact('books','types'));
     }
 
@@ -130,6 +137,9 @@ class BookController extends Controller
     {
         $books = NovelBook::where(['is_delete'=>0])->where(['type_id'=>11])->inRandomOrder()->limit(30)->get();
         $types = NovelType::all();
+        $type = NovelType::where(['id'=>11])->first();
+        $books->typename = $type->typename;
+        $books->typedir = $type->typedir;
         return view('home.book',compact('books','types'));
     }
 
@@ -139,6 +149,7 @@ class BookController extends Controller
         $types = NovelType::all();
         $type = NovelType::where(['id'=>3])->first();
         $books->typename = $type->typename;
+        $books->typedir = $type->typedir;
         return view('home.book',compact('books','types'));
     }
 
@@ -149,6 +160,7 @@ class BookController extends Controller
         $types = NovelType::all();
         $type = NovelType::where(['id'=>12])->first();
         $books->typename = $type->typename;
+        $books->typedir = $type->typedir;
         return view('home.book',compact('books','types'));
     }
 
@@ -158,6 +170,7 @@ class BookController extends Controller
         $types = NovelType::all();
         $type = NovelType::where(['id'=>5])->first();
         $books->typename = $type->typename;
+        $books->typedir = $type->typedir;
         return view('home.book',compact('books','types'));
     }
 
@@ -167,6 +180,7 @@ class BookController extends Controller
         $types = NovelType::all();
         $type = NovelType::where(['id'=>20])->first();
         $books->typename = $type->typename;
+        $books->typedir = $type->typedir;
         return view('home.book',compact('books','types'));
     }
 
@@ -176,6 +190,7 @@ class BookController extends Controller
         $types = NovelType::all();
         $type = NovelType::where(['id'=>22])->first();
         $books->typename = $type->typename;
+        $books->typedir = $type->typedir;
         return view('home.book',compact('books','types'));
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-Route::domain('www.xiaoshuo.com')->group(function () {
+Route::domain('www.xiaoshuo.test')->group(function () {
     Route::get('/','Home\IndexController@index');
 
     Route::get('/book/','Home\BookController@index');
@@ -30,7 +30,7 @@ Route::domain('www.xiaoshuo.com')->group(function () {
     Route::get('/zt/','Home\ZtController@index');
     Route::get('/zt/{id}','Home\ZtController@ZtXq');
 
-    Route::post('/search/','Home\IndexController@Search');
+    Route::any('/search/','Home\IndexController@Search');
 
     Route::get('/chapter/','Home\ChapterController@index');
     Route::get('/chapter/{tid}-{did}-{sid}','Home\ChapterController@index');

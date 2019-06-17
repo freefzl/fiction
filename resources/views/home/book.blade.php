@@ -1,7 +1,7 @@
 @extends('layouts.default')
-@section('title', '经典'.$books->typename.'小说,好看的'.$books->typename.'小说完结_{网站名}')
+@section('title', '经典'.$books->typename.'小说,好看的'.$books->typename.'小说完结_')
 @section('keywords', '网络小说在线推荐')
-@section('description', '好看的'.$books->typename.'小说推荐、经典的'.$books->typename.'小说排行榜、完本'.$books->typename.'小说精选免费阅读就在{网站名}')
+@section('description', "好看的'.$books->typename.'小说推荐、经典的'.$books->typename.'小说排行榜、完本'.$books->typename.'小说精选免费阅读就在".env('APP_NAME'))
 @section('mobile', 'http://www.baidu.com')
 
 @section('content')

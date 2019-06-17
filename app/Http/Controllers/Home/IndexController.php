@@ -86,8 +86,7 @@ class IndexController extends Controller
 
 
     public function Search(Request $request){
-
-        $search = $request->q;
+        $search = $request->q??'';
 
         $books = NovelBook::where('name','like','%'.$search.'%')->with(['type'])->limit(30)->get();
 

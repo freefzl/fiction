@@ -2,7 +2,7 @@
     <div class="inner">
         <div class="tophead">
             <!-- logo -->
-            <div class="logo lf"><a href="/" title="享阅小说网">享阅小说网</a></div>
+            <div class="logo lf"><a href="/" title="{{env('APP_NAME')}}">{{env('APP_NAME')}}</a></div>
             <!-- 搜索 -->
             <div class="search lf">
                 <form  method="post" name="search"  action="/search" target="_blank" >

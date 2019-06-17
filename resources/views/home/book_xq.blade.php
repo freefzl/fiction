@@ -1,5 +1,5 @@
 @extends('layouts.default')
-@section('title', $book->name.$book->author.'_'. $book->name.'在线阅读_{网站名}')
+@section('title', $book->name.$book->author.'_'. $book->name.'在线阅读_')
 @section('keywords', $book->name.' '.$book->author.$book->protagonist)
 @section('description', '小说简介:'.$book->synopsis)
 @section('mobile', 'http://www.baidu.com')

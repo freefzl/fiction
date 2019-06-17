@@ -1,8 +1,8 @@
 @extends('layouts.default')
-@section('title', '首页')
+@section('title', '绝世武魂最新章节_男频小说排行榜推荐')
 @section('keywords', '网络小说在线推荐')
-@section('description', '网站有大量精品小说推荐，包含都市职场、玄幻奇幻、古代言情、幻想异能、武侠仙侠、历史军事、灵异科幻、游戏竞技、现代言情、穿越重生、总裁豪门等各类好看小说。')
-@section('mobile', 'http://www.baidu.com')
+@section('description', '临城小说网(www.linchengxs.com)为广大书友提供男频、女频小说排行榜推荐，临城小说网为你推荐热门男频小说《绝世武魂》，绝世武魂是作者洛城东的一本玄幻小说。')
+@section('mobile', env('M_APP_URL'))
 
 @section('content')
     <div class="container clearfix">

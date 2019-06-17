@@ -34,17 +34,16 @@ class BookController extends Controller
         $id =  (int)$arr[0];
 
         $book = NovelBook::where(['id'=>$id])->with(['type','comment'])->first();
-        if($book==null){
+        if($book==null||$book->try_id==null){
             return abort(404);
         }
-
         $try_ids = json_decode($book->try_id);
         $try_chapters=[];
-        if($try_ids){
-            foreach ($try_ids as $try_id){
-                $try_chapters[] = NovelChapter::where(['id'=>$try_id])->first();
-            }
+
+        foreach ($try_ids as $try_id){
+            $try_chapters[] = NovelChapter::where(['id'=>$try_id])->first();
         }
+
 
 
 

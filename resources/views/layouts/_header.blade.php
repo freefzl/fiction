@@ -21,7 +21,7 @@
     <div class="inner">
         <div class="topnav">
             <ul>
-                <li class="home on"><a href="/" title="首页">首页</a></li>
+                <li class="home on"><a href="/" title="{{env('APP_NAME')}}">首页</a></li>
                 <li><a href="/book/" title="小说库">小说库</a></li>
                 <li><a href="/chapter/" title="章节目录">章节目录</a></li>
                 <li><a href="/article/" title="小说资讯">小说资讯</a></li>

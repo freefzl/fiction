@@ -2,14 +2,14 @@
 @section('title', '经典'.$books->typename.'小说,好看的'.$books->typename.'小说完结_')
 @section('keywords', '网络小说在线推荐')
 @section('description', "好看的'.$books->typename.'小说推荐、经典的'.$books->typename.'小说排行榜、完本'.$books->typename.'小说精选免费阅读就在".env('APP_NAME'))
-@section('mobile', 'http://www.baidu.com')
+@section('mobile', env('M_APP_URL'))
 
 @section('content')
 <!--container-->
 <div class="container clearfix">
     <div class="bread">
         <span>您的位置 : </span>
-        <a href="/" title="享阅小说网">首页</a>  &gt;
+        <a href="/" title="{{env('APP_NAME')}}">首页</a>  &gt;
         <a href="/book/" >小说库</a> &gt;
     </div>
     <div class="wrap clearfix">

@@ -2,13 +2,13 @@
 @section('title', $book->name.$book->author.'_'. $book->name.'在线阅读_')
 @section('keywords', $book->name.' '.$book->author.$book->protagonist)
 @section('description', '小说简介:'.$book->synopsis)
-@section('mobile', 'http://www.baidu.com')
+@section('mobile', env('M_APP_URL'))
 
 @section('content')
     <div class="container clearfix">
         <div class="bread">
             <span>您的位置 : </span>
-            <a href="/" title="享阅小说网">享阅小说网</a>
+            <a href="/" title="{{env('APP_NAME')}}">首页</a>
             &gt; <a href="/book/" >小说库</a> &gt; <a href="{{url($book->type[0]->typedir)}}" >{{$book->type[0]->typename}}</a> &gt;
             {{$book->name}}
             <p>更新时间：{{$book->updated_at}}</p>

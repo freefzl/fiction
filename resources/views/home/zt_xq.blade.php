@@ -2,7 +2,7 @@
 @section('title', '专题 - '.$tag->tagname.'小说')
 @section('keywords', $tag->tagname.'小说'  )
 @section('description', $tag->tag_synopsis)
-@section('mobile', 'http://www.baidu.com')
+@section('mobile', env('M_APP_URL'))
 
 @section('content')
 
@@ -10,7 +10,7 @@
     <div class="container clearfix">
         <div class="bread">
             <span>您的位置 : </span>
-            <a href="/" title="首页">首页</a> &gt; <a href="/zt/">小说专题大全</a> &gt; {{$tag->tagname}}
+            <a href="/" title="{{env('APP_NAME')}}">首页</a> &gt; <a href="/zt/">小说专题大全</a> &gt; {{$tag->tagname}}
         </div>
         <div class="wrap clearfix">
             <!--main-->

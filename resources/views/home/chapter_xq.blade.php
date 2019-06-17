@@ -2,7 +2,7 @@
 @section('title', $book->name.'最新章节_'.$book->name.'('.$book->author.')小说_'.$book->name.'全文阅读_')
 @section('keywords', $book->name.' '.$book->author.$book->protagonist)
 @section('description', mb_strlen(htmlspecialchars($book->synopsis))>=30?mb_substr(htmlspecialchars($book->synopsis),0,30).'...':htmlspecialchars($book->synopsis).',各位书友要是觉得《'.$book->name.'》还不错的话请不要忘记向您QQ群和微博里的朋友推荐哦！《'.$book->name.'》最新章节,《'.$book->name.'》全文阅读。')
-@section('mobile', 'http://www.baidu.com')
+@section('mobile', env('M_APP_URL'))
 @section('meta')
     <meta property="og:type" content="novel"/>
     <meta property="og:title" content="{{$book->name}}章节列表_{{$book->protagonist}}小说在线阅读_".{{env('APP_NAME')}}/>
@@ -22,7 +22,7 @@
     <div class="container clearfix">
         <div class="bread">
             <span>您的位置 : </span>
-            <a href="/" title="享阅小说网">享阅小说网</a>
+            <a href="/" title="{{env('APP_NAME')}}">首页</a>
             &gt; <a href="/chapter/" >章节目录</a> &gt; <a href="{{url($book->type[0]->typedir)}}" >{{$book->type[0]->typename}}</a> &gt;
             {{$book->name}}
 

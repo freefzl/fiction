@@ -4,7 +4,13 @@
 @section('keywords', $chapter[0]->t_title.' '.$chapter[0]->book->protagonist.$chapter[0]->book->author)
 @section('description', $chapter[0]->description)
 @section('mobile', 'http://www.baidu.com')
+@php
+dump($_SERVER);
+$HTTP_REFERER = $_SERVER['HTTP_REFERER'];
 
+$is_article = (int)explode('/',$HTTP_REFERER)[3];
+dd($is_article);
+@endphp
 
 @section('content')
 
@@ -13,7 +19,7 @@
         <div class="bread">
             <span>您的位置 : </span>
             <a href="/" title="享阅小说网">首页</a>
-            &gt; <a href="/article" >小说资讯</a> &gt;
+            &gt; <a href="/article/" >小说资讯</a> &gt;
         </div>
         <div class="wrap clearfix">
             <!--primary-->
@@ -26,7 +32,7 @@
                 <div class="cover">
                     <p class="pic"><img class="lazy" src="{{env('IMG_URL').'/'.$chapter[0]->book->cover_img}}" alt="{{$chapter[0]->book->name}}">
                     <p class="stars">推荐指数：<span class="star"><i style="width:100%;">10分</i></span></p>
-                    <p class="read"><a href="/book/{{$chapter[0]->book->id}}.html" target="_blank">{{$chapter[0]->book->name}}在线阅读</a></p>
+                    <p class="read"><a href="@if($is_article==0) /book/{{$chapter[0]->book->id}}.html @else /{{$chapter[0]->book->id}}/ @endif" target="_blank">{{$chapter[0]->book->name}}在线阅读</a></p>
                 </div>
                 <div class="content"><h3>{{$chapter[0]->book->name}} {{$chapter[0]->book->title}}  免费试读</h3>
                     {!! $chapter[0]->chapterContent !!}
@@ -34,15 +40,15 @@
 
                 <div class="book">
                     <dl class="clearfix">
-                        <dt><a href="/book/{{$chapter[0]->book->id}}.html" target="_blank"><img class="lazy" src="{{env('IMG_URL').'/'.$chapter[0]->book->cover_img}}" alt="{{$chapter[0]->book->name}}"></a></dt>
+                        <dt><a href="@if($is_article==0) /book/{{$chapter[0]->book->id}}.html @else /{{$chapter[0]->book->id}}/ @endif" target="_blank"><img class="lazy" src="{{env('IMG_URL').'/'.$chapter[0]->book->cover_img}}" alt="{{$chapter[0]->book->name}}"></a></dt>
                         <dd>
 
-                            <h4><a href="/book/{{$chapter[0]->book->id}}.html">{{$chapter[0]->book->name}}</a></h4>
+                            <h4><a href="@if($is_article==0) /book/{{$chapter[0]->book->id}}.html @else /{{$chapter[0]->book->id}}/ @endif">{{$chapter[0]->book->name}}</a></h4>
                             <p class="info"><span>作者：{{$chapter[0]->book->author}}</span><span>类型：{{$chapter[0]->book->type[0]->typename}}</span><span>状态：{{$chapter[0]->book->status?'已完结':'连载中'}}</span></p>
                             <p class="intro">{{$chapter[0]->book->synopsis}}</p>
                             <p class="star"><i style="width:100%;"></i></p>
 
-                            <a class="view" href="/book/{{$chapter[0]->book->id}}.html" target="_blank">小说详情</a>
+                            <a class="view" href="@if($is_article==0) /book/{{$chapter[0]->book->id}}.html @else /{{$chapter[0]->book->id}}/ @endif" target="_blank">小说详情</a>
 
                         </dd>
                     </dl>				</div>				<div class="porn">
@@ -94,8 +100,8 @@
                     <ul>
                         @foreach($cbl['tjxss'] as $k=>$tj)
                             <li>
-                                <a class="pic" href="/book/{{$tj->id}}.html" target="_blank"><img class="lazy" src="{{env('IMG_URL').'/'.$tj->cover_img}}" alt="{{$tj->name}}"></a>
-                                <h5><a href="/book/{{$tj->id}}.html" target="_blank">{{$tj->name}}</a></h5>
+                                <a class="pic" href="@if($is_article==0) /book/{{$tj->id}}.html @else /{{$tj->id}}/ @endif" target="_blank"><img class="lazy" src="{{env('IMG_URL').'/'.$tj->cover_img}}" alt="{{$tj->name}}"></a>
+                                <h5><a href="@if($is_article==0) /book/{{$tj->id}}.html @else /{{$tj->id}}/ @endif" target="_blank">{{$tj->name}}</a></h5>
                                 <p>作者：{{$tj->author}}</p>
                                 <p>状态：{{$tj->status?'已完结':'连载中'}}</p>
                             </li>

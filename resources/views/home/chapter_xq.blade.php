@@ -123,8 +123,8 @@
                         </li>
                         @foreach($val['books'] as $v)
                         <li>
-                            <a class="pic" href="/book/{{$v->id}}.html"><img src="{{env('IMG_URL').'/'.$v->cover_img}}" alt="{{$v->name}}"></a>
-                            <h5><a href="/book/{{$v->id}}.html" title="{{$v->name}}">{{$v->name}}</a></h5>
+                            <a class="pic" href="/{{$v->id}}/"><img src="{{env('IMG_URL').'/'.$v->cover_img}}" alt="{{$v->name}}"></a>
+                            <h5><a href="/{{$v->id}}/" title="{{$v->name}}">{{$v->name}}</a></h5>
                             <p>作者：{{$v->author}}</p>
                             <p><em>{{$v->type[0]->typename}}</em></p>
                         </li>
@@ -177,8 +177,8 @@
                     <ul>
                         @foreach($tjxs as $val)
                         <li>
-                            <a class="pic" href="/book/{{$val->id}}.html" target="_blank"><img class="lazy" src="{{env('IMG_URL').'/'.$val->cover_img}}" alt="{{$val->name}}"></a>
-                            <h5><a href="/book/{{$val->id}}.html" target="_blank">{{$val->name}}</a></h5>
+                            <a class="pic" href="/{{$val->id}}/" target="_blank"><img class="lazy" src="{{env('IMG_URL').'/'.$val->cover_img}}" alt="{{$val->name}}"></a>
+                            <h5><a href="/{{$val->id}}/" target="_blank">{{$val->name}}</a></h5>
                             <p>作者：{{$val->author}}</p>
                             <p>状态：{{ $val->status?'已完结':'连载中'}}</p>
                         </li>

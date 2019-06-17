@@ -40,9 +40,12 @@ class BookController extends Controller
 
         $try_ids = json_decode($book->try_id);
         $try_chapters=[];
-        foreach ($try_ids as $try_id){
-            $try_chapters[] = NovelChapter::where(['id'=>$try_id])->first();
+        if($try_ids){
+            foreach ($try_ids as $try_id){
+                $try_chapters[] = NovelChapter::where(['id'=>$try_id])->first();
+            }
         }
+
 
 
         $tags = NovelTag::select('id','tagname')->whereIn('id',json_decode($book->tag_ids))->get();

@@ -34,7 +34,7 @@ Route::domain('www.xiaoshuo.com')->group(function () {
 
     Route::get('/chapter/','Home\ChapterController@index');
     Route::get('/chapter/{tid}-{did}-{sid}','Home\ChapterController@index');
-    Route::get('/{id}','Home\ChapterController@xq');
+    Route::get('/{id}/','Home\ChapterController@xq');
     Route::get('/{id}/list.html','Home\ChapterController@chapter_list');
 
 });

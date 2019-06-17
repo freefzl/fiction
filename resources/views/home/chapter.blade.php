@@ -50,12 +50,12 @@
             <ul class="clearfix">
                 @foreach($model['data'] as $item)
                 <li>
-                    <a class="pic" href="/{{$item['id']}}.html" target="_blank"><img class="lazy" src="{{env('IMG_URL').'/'.$item['cover_img']}}" alt="{{$item['name']}}"></a>
-                    <h5 class="tit"><a href="/{{$item['id']}}.html" target="_blank">{{$item['name']}}</a></h5>
+                    <a class="pic" href="/{{$item['id']}}/" target="_blank"><img class="lazy" src="{{env('IMG_URL').'/'.$item['cover_img']}}" alt="{{$item['name']}}"></a>
+                    <h5 class="tit"><a href="/{{$item['id']}}/" target="_blank">{{$item['name']}}</a></h5>
                     <p class="info"><span>作者：{{$item['author']}}</span><span>分类：{{$item['type'][0]['typename']}}</span>
                         <i class="finish">{{$item['status']?'已完结':'连载中'}}</i>							</p>
                     <p class="intro">{{$item['synopsis']}}</p>
-                    <a class="view" href="/{{$item['id']}}.html" target="_blank">章节详情</a>
+                    <a class="view" href="/{{$item['id']}}/" target="_blank">章节详情</a>
                 </li>
                 @endforeach
             </ul>

@@ -16,7 +16,7 @@
     <div class="bread">
         <span>您的位置 : </span>
         <a href="/" title="{{env('APP_NAME')}}">首页</a>  &gt;
-        <a href="/book/" >小说库</a> &gt;
+        <a href="/book/" >小说库</a> &gt; {{$books->typename}}
     </div>
     <div class="wrap clearfix">
         <!--main-->

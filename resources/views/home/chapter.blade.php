@@ -1,8 +1,15 @@
 @extends('layouts.default')
-@section('title', isset($model['typename']['typename'])&&$model['typename'] !=''?'章节目录_'.$model['typename']['typename']:'章节目录')
+@section('title', isset($model['typename']['typename'])&&$model['typename'] !=''?'章节目录_'.$model['typename']['typename'].'_':'章节目录_')
 @section('keywords', '网络小说在线推荐')
 @section('description', '网站有大量精品小说推荐，包含都市职场、玄幻奇幻、古代言情、幻想异能、武侠仙侠、历史军事、灵异科幻、游戏竞技、现代言情、穿越重生、总裁豪门等各类好看小说。')
-@section('mobile', env('M_APP_URL').'chapter/')
+
+@if($tid==0 && $did==0 && $sid==0)
+    @section('mobile', env('M_APP_URL').'chapter/')
+@else
+    @section('mobile', env('M_APP_URL').'chapter/'.$tid.'-'.$did.'-'.$sid.'.html')
+@endif
+
+
 
 @section('content')
 <!--container-->

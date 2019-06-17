@@ -38,56 +38,67 @@ class TopController extends Controller
                 $type = NovelType::where(['typedir'=>$name])->first();
                 $books = NovelBook::where(['type_id'=>$type->id])->orderBy('id','desc')->limit(10)->get();
                 $books->typename = $type->typename;
+                $books->typedir = $type->typedir;
                 break;
             case 'xiandaiyanqing':
                 $type = NovelType::where(['typedir'=>$name])->first();
                 $books = NovelBook::where(['type_id'=>$type->id])->orderBy('id','desc')->limit(10)->get();
                 $books->typename = $type->typename;
+                $books->typedir = $type->typedir;
                 break;
             case 'dushizhichang':
                 $type = NovelType::where(['typedir'=>$name])->first();
                 $books = NovelBook::where(['type_id'=>$type->id])->orderBy('id','desc')->limit(10)->get();
                 $books->typename = $type->typename;
+                $books->typedir = $type->typedir;
                 break;
             case 'zongcaihaomen':
                 $type = NovelType::where(['typedir'=>$name])->first();
                 $books = NovelBook::where(['type_id'=>$type->id])->orderBy('id','desc')->limit(10)->get();
                 $books->typename = $type->typename;
+                $books->typedir = $type->typedir;
                 break;
             case 'xuanhuanqihuan':
                 $type = NovelType::where(['typedir'=>$name])->first();
                 $books = NovelBook::where(['type_id'=>$type->id])->orderBy('id','desc')->limit(10)->get();
                 $books->typename = $type->typename;
+                $books->typedir = $type->typedir;
                 break;
             case 'gudaiyanqing':
                 $type = NovelType::where(['typedir'=>$name])->first();
                 $books = NovelBook::where(['type_id'=>$type->id])->orderBy('id','desc')->limit(10)->get();
                 $books->typename = $type->typename;
+                $books->typedir = $type->typedir;
                 break;
             case 'wuxiaxianxia':
                 $type = NovelType::where(['typedir'=>$name])->first();
                 $books = NovelBook::where(['type_id'=>$type->id])->orderBy('id','desc')->limit(10)->get();
                 $books->typename = $type->typename;
+                $books->typedir = $type->typedir;
                 break;
             case 'lishijunshi':
                 $type = NovelType::where(['typedir'=>$name])->first();
                 $books = NovelBook::where(['type_id'=>$type->id])->orderBy('id','desc')->limit(10)->get();
                 $books->typename = $type->typename;
+                $books->typedir = $type->typedir;
                 break;
             case 'lingyikehuan':
                 $type = NovelType::where(['typedir'=>$name])->first();
                 $books = NovelBook::where(['type_id'=>$type->id])->orderBy('id','desc')->limit(10)->get();
                 $books->typename = $type->typename;
+                $books->typedir = $type->typedir;
                 break;
             case 'youxijingji':
                 $type = NovelType::where(['typedir'=>$name])->first();
                 $books = NovelBook::where(['type_id'=>$type->id])->orderBy('id','desc')->limit(10)->get();
                 $books->typename = $type->typename;
+                $books->typedir = $type->typedir;
                 break;
             case 'chuanyuezhongsheng':
                 $type = NovelType::where(['typedir'=>$name])->first();
                 $books = NovelBook::where(['type_id'=>$type->id])->orderBy('id','desc')->limit(10)->get();
                 $books->typename = $type->typename;
+                $books->typedir = $type->typedir;
                 break;
             case 'qingchunxiaoyuan':
                 $type = NovelType::where(['typedir'=>$name])->first();
@@ -98,6 +109,7 @@ class TopController extends Controller
                 $type = NovelType::where(['typedir'=>$name])->first();
                 $books = NovelBook::where(['type_id'=>$type->id])->orderBy('id','desc')->limit(10)->get();
                 $books->typename = $type->typename;
+                $books->typedir = $type->typedir;
                 break;
             default:
                 $books=[];

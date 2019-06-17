@@ -1,8 +1,8 @@
 @extends('layouts.default')
 @section('title', $book->name.$book->author.'_'. $book->name.'在线阅读_')
-@section('keywords', $book->name.' '.$book->author.$book->protagonist)
+@section('keywords', $book->name.','.$book->author.','.$book->protagonist)
 @section('description', '小说简介:'.$book->synopsis)
-@section('mobile', env('M_APP_URL'))
+@section('mobile', env('M_APP_URL').'book/'.$book->id)
 
 @section('content')
     <div class="container clearfix">

@@ -5,7 +5,7 @@
     {{--<link rel="stylesheet" href="{{ mix('css/app.css') }}">--}}
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="@yield('keywords', '网络小说在线推荐')" />
-    <meta name="description" content="@yield('description', env('APP_NAME').'(www.linchengxs.com)为广大书友提供男频、女频小说排行榜推荐，临城小说网为你推荐热门男频小说《绝世武魂》，绝世武魂是作者洛城东的一本玄幻小说。')" />
+    <meta name="description" content="@yield('description', env('APP_NAME').'(www.linchengxs.com)为广大书友提供男频、女频小说排行榜推荐，'.env('APP_NAME').'为你推荐热门男频小说《绝世武魂》，绝世武魂是作者洛城东的一本玄幻小说。')" />
     @yield('meta')
     <meta name="shenma-site-verification" content="640cd821d750f66fb2c84259caecbccc_1547718180"/>
     <link href="/favicon.ico" rel="shortcut icon" />

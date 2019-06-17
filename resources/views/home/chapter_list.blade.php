@@ -1,8 +1,8 @@
 @extends('layouts.default')
 @section('title', $book->name.'章节列表_'.$book->protagonist.'小说在线阅读_')
-@section('keywords', $book->name.' '.$book->author.$book->protagonist)
+@section('keywords', $book->name.','.$book->author.','.$book->protagonist)
 @section('description', env('APP_NAME').'提供《'.$book->name.'》最新章节目录的索引，更新超级快，无病毒无木马，页面干净清爽，希望大家收藏!')
-@section('mobile', env('M_APP_URL'))
+@section('mobile', env('M_APP_URL').$book->id.'/list.html')
 
 @section('content')
     <div class="container clearfix">

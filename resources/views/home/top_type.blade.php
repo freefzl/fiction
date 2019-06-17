@@ -1,8 +1,8 @@
 @extends('layouts.default')
 @section('title', $books->typename.'排行榜')
-@section('keywords', '小说 '.$books->typename.'排行榜')
+@section('keywords', '小说,'.$books->typename.'排行榜')
 @section('description', '网站有大量精品小说推荐，包含都市职场、玄幻奇幻、古代言情、幻想异能、武侠仙侠、历史军事、灵异科幻、游戏竞技、现代言情、穿越重生、总裁豪门等各类好看小说。')
-@section('mobile', env('M_APP_URL'))
+@section('mobile', env('M_APP_URL').'top/'.$books->typedir)
 
 @section('content')
 

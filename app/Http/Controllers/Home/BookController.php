@@ -38,7 +38,7 @@ class BookController extends Controller
         if($book==null){
             return abort(404);
         }
-        if($book->try_id){
+        if($book->try_id!=='0'){
             $try_ids = json_decode($book->try_id);
             $try_chapters=[];
             foreach ($try_ids as $try_id){

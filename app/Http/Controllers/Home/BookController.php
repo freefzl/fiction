@@ -38,25 +38,23 @@ class BookController extends Controller
         if($book==null){
             return abort(404);
         }
-        if($book->try_id!=='0'){
-            $try_ids = json_decode($book->try_id);
-            $try_chapters=[];
+
+        $try_ids = json_decode($book->try_id);
+        $try_chapters=[];
+        if($try_ids){
             foreach ($try_ids as $try_id){
                 $try_chapters[] = NovelChapter::where(['id'=>$try_id])->first();
             }
         }else{
-            $try_chapters=[];
+            $try_chapters=null;
+        }
+        $tags = NovelTag::select('id','tagname')->whereIn('id',json_decode($book->tag_ids))->get();
+        $chapter = NovelChapter::where(['bid'=>$id])->where(['is_pay'=>0])->where(['goId'=>0])->limit(100)->get();
+        if(count($chapter)!==0){
+            $chapter = $chapter->random(6);
+            $chapter = CreateTDK::getTitle($chapter);
         }
 
-
-
-
-
-        $tags = NovelTag::select('id','tagname')->whereIn('id',json_decode($book->tag_ids))->get();
-
-        $chapter = NovelChapter::where(['bid'=>$id])->where(['is_pay'=>0])->where(['goId'=>0])->limit(100)->get();
-        $chapter = $chapter->random(6);
-        $chapter = CreateTDK::getTitle($chapter);
         $cnxh = $this->cnxh();
         $rmzt = $this->rmzt();
         $tjxs = $this->tjxs();

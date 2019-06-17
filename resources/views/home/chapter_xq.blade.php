@@ -15,8 +15,8 @@
     <meta property="og:url" content="{{env('APP_URL').'/chapter/'.$book->id.'.html'}}"/>
     <meta property="og:novel:status" content="{{$book->status?'已完结':'连载中'}}"/>
     <meta property="og:novel:update_time" content="{{$book->updated_at}}"/>
-    <meta property="og:novel:latest_chapter_name" content="{{$last_new_chapter->title}}"/>
-    <meta property="og:novel:latest_chapter_url" content="{{env('APP_URL').'/article/'.$last_new_chapter->id.'.html'}}"/>
+    <meta property="og:novel:latest_chapter_name" content="{{$last_new_chapter->title??''}}"/>
+    <meta property="og:novel:latest_chapter_url" @if($last_new_chapter!=null) content="{{env('APP_URL')."/article/".$last_new_chapter->id}}.html" @else content="" @endif />
 @stop
 @section('content')
     <div class="container clearfix">
@@ -87,17 +87,21 @@
                 <div class="attentions">
                     <h3>读友们正在关注：</h3>
                     <ul class="clearfix">
+                        @if(!count($chapter))
                         @foreach($chapter as $item)
                         <li><a href='/article/{{$item->id}}.html'  target="_blank">{{$item->title}}</a></li>
                         @endforeach
+                        @endif
                         {{--<li><a href='/chapter/{{$book->id}}/list.html'  target="_blank">查看全部章节</a></li>--}}
                     </ul>
 
                     <h3>最新章节：</h3>
                     <ul class="clearfix">
+                        @if(!count($new_chapter))
                         @foreach($new_chapter as $item)
                             <li><a class="my_chapter" target="_blank" href="@if($item->is_pay) javascript:void(0) @else /article/{{$item->id}}.html @endif" data-url="@if($item->is_pay)@else {{$item->id}} @endif"  >{{ mb_strlen($item->title)>=11?mb_substr($item->title,0,11).'..':$item->title}} @if($item->is_pay) <img style="margin-top: 15px" width="15px" src="{{asset('images/icon_zs.png')}}"> <span style="color: #ff69b4">{{$item->goId}}</span> @endif</a></li>
                         @endforeach
+                        @endif
                         {{--<li><a href='/chapter/{{$book->id}}/list.html'  target="_blank">查看全部章节</a></li>--}}
                     </ul>
                     <div style="text-align: center"><a style="display: inline-block;width: 160px;height: 38px;margin-top: 20px;text-align: center;vertical-align: middle;border-width: 1px;border-style: solid;border-radius: 22px;cursor: pointer;font-size: 16px;line-height: 38px;" href='/{{$book->id}}/list.html'  target="_blank">查看全部章节</a></div>

@@ -54,7 +54,7 @@
                 <div class="reading-content">
                     <h3>精彩章节试读：</h3>
                     <div class="content">
-                        @if(!count($try_chapters))
+                        @if($try_chapters!==null)
                         @foreach($try_chapters as $item)
                             <h3>{{$item->title}}</h3>
                             {!! $item->chapterContent !!}

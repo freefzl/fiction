@@ -66,13 +66,15 @@ class ChapterController extends Controller
         $tags = NovelTag::select('id','tagname')->whereIn('id',json_decode($book->tag_ids))->get();
 
         $chapter = NovelChapter::where(['bid'=>$id])->where(['goId'=>'0'])->where(['is_pay'=>0])->orderBy('id','desc')->limit(9)->get();
+
+
         $new_chapter = NovelChapter::where(['bid'=>$id])->orderBy('id','desc')->limit(15)->get();
 
         $cnxh = $this->cnxh();
         $rmzt = $this->rmzt();
         $tjxs = $this->tjxs();
 
-        $last_new_chapter = NovelChapter::where(['bid'=>$chapter[0]->bid])->where(['goId'=>'0'])->where(['is_pay'=>0])->OrderBy('id','desc')->limit(1)->first();
+        $last_new_chapter = NovelChapter::where(['bid'=>$id])->where(['goId'=>'0'])->where(['is_pay'=>0])->OrderBy('id','desc')->limit(1)->first();
 
         return view('home.chapter_xq',compact('book','tags','cnxh','rmzt','tjxs','chapter','new_chapter','last_new_chapter'));
     }

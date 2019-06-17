@@ -5,11 +5,8 @@
 @section('description', $chapter[0]->description)
 @section('mobile', 'http://www.baidu.com')
 @php
-dump($_SERVER);
 $HTTP_REFERER = $_SERVER['HTTP_REFERER'];
-
 $is_article = (int)explode('/',$HTTP_REFERER)[3];
-dd($is_article);
 @endphp
 
 @section('content')

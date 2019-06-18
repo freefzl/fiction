@@ -17,7 +17,7 @@
     <meta property="og:novel:status" content="{{$book->status?'已完结':'连载中'}}"/>
     <meta property="og:novel:update_time" content="{{$book->updated_at}}"/>
     <meta property="og:novel:latest_chapter_name" content="{{$last_new_chapter->title??''}}"/>
-    <meta property="og:novel:latest_chapter_url" @if($last_new_chapter!=null) content="{{env('APP_URL')."/article/".$last_new_chapter->id}}.html" @else content="" @endif />
+    <meta property="og:novel:latest_chapter_url" @if($last_new_chapter!=null) content="{{env('M_APP_URL')."/article/".$last_new_chapter->id}}.html" @else content="" @endif />
 @stop
 
 @section('content')
@@ -73,7 +73,7 @@
 
         <div class="mod mod-attentions">
             <div class="mod-head">
-                <h3>读友们正在关注：</h3>
+                <h3>{{$book->name}}章节目录：</h3>
             </div>
             <!--attentions-->
             <div class="attentions">
@@ -98,7 +98,7 @@
                     @endif
                 </ul>
             </div>
-            <div class="chapters-more"><a class="reading" rel="nofollow" href="/{{$book->id}}/list.html">阅读更多章节</a></div>    </div>    <div class="readingbox">
+            <div class="chapters-more"><a class="reading"  href="/{{$book->id}}/list.html">阅读更多章节</a></div>    </div>    <div class="readingbox">
             <a href="http://51ldj.zuszw.com/dw.php?pt=&bookname={{$book->name}}&hero={{$book->author}}" rel="nofollow">
                 <mip-img src="http://oss.mobantianxia.com/20180813/15341243676265.jpg" alt="30天免费畅读"></mip-img>
             </a>

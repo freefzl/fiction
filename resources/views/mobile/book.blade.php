@@ -14,9 +14,9 @@
     <div class="mod mod-nav">
         <div id="book-nav" class="book-nav">
             <ul class="clearfix">
-                <li class="{{$_SERVER['REQUEST_URI']==='/book'?'on':''}}"><a href="/book" title="小说库" >全部</a></li>
+                <li class="{{$_SERVER['REQUEST_URI']==='/book/'?'on':''}}"><a href="/book/" title="小说库" >全部</a></li>
                 @foreach($types as $type)
-                <li class="{{$_SERVER['REQUEST_URI']==="/".$type->typedir.""?'on':''}}"><a href="/{{$type->typedir}}" title="{{$type->typename}}" >{{$type->typename}}</a></li>
+                <li class="{{$_SERVER['REQUEST_URI']==="/".$type->typedir."/"?'on':''}}"><a href="/{{$type->typedir}}/" title="{{$type->typename}}" >{{$type->typename}}</a></li>
                 @endforeach
             </ul>
         </div>

@@ -53,10 +53,16 @@ class ArticleController extends Controller
 
         $cbl = $this->ceBianLan();
 
-        $up = NovelChapter::where(['id'=>$id-1])->get();
-        $up = CreateTDK::getTitle($up);
-        $down = NovelChapter::where(['id'=>$id+1])->get();
-        $down = CreateTDK::getTitle($down);
+        $up = NovelChapter::where(['goId'=>'0'])->where(['is_pay'=>0])->where('id','<',$id)->orderby('id','desc')->limit(1)->get();
+        if($up){
+            $up = CreateTDK::getTitle($up);
+        }
+        $down = NovelChapter::where(['goId'=>'0'])->where(['is_pay'=>0])->where('id','>',$id)->limit(1)->get();
+
+        if($down){
+            $down = CreateTDK::getTitle($down);
+        }
+
 
         $relateds = NovelChapter::where(['bid'=>$chapter[0]->bid])->where(['goId'=>'0'])->where(['is_pay'=>0])->limit(10)->get();
         $relateds = CreateTDK::getTitle($relateds);

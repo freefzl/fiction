@@ -5,8 +5,12 @@
 @section('description', $chapter[0]->description)
 @section('mobile', env('M_APP_URL').'article/'.$chapter[0]->id.'.html')
 @php
-$HTTP_REFERER = $_SERVER['HTTP_REFERER'];
-$is_article = (int)explode('/',$HTTP_REFERER)[3];
+    if(isset($_SERVER['HTTP_REFERER'])){
+            $HTTP_REFERER = $_SERVER['HTTP_REFERER'];
+            $is_article = (int)explode('/',$HTTP_REFERER)[3];
+    }else{
+            $is_article =0;
+    }
 @endphp
 
 @section('content')

@@ -1,8 +1,8 @@
 @extends('mobile.layouts.default')
-@section('title', '首页')
+@section('title', '小说资讯_')
 @section('keywords', '网络小说在线推荐')
 @section('description', '网站有大量精品小说推荐，包含都市职场、玄幻奇幻、古代言情、幻想异能、武侠仙侠、历史军事、灵异科幻、游戏竞技、现代言情、穿越重生、总裁豪门等各类好看小说。')
-@section('mobile', 'http://www.baidu.com')
+@section('canonical', env('M_APP_URL').'article')
 
 
 @section('content')
@@ -45,7 +45,7 @@
     <div class="bread">
         <span>您的位置 : </span>
         <a href="/">首页</a> &gt;
-        <a href="/zt">专题</a> &gt;
+        <a href="/article/">资讯</a> &gt;
     </div>
     <div class="cmargin"></div>
 

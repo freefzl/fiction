@@ -1,8 +1,8 @@
 @extends('mobile.layouts.default')
-@section('title', '首页')
+@section('title', '绝世武魂最新章节_男频小说排行榜推荐_')
 @section('keywords', '网络小说在线推荐')
-@section('description', '网站有大量精品小说推荐，包含都市职场、玄幻奇幻、古代言情、幻想异能、武侠仙侠、历史军事、灵异科幻、游戏竞技、现代言情、穿越重生、总裁豪门等各类好看小说。')
-@section('mobile', 'http://www.baidu.com')
+@section('description', env('APP_NAME').'(www.linchengxs.com)为广大书友提供男频、女频小说排行榜推荐，'.env('APP_NAME').'为你推荐热门男频小说《绝世武魂》，绝世武魂是作者洛城东的一本玄幻小说。')
+@section('canonical', env('M_APP_URL'))
 
 
 @section('content')
@@ -25,7 +25,7 @@
     <div class="bar">
         <mip-form  method="post" url="/search" target="_blank" >
             {{ csrf_field() }}
-            <input type="text" name="q" id="q" placeholder="请输入书名/作者" class="search-key">
+            <input type="text" name="q" id="q" placeholder="请输入书名" class="search-key">
             <input type="hidden" name="modelid" value="13">
             <button type="submit" class="search-btn" id="search-btn">Go</button>
         </mip-form>
@@ -36,15 +36,15 @@
             <i class="iconfont">&#xe7bd;</i>
             <span>排行榜</span>
         </a>
-        <a href="/book" >
+        <a href="/book/" >
             <i class="iconfont">&#xe809;</i>
             <span>小说库</span>
         </a>
-        <a href="/zt" >
+        <a href="/chapter/" >
             <i class="iconfont">&#xe70f;</i>
-            <span>专题</span>
+            <span>章节目录</span>
         </a>
-        <a href="/article" >
+        <a href="/article/" >
             <i class="iconfont">&#xe63a;</i>
             <span>资讯</span>
         </a>
@@ -97,7 +97,7 @@
     <div class="mod new-topic">
         <div class="mod-head">
             <h3>热门专题</h3>
-            <a href="/zt" title="最新专题" >更多<i class="iconfont">&#xe80a;</i></a>
+            <a href="/zt/" title="最新专题" >更多<i class="iconfont">&#xe80a;</i></a>
         </div>
         <div class="tags-list">
             <ul class="clearfix">
@@ -115,7 +115,7 @@
     <div class="mod new-book">
         <div class="mod-head">
             <h3>最新小说</h3>
-            <a href="/book" title="最新小说" >更多<i class="iconfont">&#xe80a;</i></a>
+            <a href="/book/" title="最新小说" >更多<i class="iconfont">&#xe80a;</i></a>
         </div>
         <div class="book-list">
             <ul class="clearfix">
@@ -138,7 +138,7 @@
     <div class="mod new-news">
         <div class="mod-head">
             <h3>最新资讯</h3>
-            <a href="/article" title="最新资讯" >更多<i class="iconfont">&#xe80a;</i></a>
+            <a href="/article/" title="最新资讯" >更多<i class="iconfont">&#xe80a;</i></a>
         </div>
         <div class="news-list">
             <ul class="clearfix">

@@ -1,8 +1,8 @@
 @extends('mobile.layouts.default')
-@section('title', '小说库_'.$book->name.'_')
+@section('title', $book->name.'章节列表_'.$book->protagonist.'小说在线阅读_')
 @section('keywords', $book->name.','.$book->author.','.$book->protagonist)
-@section('description', '小说简介:'.$book->synopsis)
-@section('canonical', env('M_APP_URL').'article/'.$book->id.'.html')
+@section('description', env('APP_NAME').'提供《'.$book->name.'》最新章节目录的索引，更新超级快，无病毒无木马，页面干净清爽，希望大家收藏!')
+@section('canonical', env('M_APP_URL').$book->id.'/list.html')
 
 
 @section('content')
@@ -56,40 +56,34 @@
             </div>
         </div>
 
-        <div class="mod book-read">
-            <div class="mod-head">
-                <h3>精彩章节试读：</h3>
-            </div>
-            <div class="read-content clearfix">
-                <mip-showmore maxheight='screen:0.5' bottomshadow="1" animatetime='.3' id="intro">
-                    @if($try_chapters!==null)
-                        @foreach($try_chapters as $item)
-                            <h3>{{$item->title}}</h3>
-                            {!! $item->chapterContent !!}
-                        @endforeach
-                    @endif
-                </mip-showmore>
-                <div on="tap:intro.toggle" class="content-more" data-closeclass="mip-intro-open" data-closetext="收起内容">
-                    <button class="show">阅读全文</button>
-                    <button class="hidden">阅读全文</button>
-                </div>
-            </div>
-        </div>
-
-
         <div class="mod mod-attentions">
             <div class="mod-head">
-                <h3>相关内容推荐：</h3>
+                <h3>读友们正在关注：</h3>
             </div>
             <!--attentions-->
             <div class="attentions">
                 <ul class="clearfix">
-                    @foreach($articles  as $item)
-                    <li><a href="/article/{{$item->id}}.html" title="{{$item->t_title}}" >{{$item->t_title}}</a></li>
-                    @endforeach
+                    @if(count($chapter))
+                        @foreach($chapter['data'] as $item)
+                            <li><a class="my_chapter" target="_blank" href="@if($item['is_pay']) javascript:void(0) @else /article/{{$item['id']}}.html @endif" data-url="@if($item['is_pay'])@else {{$item['id']}} @endif"  >{{ mb_strlen($item['title'])>=20?mb_substr($item['title'],0,20).'..':$item['title']}} @if($item['is_pay']) <img style="margin-top:4px ; width: 15px;"  src="{{asset('images/icon_zs.png')}}"> <span style="color: #ff69b4">{{$item['goId']}}</span> @endif</a></li>
+                        @endforeach
+                    @endif
                 </ul>
             </div>
-            <div class="chapters-more"><a class="reading" rel="nofollow" href="{{$book->m_read_url}}">阅读更多章节</a></div>    </div>    <div class="readingbox">
+
+            <div class="pages">
+
+
+                @if($chapter['current_page']==1)
+                    <span class="pageindex">第 {{$chapter['current_page']}} 页</span><a href="{{$chapter['next_page_url']}}" class="p-next">下一页</a>
+                @elseif($chapter['current_page']==$chapter['last_page'])
+                    <a href="{{$chapter['prev_page_url']}}" class="p-prev">上一页</a><span class="pageindex">第 {{$chapter['current_page']}} 页</span>
+                @else
+                    <a href="{{$chapter['prev_page_url']}}" class="p-prev">上一页</a><span class="pageindex">第 {{$chapter['current_page']}} 页</span><a href="{{$chapter['next_page_url']}}" class="p-next">下一页</a>
+                @endif
+            </div>
+        </div>
+        <div class="readingbox">
             <a href="http://51ldj.zuszw.com/dw.php?pt=&bookname={{$book->name}}&hero={{$book->author}}" rel="nofollow">
                 <mip-img src="http://oss.mobantianxia.com/20180813/15341243676265.jpg" alt="30天免费畅读"></mip-img>
             </a>
@@ -133,7 +127,7 @@
                         <ul class="clearfix">
                             @foreach($val['books'] as $v)
                             <li>
-                                <a href="/book/{{$v->id}}.html" title="{{$v->name}}" >
+                                <a href="/{{$v->id}}/" title="{{$v->name}}" >
                                     <div class="pic"><mip-img src="{{env('IMG_URL').'/'.$v->cover_img}}" alt="{{$v->name}}"></mip-img></div>
                                     <span>{{$v->name}}</span>
                                     <em><aria>作者：</aria>{{$v->author}}</em>
@@ -150,14 +144,14 @@
         <!-- rec-book -->
         <div class="mod rec-book">
             <div class="mod-head">
-                <h3>最新{{$zxlxtj->typeName}}小说推荐</h3>
+                <h3>最新小说推荐</h3>
             </div>
             <div class="book-list">
                 <ul class="clearfix">
-                    @foreach($zxlxtj as $item)
+                    @foreach($tjxs as $item)
                     <li>
                         <div class="pic"><mip-img src="{{env('IMG_URL').'/'.$item->cover_img}}" alt="{{$item->name}}"></mip-img></div>
-                        <a class="tit" href="/book/{{$item->id}}.html" title="{{$item->name}}" >{{$item->name}}</a>
+                        <a class="tit" href="/{{$item->id}}/" title="{{$item->name}}" >{{$item->name}}</a>
                         <p class="intro">{{$item->synopsis}}</p>
                         <p class="info"><span><i class="iconfont">&#xe600;</i>{{$item->author}}</span><em class="type">{{$item->type[0]->typename}}</em>
                             <em class="finish">{{$item->status?'已完结':'连载中'}}</em>                </p>
@@ -188,7 +182,7 @@
     <div class="cmargin"></div>
     <div class="bread">
         <span>您的位置 : </span>
-        <a href="/">首页</a> &gt; <a href="/book/" >小说库</a> &gt; <a href="/{{$book->type[0]->typedir}}" >{{$book->type[0]->typename}}</a> &gt; {{$book->name}} </div>
+        <a href="/">首页</a> &gt; <a href="/chapter/" >章节目录</a> &gt; <a href="/{{$book->type[0]->typedir}}" >{{$book->type[0]->typename}}</a> &gt; {{$book->name}} </div>
     <div class="cmargin"></div>
 
 @stop

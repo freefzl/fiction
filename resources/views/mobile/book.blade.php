@@ -1,8 +1,12 @@
 @extends('mobile.layouts.default')
-@section('title', '小说库')
+@section('title', '经典'.$books['typename'].'小说,好看的'.$books['typename'].'小说完结_')
 @section('keywords', '网络小说在线推荐')
-@section('description', '网站有大量精品小说推荐，包含都市职场、玄幻奇幻、古代言情、幻想异能、武侠仙侠、历史军事、灵异科幻、游戏竞技、现代言情、穿越重生、总裁豪门等各类好看小说。')
-@section('mobile', 'http://www.baidu.com')
+@section('description', '好看的'.$books['typename'].'小说推荐、经典的'.$books['typename'].'小说排行榜、完本'.$books['typename'].'小说精选免费阅读就在'.env('APP_NAME'))
+@if(isset($books['typedir']))
+    @section('canonical',env('M_APP_URL').$books['typedir'].'/')
+@else
+    @section('canonical',env('M_APP_URL').'book/')
+@endif
 
 
 @section('content')
@@ -51,7 +55,7 @@
     <div class="bread">
         <span>您的位置 : </span>
         <a href="/">首页</a> &gt;
-        <a href="/book" >小说库</a> &gt;
+        <a href="/book/" >小说库</a> &gt;
     </div>
 
     <div class="cmargin"></div>

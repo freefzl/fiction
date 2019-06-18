@@ -69,7 +69,12 @@ Route::domain('m.xiaoshuo.com')->group(function () {
     Route::get('/article/','Mobile\ArticleController@index');
     Route::get('/article/{id}','Mobile\ArticleController@xq');
 
-    Route::post('/search/','Mobile\IndexController@Search');
+    Route::any('/search/','Mobile\IndexController@Search');
+
+    Route::get('/chapter/','Mobile\ChapterController@index');
+    Route::get('/chapter/{tid}-{did}-{sid}','Mobile\ChapterController@index');
+    Route::get('/{id}/','Mobile\ChapterController@xq');
+    Route::get('/{id}/list.html','Mobile\ChapterController@chapter_list');
 });
 
 

@@ -19,6 +19,7 @@ class BookController extends Controller
         $books = NovelBook::where(['is_delete'=>0])->with(['type'])->paginate(30)->toArray();
 //        dump($books);
         $types = NovelType::all();
+        $books['typename'] = '';
 
         return view('mobile.book',compact('books','types'));
     }
@@ -30,24 +31,37 @@ class BookController extends Controller
 
         $arr = explode('.',$id);
         $id =  (int)$arr[0];
-        $book = NovelBook::where(['id'=>$id])->with(['try','type','comment'])->first();
+        $book = NovelBook::where(['id'=>$id])->with(['type','comment'])->first();
 
         if($book==null){
             return abort(404);
         }
+        $try_ids = json_decode($book->try_id);
+        $try_chapters=[];
+        if($try_ids){
+            foreach ($try_ids as $try_id){
+                $try_chapters[] = NovelChapter::where(['id'=>$try_id])->first();
+            }
+        }else{
+            $try_chapters=null;
+        }
+
         $tags = NovelTag::select('id','tagname')->whereIn('id',json_decode($book->tag_ids))->get();
 
         $articles = $this->xgnrtj($id);
         $cnxh = $this->cnxh();
         $zxlxtj = $this->zxlxtj($book->type[0]->id);
 
-        return view('mobile.book_xq',compact('book','tags','articles','cnxh','zxlxtj'));
+        return view('mobile.book_xq',compact('book','tags','articles','cnxh','zxlxtj','try_chapters'));
     }
 
     public function huanxiangyinen()
     {
         $books = NovelBook::where(['is_delete'=>0])->where(['type_id'=>2])->with(['type'])->paginate(30)->toArray();
         $types = NovelType::all();
+        $type = NovelType::where(['id'=>2])->first();
+        $books['typename'] = $type->typename;
+        $books['typedir'] = $type->typedir;
 
         return view('mobile.book',compact('books','types'));
     }
@@ -56,6 +70,9 @@ class BookController extends Controller
     {
         $books = NovelBook::where(['is_delete'=>0])->where(['type_id'=>4])->with(['type'])->paginate(30)->toArray();
         $types = NovelType::all();
+        $type = NovelType::where(['id'=>4])->first();
+        $books['typename'] = $type->typename;
+        $books['typedir'] = $type->typedir;
         return view('mobile.book',compact('books','types'));
     }
 
@@ -63,6 +80,9 @@ class BookController extends Controller
     {
         $books = NovelBook::where(['is_delete'=>0])->where(['type_id'=>6])->with(['type'])->paginate(30)->toArray();
         $types = NovelType::all();
+        $type = NovelType::where(['id'=>6])->first();
+        $books['typename'] = $type->typename;
+        $books['typedir'] = $type->typedir;
         return view('mobile.book',compact('books','types'));
     }
 
@@ -70,6 +90,9 @@ class BookController extends Controller
     {
         $books = NovelBook::where(['is_delete'=>0])->where(['type_id'=>7])->with(['type'])->paginate(30)->toArray();
         $types = NovelType::all();
+        $type = NovelType::where(['id'=>7])->first();
+        $books['typename'] = $type->typename;
+        $books['typedir'] = $type->typedir;
         return view('mobile.book',compact('books','types'));
     }
 
@@ -77,6 +100,9 @@ class BookController extends Controller
     {
         $books = NovelBook::where(['is_delete'=>0])->where(['type_id'=>8])->with(['type'])->paginate(30)->toArray();
         $types = NovelType::all();
+        $type = NovelType::where(['id'=>8])->first();
+        $books['typename'] = $type->typename;
+        $books['typedir'] = $type->typedir;
         return view('mobile.book',compact('books','types'));
     }
 
@@ -84,6 +110,9 @@ class BookController extends Controller
     {
         $books = NovelBook::where(['is_delete'=>0])->where(['type_id'=>9])->with(['type'])->paginate(30)->toArray();
         $types = NovelType::all();
+        $type = NovelType::where(['id'=>9])->first();
+        $books['typename'] = $type->typename;
+        $books['typedir'] = $type->typedir;
         return view('mobile.book',compact('books','types'));
     }
 
@@ -91,6 +120,9 @@ class BookController extends Controller
     {
         $books = NovelBook::where(['is_delete'=>0])->where(['type_id'=>10])->with(['type'])->paginate(30)->toArray();
         $types = NovelType::all();
+        $type = NovelType::where(['id'=>10])->first();
+        $books['typename'] = $type->typename;
+        $books['typedir'] = $type->typedir;
         return view('mobile.book',compact('books','types'));
     }
 
@@ -98,6 +130,9 @@ class BookController extends Controller
     {
         $books = NovelBook::where(['is_delete'=>0])->where(['type_id'=>11])->with(['type'])->paginate(30)->toArray();
         $types = NovelType::all();
+        $type = NovelType::where(['id'=>11])->first();
+        $books['typename'] = $type->typename;
+        $books['typedir'] = $type->typedir;
         return view('mobile.book',compact('books','types'));
     }
 
@@ -105,6 +140,9 @@ class BookController extends Controller
     {
         $books = NovelBook::where(['is_delete'=>0])->where(['type_id'=>3])->with(['type'])->paginate(30)->toArray();
         $types = NovelType::all();
+        $type = NovelType::where(['id'=>3])->first();
+        $books['typename'] = $type->typename;
+        $books['typedir'] = $type->typedir;
         return view('mobile.book',compact('books','types'));
     }
 
@@ -113,6 +151,9 @@ class BookController extends Controller
     {
         $books = NovelBook::where(['is_delete'=>0])->where(['type_id'=>12])->with(['type'])->paginate(30)->toArray();
         $types = NovelType::all();
+        $type = NovelType::where(['id'=>12])->first();
+        $books['typename'] = $type->typename;
+        $books['typedir'] = $type->typedir;
         return view('mobile.book',compact('books','types'));
     }
 
@@ -120,6 +161,9 @@ class BookController extends Controller
     {
         $books = NovelBook::where(['is_delete'=>0])->where(['type_id'=>5])->with(['type'])->paginate(30)->toArray();
         $types = NovelType::all();
+        $type = NovelType::where(['id'=>5])->first();
+        $books['typename'] = $type->typename;
+        $books['typedir'] = $type->typedir;
         return view('mobile.book',compact('books','types'));
     }
 
@@ -127,6 +171,9 @@ class BookController extends Controller
     {
         $books = NovelBook::where(['is_delete'=>0])->where(['type_id'=>20])->with(['type'])->paginate(30)->toArray();
         $types = NovelType::all();
+        $type = NovelType::where(['id'=>20])->first();
+        $books['typename'] = $type->typename;
+        $books['typedir'] = $type->typedir;
         return view('mobile.book',compact('books','types'));
     }
 
@@ -134,6 +181,9 @@ class BookController extends Controller
     {
         $books = NovelBook::where(['is_delete'=>0])->where(['type_id'=>22])->with(['type'])->paginate(30)->toArray();
         $types = NovelType::all();
+        $type = NovelType::where(['id'=>22])->first();
+        $books['typename'] = $type->typename;
+        $books['typedir'] = $type->typedir;
         return view('mobile.book',compact('books','types'));
     }
 

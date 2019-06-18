@@ -93,7 +93,6 @@
                         <li><a href='/article/{{$item->id}}.html'  target="_blank">{{$item->title}}</a></li>
                         @endforeach
                         @endif
-                        {{--<li><a href='/chapter/{{$book->id}}/list.html'  target="_blank">查看全部章节</a></li>--}}
                     </ul>
 
                     <h3>最新章节：</h3>

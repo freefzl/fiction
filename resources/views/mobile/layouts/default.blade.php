@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="Cache-Control" content="no-transform">
     <meta http-equiv="Cache-Control" content="no-siteapp">
-    <title>@yield('title', '首页')-我的站点</title>
+    <title>@yield('title', '绝世武魂最新章节_男频小说排行榜推荐_'){{env('APP_NAME')}}</title>
     <meta name="keywords" content="@yield('keywords', '网络小说在线推荐')" />
-    <meta name="description" content="@yield('description', '网站有大量精品小说推荐，包含都市职场、玄幻奇幻、古代言情、幻想异能、武侠仙侠、历史军事、灵异科幻、游戏竞技、现代言情、穿越重生、总裁豪门等各类好看小说。')" />
+    <meta name="description" content="@yield('description', env('APP_NAME').'(www.linchengxs.com)为广大书友提供男频、女频小说排行榜推荐，'.env('APP_NAME').'为你推荐热门男频小说《绝世武魂》，绝世武魂是作者洛城东的一本玄幻小说。')" />
+    @yield('meta')
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
     <link href="{{asset('css/mip.min.css')}}" type="text/css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{asset('css/mip.css')}}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
-    <link rel="canonical" href="http://m.xiaoshuo.com/">
+    <link rel="canonical" href="@yield('canonical',env('M_APP_URL'))">
     <style mip-custom>
         /* background */
         .mod-head h2:before,

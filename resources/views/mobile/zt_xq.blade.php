@@ -1,8 +1,8 @@
 @extends('mobile.layouts.default')
-@section('title', '专题 - '.$tag->tagname.'小说')
+@section('title', '专题_'.$tag->tagname.'小说_')
 @section('keywords', $tag->tagname.'小说'  )
 @section('description', $tag->tag_synopsis)
-@section('mobile', 'http://www.baidu.com')
+@section('canonical', env('M_APP_URL').'top/'.$tag->id.'.html')
 
 
 @section('content')
@@ -79,7 +79,7 @@
     <div class="bread">
         <span>您的位置 : </span>
         <a href="/">首页</a> &gt;
-        <a href="/zt">专题</a> &gt; {{$tag->tagname}}小说 &gt;
+        <a href="/zt/">专题</a> &gt; {{$tag->tagname}}小说 &gt;
     </div>
     <div class="cmargin"></div>
 

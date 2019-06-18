@@ -22,19 +22,19 @@
                     <i class="iconfont">&#xe626;</i>
                     <span>首页</span>
                 </a>
-                <a href="/top" >
+                <a href="/top/" >
                     <i class="iconfont">&#xe7bd;</i>
                     <span>排行榜</span>
                 </a>
-                <a href="/book" >
+                <a href="/book/" >
                     <i class="iconfont">&#xe809;</i>
                     <span>小说库</span>
                 </a>
-                <a href="/zt" >
+                <a href="/chapter/" >
                     <i class="iconfont">&#xe70f;</i>
-                    <span>专题</span>
+                    <span>目录</span>
                 </a>
-                <a href="/article" >
+                <a href="/article/" >
                     <i class="iconfont">&#xe63a;</i>
                     <span>资讯</span>
                 </a>

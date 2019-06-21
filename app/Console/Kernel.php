@@ -2,7 +2,8 @@
 
 namespace App\Console;
 
-use App\Services\UpdateBooks;
+use App\Console\Commands\OnlineUpdate;
+use App\Console\Commands\UpdateBooks;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use Illuminate\Support\Facades\DB;
@@ -15,7 +16,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        OnlineUpdate::class,
+        UpdateBooks::class,
     ];
 
     /**
@@ -38,10 +40,12 @@ class Kernel extends ConsoleKernel
 
         $schedule->command('online_update')
             ->everyFiveMinutes()
+            ->timezone('Asia/Shanghai')
             ->between('9:00', '12:00');
 
         $schedule->command('online_update')
             ->everyFiveMinutes()
+            ->timezone('Asia/Shanghai')
             ->between('13:00', '18:00');
     }
 

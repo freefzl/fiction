@@ -32,7 +32,7 @@
     </div>
     <!-- nav -->
     <div class="nav">
-        <a href="/top" >
+        <a href="/top/" >
             <i class="iconfont">&#xe7bd;</i>
             <span>排行榜</span>
         </a>

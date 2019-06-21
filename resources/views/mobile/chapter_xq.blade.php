@@ -73,7 +73,7 @@
 
         <div class="mod mod-attentions">
             <div class="mod-head">
-                <h3>{{$book->name}}章节目录：</h3>
+                <h3>读友们正在关注：</h3>
             </div>
             <!--attentions-->
             <div class="attentions">

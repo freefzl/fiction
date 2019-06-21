@@ -11,7 +11,7 @@
             <div class="top-nav">
                 <ul class="clearfix">
                     @foreach($types as $type)
-                        <li class="{{$_SERVER['REQUEST_URI']==="/top/$type->typedir"?'on':''}}"><a href="/top/{{$type->typedir}}" title="{{$type->typename}}">{{$type->typename}}<span></span></a></li>
+                        <li class="{{$_SERVER['REQUEST_URI']==="/top/$type->typedir/"?'on':''}}"><a href="/top/{{$type->typedir}}/" title="{{$type->typename}}">{{$type->typename}}<span></span></a></li>
                     @endforeach
                 </ul>
             </div>

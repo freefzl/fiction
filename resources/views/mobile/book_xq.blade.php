@@ -89,7 +89,7 @@
                     @endforeach
                 </ul>
             </div>
-            <div class="chapters-more"><a class="reading"  href="{{$book->m_read_url}}">阅读更多章节</a></div>    </div>    <div class="readingbox">
+            <div class="chapters-more"><a class="reading" rel="nofollow" href="{{$book->m_read_url}}">阅读更多章节</a></div>    </div>    <div class="readingbox">
             <a href="http://51ldj.zuszw.com/dw.php?pt=&bookname={{$book->name}}&hero={{$book->author}}" rel="nofollow">
                 <mip-img src="http://oss.mobantianxia.com/20180813/15341243676265.jpg" alt="30天免费畅读"></mip-img>
             </a>

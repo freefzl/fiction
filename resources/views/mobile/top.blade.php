@@ -13,7 +13,7 @@
             <div class="top-nav">
                 <ul class="clearfix">
                     @foreach($types as $item)
-                    <li><a href="/top/{{$item->typedir}}" title="{{$item->typename}}">{{$item->typename}}榜<span></span></a></li>
+                    <li><a href="/top/{{$item->typedir}}/" title="{{$item->typename}}">{{$item->typename}}榜<span></span></a></li>
 
                     @endforeach
                 </ul>

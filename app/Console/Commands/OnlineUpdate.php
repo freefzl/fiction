@@ -11,7 +11,7 @@ class OnlineUpdate extends Command
      *
      * @var string
      */
-    protected $signature = 'command:online_update';
+    protected $signature = 'online_update';
 
     /**
      * The console command description.

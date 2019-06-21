@@ -2,11 +2,11 @@
 
 namespace App\Console;
 
+
 use App\Console\Commands\OnlineUpdate;
 use App\Console\Commands\UpdateBooks;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
-use Illuminate\Support\Facades\DB;
 
 class Kernel extends ConsoleKernel
 {
@@ -33,8 +33,8 @@ class Kernel extends ConsoleKernel
 
         /*$schedule->call(function () {
 
-        })->daily();
-        $schedule->call(UpdateBooks::DealEarlyComments())->yearly();*/
+        })->daily();*/
+//        $schedule->call(UpdateBooks::class)->daily();
 
         $schedule->command('update_books')->daily();
 
@@ -45,7 +45,9 @@ class Kernel extends ConsoleKernel
 
         $schedule->command('online_update')
             ->everyMinute()
+            ->timezone('Asia/Shanghai')
             ->between('13:00', '18:00');
+
     }
 
     /**

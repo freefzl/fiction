@@ -11,7 +11,7 @@ class UpdateBooks extends Command
      *
      * @var string
      */
-    protected $signature = 'command:update_books';
+    protected $signature = 'update_books';
 
     /**
      * The console command description.

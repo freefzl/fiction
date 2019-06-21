@@ -36,11 +36,11 @@ class Kernel extends ConsoleKernel
         $schedule->command('update_books')->daily();
         $schedule->command('online_update')
             ->everyFiveMinutes()
-            ->timezone('America/Chicago')
+            ->timezone('Asia/Shanghai')
             ->between('9:00', '12:00');
         $schedule->command('online_update')
             ->everyFiveMinutes()
-            ->timezone('America/Chicago')
+            ->timezone('Asia/Shanghai')
             ->between('13:00', '18:00');
     }
 

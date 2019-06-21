@@ -22,10 +22,26 @@ use GuzzleHttp\Exception\RequestException;
 class OnlineUpdate{
     public static function updateBooks()
     {
+        $types = NovelType::get();
+        foreach ($types as $type){
+            $is_type = NovelBook::where(['type_id'=>$type->id])->where(['is_up'=>1])->first();
+
+            if(!$is_type){
+                NovelBook::where(['type_id'=>$type->id])->where(['is_up'=>0])->limit(1)->update(['is_up'=>1]);
+                $id = NovelBook::where(['type_id'=>$type->id])->where(['is_up'=>1])->orderBy('id','desc')->limit(1)->first();
+
+                if($id){
+                    NovelChapter::where(['bid'=>$id->id])->update(['is_up'=>1]);
+                }
+
+            }
+        }
         NovelBook::where(['is_up'=>0])->limit(1)->update(['is_up'=>1]);
-        $ids = NovelBook::select('id')->where(['is_up'=>1])->orderBy('id','desc')->limit(1)->get();
-        foreach ($ids as $id){
+        $id = NovelBook::where(['is_up'=>1])->orderBy('id','desc')->limit(1)->first();
+
+        if($id){
             NovelChapter::where(['bid'=>$id->id])->update(['is_up'=>1]);
         }
+
     }
 }

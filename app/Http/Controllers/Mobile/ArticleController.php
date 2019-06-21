@@ -14,16 +14,9 @@ class ArticleController extends Controller
 {
     public function index()
     {
-
-
-
-
-        $chapters= NovelChapter::where(['goId'=>'0'])->where(['is_pay'=>0])->with(['book'=>function($query){
+        $chapters= NovelChapter::where(['is_up'=>1])->where(['goId'=>'0'])->where(['is_pay'=>0])->with(['book'=>function($query){
                     $query->with(['type'])->get();
                 }])->orderBy('id','desc')->simplePaginate(20);
-
-
-
 
 
         $articles = CreateTDK::getTitle($chapters);
@@ -41,7 +34,7 @@ class ArticleController extends Controller
         $arr = explode('.',$id);
         $id =  (int)$arr[0];
 
-        $chapter = NovelChapter::where(['id'=>$id])->where(['goId'=>'0'])->where(['is_pay'=>0])->with(['book'=>function($query){
+        $chapter = NovelChapter::where(['is_up'=>1])->where(['id'=>$id])->where(['goId'=>'0'])->where(['is_pay'=>0])->with(['book'=>function($query){
             $query->with(['comment'])->get();
         }])->get();
 
@@ -53,18 +46,18 @@ class ArticleController extends Controller
 
         $cbl = $this->ceBianLan();
 
-        $up = NovelChapter::where(['goId'=>'0'])->where(['is_pay'=>0])->where('id','<',$id)->orderby('id','desc')->limit(1)->get();
+        $up = NovelChapter::where(['is_up'=>1])->where(['goId'=>'0'])->where(['is_pay'=>0])->where('id','<',$id)->orderby('id','desc')->limit(1)->get();
         if($up){
             $up = CreateTDK::getTitle($up);
         }
-        $down = NovelChapter::where(['goId'=>'0'])->where(['is_pay'=>0])->where('id','>',$id)->limit(1)->get();
+        $down = NovelChapter::where(['is_up'=>1])->where(['goId'=>'0'])->where(['is_pay'=>0])->where('id','>',$id)->limit(1)->get();
 
         if($down){
             $down = CreateTDK::getTitle($down);
         }
 
 
-        $relateds = NovelChapter::where(['bid'=>$chapter[0]->bid])->where(['goId'=>'0'])->where(['is_pay'=>0])->limit(10)->get();
+        $relateds = NovelChapter::where(['is_up'=>1])->where(['bid'=>$chapter[0]->bid])->where(['goId'=>'0'])->where(['is_pay'=>0])->limit(10)->get();
         $relateds = CreateTDK::getTitle($relateds);
 
         return view('mobile.article_xq',compact('chapter','cbl','up','down','relateds'));
@@ -73,13 +66,13 @@ class ArticleController extends Controller
 
     public function ceBianLan(){
         //热门资讯
-        $rmzxs = NovelChapter::where(['goId'=>'0'])->with(['book'=>function($query){
+        $rmzxs = NovelChapter::where(['is_up'=>1])->where(['goId'=>'0'])->with(['book'=>function($query){
             $query->with(['type'])->get();
         }])->limit(10)->get();
         $data['rmzxs'] = CreateTDK::getTitle($rmzxs);
 
         //最新小说
-        $data['zxxss'] = NovelBook::limit(8)->get();
+        $data['zxxss'] = NovelBook::where(['is_up'=>1])->limit(8)->get();
 
         return $data;
     }

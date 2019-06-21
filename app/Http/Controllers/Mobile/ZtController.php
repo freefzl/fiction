@@ -28,7 +28,7 @@ class ZtController extends Controller
             }
         }
         $count = count($arr);
-        $books = NovelBook::inRandomOrder()->with(['type'])->limit(20)->get();
+        $books = NovelBook::where(['is_up'=>1])->inRandomOrder()->with(['type'])->limit(20)->get();
 
         $tags = NovelTag::inRandomOrder()->limit(3)->get();
         $new_tags = NovelTag::inRandomOrder()->limit(4)->get();

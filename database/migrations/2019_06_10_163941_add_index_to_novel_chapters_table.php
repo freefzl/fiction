@@ -19,6 +19,7 @@ class AddIndexToNovelChaptersTable extends Migration
             $table->index('title');
             $table->index('is_pay');
             $table->index('goId');
+            $table->index('is_up');
         });
     }
 
@@ -30,7 +31,7 @@ class AddIndexToNovelChaptersTable extends Migration
     public function down()
     {
         Schema::table('novel_chapters', function (Blueprint $table) {
-            $table->dropIndex(['bid','chapter_id','title','is_pay','goId']);
+            $table->dropIndex(['bid','chapter_id','title','is_pay','goId','is_up']);
         });
     }
 }

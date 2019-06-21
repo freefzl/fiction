@@ -45,7 +45,7 @@ class ChapterController extends Controller
                 $model = $model->where(['status'=>1]);
             }
         }
-        $model = $model->with(['type'])->orderBy('id','desc')->paginate(30)->toArray();
+        $model = $model->where(['is_up'=>1])->with(['type'])->orderBy('id','desc')->paginate(30)->toArray();
         $model['typename'] = $typename;
 //        dump($model);
         $types = NovelType::all();
@@ -58,22 +58,22 @@ class ChapterController extends Controller
         $arr = explode('.',$id);
         $id =  (int)$arr[0];
 
-        $book = NovelBook::where(['id'=>$id])->with(['type','comment'])->first();
+        $book = NovelBook::where(['is_up'=>1])->where(['id'=>$id])->with(['type','comment'])->first();
         if($book==null){
             return abort(404);
         }
         $tags = NovelTag::select('id','tagname')->whereIn('id',json_decode($book->tag_ids))->get();
 
-        $chapter = NovelChapter::where(['bid'=>$id])->where(['goId'=>'0'])->where(['is_pay'=>0])->orderBy('id','desc')->limit(5)->get();
+        $chapter = NovelChapter::where(['is_up'=>1])->where(['bid'=>$id])->where(['goId'=>'0'])->where(['is_pay'=>0])->orderBy('id','desc')->limit(5)->get();
 
 
-        $new_chapter = NovelChapter::where(['bid'=>$id])->orderBy('id','desc')->limit(5)->get();
+        $new_chapter = NovelChapter::where(['is_up'=>1])->where(['bid'=>$id])->orderBy('id','desc')->limit(5)->get();
 
         $cnxh = $this->cnxh();
         $rmzt = $this->rmzt();
         $tjxs = $this->tjxs();
 
-        $last_new_chapter = NovelChapter::where(['bid'=>$id])->where(['goId'=>'0'])->where(['is_pay'=>0])->OrderBy('id','desc')->limit(1)->first();
+        $last_new_chapter = NovelChapter::where(['is_up'=>1])->where(['bid'=>$id])->where(['goId'=>'0'])->where(['is_pay'=>0])->OrderBy('id','desc')->limit(1)->first();
 
         return view('mobile.chapter_xq',compact('book','tags','cnxh','rmzt','tjxs','chapter','new_chapter','last_new_chapter'));
     }
@@ -82,7 +82,7 @@ class ChapterController extends Controller
     public function cnxh(){
         $data['tags'] = NovelTag::orderBy('id','desc')->limit(4)->get();
         foreach ($data['tags'] as $k=>$tag){
-            $data['tags'][$k]['books'] = NovelBook::where(['is_delete'=>0])->with('type')->inRandomOrder()->limit(6)->get();
+            $data['tags'][$k]['books'] = NovelBook::where(['is_up'=>1])->where(['is_delete'=>0])->with('type')->inRandomOrder()->limit(6)->get();
         }
         return $data;
     }
@@ -92,7 +92,7 @@ class ChapterController extends Controller
     }
 
     public function tjxs(){
-        return NovelBook::inRandomOrder()->limit(5)->get();
+        return NovelBook::where(['is_up'=>1])->inRandomOrder()->limit(5)->get();
     }
 
     public function chapter_list($id)
@@ -101,13 +101,13 @@ class ChapterController extends Controller
         $arr = explode('.',$id);
         $id =  (int)$arr[0];
 
-        $book = NovelBook::where(['id'=>$id])->with(['type','comment'])->first();
+        $book = NovelBook::where(['is_up'=>1])->where(['id'=>$id])->with(['type','comment'])->first();
         if($book==null){
             return abort(404);
         }
         $tags = NovelTag::select('id','tagname')->whereIn('id',json_decode($book->tag_ids))->get();
 
-        $chapter = NovelChapter::where(['bid'=>$id])->paginate(50)->toArray();
+        $chapter = NovelChapter::where(['is_up'=>1])->where(['bid'=>$id])->paginate(50)->toArray();
 
         $cnxh = $this->cnxh();
         $rmzt = $this->rmzt();

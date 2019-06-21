@@ -27,7 +27,7 @@
             <div class="news-info">
                 <div class="title">
                     <h1>{{$chapter[0]->t_title}}</h1>
-                    <p><span>时间：<em>{{$chapter[0]->created_at}}</em></span><span>编辑：<em>{{$chapter[0]->book->comment[0]->comment_name}}</em></span></p>
+                    <p><span>时间：<em>{{$chapter[0]->updated_at}}</em></span><span>编辑：<em>{{$chapter[0]->book->comment[0]->comment_name}}</em></span></p>
                 </div>
                 <div class="description">{{$chapter[0]->description}}</div>
                 <div class="cover">
@@ -68,7 +68,7 @@
                     <h3>相关文章</h3>
                     <ul class="clearfix">
                         @foreach($relateds as $related)
-                        <li><a href="/article/{{$related->id}}.html" title="{{$related->t_title}}" target="_blank">{{$related->t_title}}</a><span>{{date('Y-m-d',strtotime($related->created_at))}}</span></li>
+                        <li><a href="/article/{{$related->id}}.html" title="{{$related->t_title}}" target="_blank">{{$related->t_title}}</a><span>{{date('Y-m-d',strtotime($related->updated_at))}}</span></li>
                         @endforeach
 
                     </ul>

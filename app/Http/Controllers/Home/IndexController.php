@@ -17,7 +17,7 @@ class IndexController extends Controller
 
         //banner
         $banners = config('name.banner_img');
-        $banner_books = NovelBook::orderBy('id','desc')->limit(5)->get();
+        $banner_books = NovelBook::where(['is_up'=>1])->orderBy('id','desc')->limit(5)->get();
 
         foreach ($banner_books as $k=>$banner_book){
             $banner_books[$k]['banners'] = $banners[$k];
@@ -25,7 +25,7 @@ class IndexController extends Controller
 
         $types = NovelType::all();
 
-        $tj_chapter =  NovelChapter::where(['is_pay'=>0])->where(['goId'=>0])->with(['book'])->orderBy('id','desc')->limit(1000)->get();
+        $tj_chapter =  NovelChapter::where(['is_up'=>1])->where(['is_pay'=>0])->where(['goId'=>0])->with(['book'])->orderBy('id','desc')->limit(1000)->get();
 
         $tj_chapter = $tj_chapter->random(3);
 
@@ -35,37 +35,37 @@ class IndexController extends Controller
 
 //        dd($tj_chapter->toArray());
         //推荐小说
-        $tj_firsts = NovelBook::orderBy('id','desc')->limit(3)->get();
+        $tj_firsts = NovelBook::where(['is_up'=>1])->orderBy('id','desc')->limit(3)->get();
 
-        $tj_books = NovelBook::with(['type'])->inRandomOrder()->limit(6)->get();
+        $tj_books = NovelBook::where(['is_up'=>1])->with(['type'])->inRandomOrder()->limit(6)->get();
         //热门小说
-        $rm_firsts = NovelBook::limit(3)->get();
-        $rm_books = NovelBook::inRandomOrder()->limit(6)->get();
+        $rm_firsts = NovelBook::where(['is_up'=>1])->limit(3)->get();
+        $rm_books = NovelBook::where(['is_up'=>1])->inRandomOrder()->limit(6)->get();
         //最新小说
 //        $types
-        $alls = NovelBook::orderBy('id','desc')->limit(16)->get();
+        $alls = NovelBook::where(['is_up'=>1])->orderBy('id','desc')->limit(16)->get();
 
 
         $news = NovelType::limit(10)->get();
 
         foreach ($news as $k=>$type){
-            $news[$k]->books = NovelBook::where(['type_id'=>$type->id])->orderBy('id','desc')->limit(16)->get();
+            $news[$k]->books = NovelBook::where(['is_up'=>1])->where(['type_id'=>$type->id])->orderBy('id','desc')->limit(16)->get();
         }
 
 //        dd($news->toArray());
 
         //推荐榜
-        $tjbs = NovelBook::inRandomOrder()->limit(10)->get();
+        $tjbs = NovelBook::where(['is_up'=>1])->inRandomOrder()->limit(10)->get();
         //人气榜
-        $rqbs = NovelBook::inRandomOrder()->limit(10)->get();
+        $rqbs = NovelBook::where(['is_up'=>1])->inRandomOrder()->limit(10)->get();
         //女生榜
-        $girls = NovelBook::where(['channel_id'=>2])->limit(10)->get();
+        $girls = NovelBook::where(['is_up'=>1])->where(['channel_id'=>2])->limit(10)->get();
         //男生榜
-        $boys = NovelBook::where(['channel_id'=>1])->limit(10)->get();
+        $boys = NovelBook::where(['is_up'=>1])->where(['channel_id'=>1])->limit(10)->get();
 
 
         //小说资讯
-        $chapters = NovelChapter::where(['is_pay'=>0])->where(['goId'=>0])->orderBy('id','desc')->limit(200)->get();
+        $chapters = NovelChapter::where(['is_up'=>1])->where(['is_pay'=>0])->where(['goId'=>0])->orderBy('id','desc')->limit(200)->get();
         $chapters = $chapters->random(10);
         $chapters = CreateTDK::getTitle($chapters);
 
@@ -88,10 +88,10 @@ class IndexController extends Controller
     public function Search(Request $request){
         $search = $request->q??'';
 
-        $books = NovelBook::where('name','like','%'.$search.'%')->with(['type'])->limit(30)->get();
+        $books = NovelBook::where(['is_up'=>1])->where('name','like','%'.$search.'%')->with(['type'])->limit(30)->get();
 
         if(!count($books)){
-            $rands = NovelBook::inRandomOrder()->with(['type'])->limit(16)->get();
+            $rands = NovelBook::where(['is_up'=>1])->inRandomOrder()->with(['type'])->limit(16)->get();
         }
 
         return view('home.search',compact('books','search','rands'));

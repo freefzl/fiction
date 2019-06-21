@@ -14,7 +14,7 @@ class AddIndexToNovelBooksTable extends Migration
     public function up()
     {
         Schema::table('novel_books', function (Blueprint $table) {
-            $table->index('try_id');
+            $table->index('is_up');
         });
     }
 
@@ -26,7 +26,7 @@ class AddIndexToNovelBooksTable extends Migration
     public function down()
     {
         Schema::table('novel_books', function (Blueprint $table) {
-            $table->dropIndex(['try_id']);
+            $table->dropIndex(['is_up']);
         });
     }
 }

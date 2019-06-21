@@ -15,17 +15,17 @@ class TopController extends Controller
         $types = NovelType::all();
 
         //推荐
-        $recommend = NovelBook::inRandomOrder()->limit(10)->get();
+        $recommend = NovelBook::where(['is_up'=>1])->inRandomOrder()->limit(10)->get();
         //完结
-        $over = NovelBook::where(['status'=>1])->limit(10)->get();
+        $over = NovelBook::where(['is_up'=>1])->where(['status'=>1])->limit(10)->get();
         //人气
-        $moods = NovelBook::inRandomOrder()->limit(10)->get();
+        $moods = NovelBook::where(['is_up'=>1])->inRandomOrder()->limit(10)->get();
         //更新
-        $update = NovelBook::orderBy('updated_at','desc')->limit(10)->get();
+        $update = NovelBook::where(['is_up'=>1])->orderBy('updated_at','desc')->limit(10)->get();
         //女生
-        $girl = NovelBook::where(['channel_id'=>2])->limit(10)->get();
+        $girl = NovelBook::where(['is_up'=>1])->where(['channel_id'=>2])->limit(10)->get();
         //男生
-        $boy = NovelBook::where(['channel_id'=>1])->limit(10)->get();
+        $boy = NovelBook::where(['is_up'=>1])->where(['channel_id'=>1])->limit(10)->get();
 
         return view('home.top',compact('types','recommend','over','moods','update','girl','boy'));
     }
@@ -36,79 +36,79 @@ class TopController extends Controller
         switch ($name){
             case 'huanxiangyinen':
                 $type = NovelType::where(['typedir'=>$name])->first();
-                $books = NovelBook::where(['type_id'=>$type->id])->orderBy('id','desc')->limit(10)->get();
+                $books = NovelBook::where(['is_up'=>1])->where(['type_id'=>$type->id])->orderBy('id','desc')->limit(10)->get();
                 $books->typename = $type->typename;
                 $books->typedir = $type->typedir;
                 break;
             case 'xiandaiyanqing':
                 $type = NovelType::where(['typedir'=>$name])->first();
-                $books = NovelBook::where(['type_id'=>$type->id])->orderBy('id','desc')->limit(10)->get();
+                $books = NovelBook::where(['is_up'=>1])->where(['type_id'=>$type->id])->orderBy('id','desc')->limit(10)->get();
                 $books->typename = $type->typename;
                 $books->typedir = $type->typedir;
                 break;
             case 'dushizhichang':
                 $type = NovelType::where(['typedir'=>$name])->first();
-                $books = NovelBook::where(['type_id'=>$type->id])->orderBy('id','desc')->limit(10)->get();
+                $books = NovelBook::where(['is_up'=>1])->where(['type_id'=>$type->id])->orderBy('id','desc')->limit(10)->get();
                 $books->typename = $type->typename;
                 $books->typedir = $type->typedir;
                 break;
             case 'zongcaihaomen':
                 $type = NovelType::where(['typedir'=>$name])->first();
-                $books = NovelBook::where(['type_id'=>$type->id])->orderBy('id','desc')->limit(10)->get();
+                $books = NovelBook::where(['is_up'=>1])->where(['type_id'=>$type->id])->orderBy('id','desc')->limit(10)->get();
                 $books->typename = $type->typename;
                 $books->typedir = $type->typedir;
                 break;
             case 'xuanhuanqihuan':
                 $type = NovelType::where(['typedir'=>$name])->first();
-                $books = NovelBook::where(['type_id'=>$type->id])->orderBy('id','desc')->limit(10)->get();
+                $books = NovelBook::where(['is_up'=>1])->where(['type_id'=>$type->id])->orderBy('id','desc')->limit(10)->get();
                 $books->typename = $type->typename;
                 $books->typedir = $type->typedir;
                 break;
             case 'gudaiyanqing':
                 $type = NovelType::where(['typedir'=>$name])->first();
-                $books = NovelBook::where(['type_id'=>$type->id])->orderBy('id','desc')->limit(10)->get();
+                $books = NovelBook::where(['is_up'=>1])->where(['type_id'=>$type->id])->orderBy('id','desc')->limit(10)->get();
                 $books->typename = $type->typename;
                 $books->typedir = $type->typedir;
                 break;
             case 'wuxiaxianxia':
                 $type = NovelType::where(['typedir'=>$name])->first();
-                $books = NovelBook::where(['type_id'=>$type->id])->orderBy('id','desc')->limit(10)->get();
+                $books = NovelBook::where(['is_up'=>1])->where(['type_id'=>$type->id])->orderBy('id','desc')->limit(10)->get();
                 $books->typename = $type->typename;
                 $books->typedir = $type->typedir;
                 break;
             case 'lishijunshi':
                 $type = NovelType::where(['typedir'=>$name])->first();
-                $books = NovelBook::where(['type_id'=>$type->id])->orderBy('id','desc')->limit(10)->get();
+                $books = NovelBook::where(['is_up'=>1])->where(['type_id'=>$type->id])->orderBy('id','desc')->limit(10)->get();
                 $books->typename = $type->typename;
                 $books->typedir = $type->typedir;
                 break;
             case 'lingyikehuan':
                 $type = NovelType::where(['typedir'=>$name])->first();
-                $books = NovelBook::where(['type_id'=>$type->id])->orderBy('id','desc')->limit(10)->get();
+                $books = NovelBook::where(['is_up'=>1])->where(['type_id'=>$type->id])->orderBy('id','desc')->limit(10)->get();
                 $books->typename = $type->typename;
                 $books->typedir = $type->typedir;
                 break;
             case 'youxijingji':
                 $type = NovelType::where(['typedir'=>$name])->first();
-                $books = NovelBook::where(['type_id'=>$type->id])->orderBy('id','desc')->limit(10)->get();
+                $books = NovelBook::where(['is_up'=>1])->where(['type_id'=>$type->id])->orderBy('id','desc')->limit(10)->get();
                 $books->typename = $type->typename;
                 $books->typedir = $type->typedir;
                 break;
             case 'chuanyuezhongsheng':
                 $type = NovelType::where(['typedir'=>$name])->first();
-                $books = NovelBook::where(['type_id'=>$type->id])->orderBy('id','desc')->limit(10)->get();
+                $books = NovelBook::where(['is_up'=>1])->where(['type_id'=>$type->id])->orderBy('id','desc')->limit(10)->get();
                 $books->typename = $type->typename;
                 $books->typedir = $type->typedir;
                 break;
             case 'qingchunxiaoyuan':
                 $type = NovelType::where(['typedir'=>$name])->first();
-                $books = NovelBook::where(['type_id'=>$type->id])->orderBy('id','desc')->limit(10)->get();
+                $books = NovelBook::where(['is_up'=>1])->where(['type_id'=>$type->id])->orderBy('id','desc')->limit(10)->get();
                 $books->typename = $type->typename;
                 $books->typedir = $type->typedir;
                 break;
             case 'duanpianxiaoshuo':
                 $type = NovelType::where(['typedir'=>$name])->first();
-                $books = NovelBook::where(['type_id'=>$type->id])->orderBy('id','desc')->limit(10)->get();
+                $books = NovelBook::where(['is_up'=>1])->where(['type_id'=>$type->id])->orderBy('id','desc')->limit(10)->get();
                 $books->typename = $type->typename;
                 $books->typedir = $type->typedir;
                 break;

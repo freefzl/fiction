@@ -175,7 +175,7 @@ class UpdateBooks{
     {
         $ids = NovelBook::where(['try_id'=>0])->pluck('id')->all();
         foreach ($ids as $id){
-            $one = NovelChapter::where(['bid'=>$id])->where(['goId'=>0])->where(['is_pay'=>0])->limit(2)->get();
+            $one = NovelChapter::where(['bid'=>$id])->where(['goId'=>0])->where(['is_pay'=>0])->where(['is_up'=>1])->limit(2)->get();
             $try_ids = $one->pluck('id')->all();
 
             if($try_ids){

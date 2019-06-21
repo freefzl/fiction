@@ -44,8 +44,7 @@ class Kernel extends ConsoleKernel
             ->between('9:00', '12:00');
 
         $schedule->command('online_update')
-            ->everyFiveMinutes()
-            ->timezone('Asia/Shanghai')
+            ->everyMinute()
             ->between('13:00', '18:00');
     }
 

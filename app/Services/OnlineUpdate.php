@@ -22,8 +22,8 @@ use GuzzleHttp\Exception\RequestException;
 class OnlineUpdate{
     public static function updateBooks()
     {
-        NovelBook::where(['is_up'=>0])->limit(10)->update(['is_up'=>1]);
-        $ids = NovelBook::select('id')->where(['is_up'=>1])->orderBy('id','desc')->limit(10)->get();
+        NovelBook::where(['is_up'=>0])->limit(1)->update(['is_up'=>1]);
+        $ids = NovelBook::select('id')->where(['is_up'=>1])->orderBy('id','desc')->limit(1)->get();
         foreach ($ids as $id){
             NovelChapter::where(['bid'=>$id->id])->update(['is_up'=>1]);
         }

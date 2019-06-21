@@ -35,9 +35,13 @@ class Kernel extends ConsoleKernel
         $schedule->call(UpdateBooks::DealEarlyComments())->yearly();*/
         $schedule->command('update_books')->daily();
         $schedule->command('online_update')
-            ->hourly()
+            ->everyFiveMinutes()
             ->timezone('America/Chicago')
-            ->between('9:00', '19:00');
+            ->between('9:00', '12:00');
+        $schedule->command('online_update')
+            ->everyFiveMinutes()
+            ->timezone('America/Chicago')
+            ->between('13:00', '18:00');
     }
 
     /**

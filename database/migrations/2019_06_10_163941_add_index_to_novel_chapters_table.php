@@ -20,6 +20,7 @@ class AddIndexToNovelChaptersTable extends Migration
             $table->index('is_pay');
             $table->index('goId');
             $table->index('is_up');
+            $table->index(['is_up','is_pay','goId']);
         });
     }
 

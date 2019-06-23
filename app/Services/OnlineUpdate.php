@@ -28,7 +28,7 @@ class OnlineUpdate{
 
             if(!$is_type){
                 NovelBook::where(['type_id'=>$type->id])->where(['is_up'=>0])->limit(1)->update(['is_up'=>1]);
-                $id = NovelBook::where(['type_id'=>$type->id])->where(['is_up'=>1])->orderBy('id','desc')->limit(1)->first();
+                $id = NovelBook::where(['type_id'=>$type->id])->where(['is_up'=>1])->orderBy('id','desc')->limit(1)->get();
 
                 if($id){
                     NovelChapter::where(['bid'=>$id->id])->update(['is_up'=>1]);
@@ -37,7 +37,7 @@ class OnlineUpdate{
             }
         }
         NovelBook::where(['is_up'=>0])->limit(1)->update(['is_up'=>1]);
-        $id = NovelBook::where(['is_up'=>1])->orderBy('id','desc')->limit(1)->first();
+        $id = NovelBook::where(['is_up'=>1])->orderBy('id','desc')->limit(1)->get();
 
         if($id){
             NovelChapter::where(['bid'=>$id->id])->update(['is_up'=>1]);

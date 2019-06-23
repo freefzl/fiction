@@ -96,7 +96,7 @@
                 <ul>
                     @foreach($chapters as $item)
                         @if($item->book != null)
-                    <li><em>{{date('m-d',strtotime($item->created_at))}}</em><a href="/article/{{$item->id}}.html" target="_blank" title="{{$item->t_title}} ">{{$item->t_title}}</a></li>
+                    <li><em>{{date('m-d',strtotime($item->updated_at))}}</em><a href="/article/{{$item->id}}.html" target="_blank" title="{{$item->t_title}} ">{{$item->t_title}}</a></li>
                         @endif
                     @endforeach
                 </ul>

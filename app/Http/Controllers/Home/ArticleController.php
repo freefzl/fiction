@@ -15,7 +15,7 @@ class ArticleController extends Controller
     {
         $chapters = NovelChapter::where(['is_up'=>1])->where(['goId'=>'0'])->where(['is_pay'=>0])->with(['book'=>function($query){
             $query->with(['type'])->get();
-        }])->orderBy('id','desc')->paginate(30);
+        }])->orderBy('updated_at','desc')->paginate(30);
 
         $articles = CreateTDK::getTitle($chapters);
         $articles = CreateTDK::getDescription($articles);

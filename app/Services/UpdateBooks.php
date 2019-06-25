@@ -179,7 +179,7 @@ class UpdateBooks{
             $one = NovelChapter::where(['bid'=>$id])->where(['goId'=>0])->where(['is_pay'=>0])->limit(2)->get();
 
             $try_ids = $one->pluck('id')->all();
-            
+
             if($try_ids){
                 NovelBook::where(['id'=>$id])->update(['try_id'=>json_encode($try_ids)]);
             }

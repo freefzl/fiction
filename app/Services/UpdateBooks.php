@@ -99,27 +99,27 @@ class UpdateBooks{
                     if(!$book){
 //                        $filename = static::downFile($early_book->cover_img,storage_path('app/public/'),md5($early_book->cover_img));
                         $arr = explode('/',$early_book->cover_img);
-                        $book = new NovelBook();
-                        $book->id = $early_book->id;
-                        $book->name = $early_book->name;
-                        $book->status = $early_book->status;
-                        $book->chapter_number = $early_book->info_chapters_num;
-                        $book->author = substr($early_book->author,9);
-                        $book->words  = $early_book->words  ;
-                        $book->protagonist = $early_book->protagonist;
-                        $book->cover_img = end($arr);
-                        $book->status = $status;
-                        $book->synopsis = $early_book->synopsis;
-                        $book->type_id = $type->id;
-                        $book->channel_id = $channel->id;
-                        $book->tag_ids = static::getTags()??'';
-                        $book->pubdate = $early_book->update_date;
-                        $book->try_id = 0;
-                        $book->is_online = 0;
-                        $book->pc_read_url = '';
-                        $book->m_read_url = $early_book->referral_link;
-                        $book->comment_id = static ::getCommitId()??'';
-                        $book->save();
+                        $nobook = new NovelBook();
+                        $nobook->id = $early_book->id;
+                        $nobook->name = $early_book->name;
+                        $nobook->status = $early_book->status;
+                        $nobook->chapter_number = $early_book->info_chapters_num;
+                        $nobook->author = substr($early_book->author,9);
+                        $nobook->words  = $early_book->words  ;
+                        $nobook->protagonist = $early_book->protagonist;
+                        $nobook->cover_img = end($arr);
+                        $nobook->status = $status;
+                        $nobook->synopsis = $early_book->synopsis;
+                        $nobook->type_id = $type->id;
+                        $nobook->channel_id = $channel->id;
+                        $nobook->tag_ids = static::getTags()??'';
+                        $nobook->pubdate = $early_book->update_date;
+                        $nobook->try_id = 0;
+                        $nobook->is_online = 0;
+                        $nobook->pc_read_url = '';
+                        $nobook->m_read_url = $early_book->referral_link;
+                        $nobook->comment_id = static ::getCommitId()??'';
+                        $nobook->save();
 
                     }
 
@@ -173,7 +173,8 @@ class UpdateBooks{
 
     public static function getTryId()
     {
-        $ids = NovelBook::where(['try_id'=>0])->pluck('id')->all();
+        $ids = NovelBook::where(['try_id'=>'0'])->pluck('id')->all();
+        
         foreach ($ids as $id){
             $one = NovelChapter::where(['bid'=>$id])->where(['goId'=>0])->where(['is_pay'=>0])->where(['is_up'=>1])->limit(2)->get();
             $try_ids = $one->pluck('id')->all();

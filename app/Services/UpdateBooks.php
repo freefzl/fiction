@@ -95,7 +95,7 @@ class UpdateBooks{
                     }else{
                         $status = 0;
                     }
-                    $book = NovelBook::where('name','=',$early_book->name)->where(['author'=>$early_book->author])->first();
+                    $book = NovelBook::where('name','=',$early_book->name)->where(['author'=>$early_book->author])->where(['is_up'=>0])->first();
                     if(!$book){
 //                        $filename = static::downFile($early_book->cover_img,storage_path('app/public/'),md5($early_book->cover_img));
                         $arr = explode('/',$early_book->cover_img);

@@ -27,7 +27,7 @@ class IndexController extends Controller
         foreach ($banner_books as $k=>$banner_book){
             $banner_books[$k]['banners'] = $banners[$k];
         }
-        dump($banner_books);
+       
         //编辑推荐
 
         $bjtj = NovelBook::where(['is_up'=>1])->inRandomOrder()->limit(8)->get();

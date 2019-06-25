@@ -34,7 +34,6 @@ class OnlineUpdate{
 
                 if($id){
                     NovelChapter::where(['bid'=>$id->id])->update(['is_up'=>1]);
-                    sleep(10);
                 }
 
             }

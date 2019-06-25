@@ -95,7 +95,7 @@ class UpdateBooks{
                     }else{
                         $status = 0;
                     }
-                    $book = NovelBook::where('name','=',$early_book->name)->where(['author'=>$early_book->author])->where(['is_up'=>0])->first();
+                    $book = NovelBook::where('name','=',$early_book->name)->where(['author'=>$early_book->author])->first();
                     if(!$book){
 //                        $filename = static::downFile($early_book->cover_img,storage_path('app/public/'),md5($early_book->cover_img));
                         $arr = explode('/',$early_book->cover_img);
@@ -174,11 +174,12 @@ class UpdateBooks{
     public static function getTryId()
     {
         $ids = NovelBook::where(['try_id'=>'0'])->pluck('id')->all();
-        
-        foreach ($ids as $id){
-            $one = NovelChapter::where(['bid'=>$id])->where(['goId'=>0])->where(['is_pay'=>0])->where(['is_up'=>1])->limit(2)->get();
-            $try_ids = $one->pluck('id')->all();
 
+        foreach ($ids as $id){
+            $one = NovelChapter::where(['bid'=>$id])->where(['goId'=>0])->where(['is_pay'=>0])->limit(2)->get();
+
+            $try_ids = $one->pluck('id')->all();
+            
             if($try_ids){
                 NovelBook::where(['id'=>$id])->update(['try_id'=>json_encode($try_ids)]);
             }

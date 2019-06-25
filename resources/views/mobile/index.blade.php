@@ -16,7 +16,7 @@
                 height="240"
                 buttonController>
             @foreach($banner_books as $item)
-            <a href="/book/{{$item->id}}.html" ><mip-img src="{{env('IMG_URL').'/'.$item->banners}}" alt="{{$item->name}}"></mip-img></a>
+            <a href="/book/{{$item[0]['id']}}.html" ><mip-img src="{{env('IMG_URL').'/'.$item['banners']}}" alt="{{$item[0]['name']}}"></mip-img></a>
             @endforeach
 
         </mip-carousel>

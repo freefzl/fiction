@@ -22,15 +22,21 @@
                     <div class="banner-box">
                         <ul class="banner-img">
                             @foreach($banner_books as $banner_book)
-                            <li><a href="/book/{{$banner_book->id}}.html" title="{{$banner_book->name}}免费阅读 {{$banner_book->author}}小说全文在线阅读" target="_blank"><img src="{{env('IMG_URL').'/'.$banner_book->banners}}" alt="{{$banner_book->name}}"></a></li>
+
+                                @if(isset($banner_book[0])&&$banner_book[0])
+                                    <li><a href="/book/{{$banner_book[0]['id']}}.html" title="{{$banner_book[0]['name']}}免费阅读 {{$banner_book[0]['author']}}小说全文在线阅读" target="_blank"><img src="{{env('IMG_URL').'/'.$banner_book['banners']}}" alt="{{$banner_book[0]['name']}}"></a></li>
+                                @endif
+
                             @endforeach
                         </ul>
                     </div>
                     <ul class="banner-nav">
                         @foreach($banner_books as $banner_book)
+                            @if(isset($banner_book[0])&&$banner_book[0])
                         <li  class="@if($loop->first) selected @endif">
-                            <h4>{{$banner_book->name}}</h4>
+                            <h4>{{$banner_book[0]['name']}}</h4>
                         </li>
+                            @endif
                         @endforeach
 
                     </ul>

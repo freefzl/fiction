@@ -17,12 +17,17 @@ class IndexController extends Controller
 
         //banner
         $banners = config('name.banner_img');
-        $banner_books = NovelBook::where(['is_up'=>1])->orderBy('id','desc')->limit(5)->get();
+//        $banner_books = NovelBook::where(['is_up'=>1])->orderBy('id','desc')->limit(5)->get();
+        $banner_ids = config('name.banner_ids');
+        $banner_books=[];
+        foreach ($banner_ids as $id){
+            $banner_books[] = NovelBook::where(['id'=>$id])->get()->toArray();
+        }
 
         foreach ($banner_books as $k=>$banner_book){
             $banner_books[$k]['banners'] = $banners[$k];
         }
-
+//        dd($banner_books);
         $types = NovelType::all();
 
         $tj_chapter =  NovelChapter::where(['is_up'=>1])->where(['is_pay'=>0])->where(['goId'=>'0'])->with(['book'])->orderBy('updated_at','desc')->limit(70)->get();

@@ -18,11 +18,16 @@ class IndexController extends Controller
 
         //banner
         $banners = config('name.banner_img');
-        $banner_books = NovelBook::where(['is_up'=>1])->limit(5)->get();
+        $banner_ids = config('name.banner_ids');
+        $banner_books=[];
+        foreach ($banner_ids as $id){
+            $banner_books[] = NovelBook::where(['id'=>$id])->get()->toArray();
+        }
+//        $banner_books = NovelBook::where(['is_up'=>1])->limit(5)->get();
         foreach ($banner_books as $k=>$banner_book){
             $banner_books[$k]['banners'] = $banners[$k];
         }
-
+        dump($banner_books);
         //编辑推荐
 
         $bjtj = NovelBook::where(['is_up'=>1])->inRandomOrder()->limit(8)->get();

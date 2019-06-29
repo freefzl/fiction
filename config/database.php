@@ -62,6 +62,25 @@ return [
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
         ],
+        'mysql208' => [
+            'driver' => 'mysql',
+            'url' => '',
+            'host' => '180.76.247.208',
+            'port' => '3306',
+            'database' => 'xiaoshuo',
+            'username' => 'xiaoshuo',
+            'password' => 'HMhwpRD7yRrLw2hJ',
+            'unix_socket' => '',
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'strict' => true,
+            'engine' => null,
+            'options' => extension_loaded('pdo_mysql') ? array_filter([
+                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+            ]) : [],
+        ],
 
         'pgsql' => [
             'driver' => 'pgsql',

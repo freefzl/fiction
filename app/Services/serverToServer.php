@@ -32,7 +32,6 @@ class serverToServer{
 
         if(!$id->id>9214183){
             $info = DB::connection('mysql208')->select('select * from novel_chapters where id > ? limit 1',[$id->id+1]);
-            dd($info);
             $novel_chapter = new NovelChapter();
             $novel_chapter->id = $info->id;
             $novel_chapter->bid = $info->bid;

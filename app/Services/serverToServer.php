@@ -31,7 +31,7 @@ class serverToServer{
         while (true){
             $id = NovelChapter::orderBy('id','desc')->limit(1)->first();
 //            dd($id->id);
-            if(!$id->id<=9214183){
+            if($id->id<9214183){
                 $info = DB::connection('mysql208')->select('select * from novel_chapters where id = ? limit 1',[$id->id+1]);
                 
                 $novel_chapter = new NovelChapter();

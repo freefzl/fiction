@@ -38,7 +38,7 @@ class StoS extends Command
      */
     public function handle()
     {
-        dd(1);
         serverToServer::index();
+        return 'ok';
     }
 }

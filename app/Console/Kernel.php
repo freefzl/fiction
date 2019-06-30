@@ -4,6 +4,7 @@ namespace App\Console;
 
 
 use App\Console\Commands\OnlineUpdate;
+use App\Console\Commands\StoS;
 use App\Console\Commands\UpdateBooks;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -18,6 +19,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         OnlineUpdate::class,
         UpdateBooks::class,
+        StoS::class,
     ];
 
     /**

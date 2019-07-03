@@ -1,6 +1,6 @@
 <?php
 
-Route::domain('www.xiaoshuo.com')->group(function () {
+Route::domain('www.xiaoshuo.test')->group(function () {
     Route::get('/','Home\IndexController@index');
 
     Route::get('/book/','Home\BookController@index');
@@ -40,7 +40,7 @@ Route::domain('www.xiaoshuo.com')->group(function () {
 });
 
 
-Route::domain('m.xiaoshuo.com')->group(function () {
+Route::domain('m.xiaoshuo.test')->group(function () {
     Route::get('/', 'Mobile\IndexController@index');
     Route::get('/book/', 'Mobile\BookController@index');
     Route::get('/huanxiangyinen/','Mobile\BookController@huanxiangyinen');
@@ -75,6 +75,7 @@ Route::domain('m.xiaoshuo.com')->group(function () {
     Route::get('/chapter/{tid}-{did}-{sid}','Mobile\ChapterController@index');
     Route::get('/{id}/','Mobile\ChapterController@xq');
     Route::get('/{id}/list.html','Mobile\ChapterController@chapter_list');
+    Route::get('/towx/{str}','Mobile\IndexController@Towx');
 });
 
 

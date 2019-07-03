@@ -215,7 +215,8 @@
 
     <script type="text/javascript">
 
-        var weixin_name = "龙珠阅读";
+        var weixin_name = "千舫";
+        var book_name = "{{$book->name}}";
 
         $('.reading').on('click',function(){
 
@@ -229,7 +230,7 @@
                     title: '',
                     area: ['460px', '320px'],
                     shadeClose: true,
-                    content: '<div style="width:100%;text-align:center;margin-top:1.5rem;font-size:14px"><img style="width:200px;height:200px" src="{{env('IMG_URL').'/'.'images/5d2e90b1f64c855c6741c8fefc8250e4.jpg'}}"><p style="padding-top:10px">扫一扫二维码 或者</p><p style="padding-top:10px">关注微信公众号：<span style="color:red">'+weixin_name+'</span></p><p style="padding-top:10px">回复：<span style="color:red">染情欢：逮个美男当驸马</span>  阅读全文</p></div>'
+                    content: '<div style="width:100%;text-align:center;margin-top:1.5rem;font-size:14px"><img style="width:200px;height:200px" src="{{env('IMG_URL').'/20190703154032.png'}}"><p style="padding-top:10px">扫一扫二维码 或者</p><p style="padding-top:10px">关注微信公众号：<span style="color:red">'+weixin_name+'</span></p><p style="padding-top:10px">回复：<span style="color:red">'+book_name+'</span>  阅读全文</p></div>'
                 });
             }
         });
@@ -244,7 +245,7 @@
                     title: '',
                     area: ['460px', '320px'],
                     shadeClose: true,
-                    content: '<div style="width:100%;text-align:center;margin-top:1.5rem;font-size:14px"><img style="width:200px;height:200px" src="{{env('IMG_URL').'/'.'images/5d2e90b1f64c855c6741c8fefc8250e4.jpg'}}"><p style="padding-top:10px">扫一扫二维码 或者</p><p style="padding-top:10px">关注微信公众号：<span style="color:red">'+weixin_name+'</span></p><p style="padding-top:10px">回复：<span style="color:red">染情欢：逮个美男当驸马</span>  阅读全文</p></div>'
+                    content: '<div style="width:100%;text-align:center;margin-top:1.5rem;font-size:14px"><img style="width:200px;height:200px" src="{{env('IMG_URL').'/20190703154032.png'}}"><p style="padding-top:10px">扫一扫二维码 或者</p><p style="padding-top:10px">关注微信公众号：<span style="color:red">'+weixin_name+'</span></p><p style="padding-top:10px">回复：<span style="color:red">'+book_name+'</span>  阅读全文</p></div>'
                 });
             }
         });

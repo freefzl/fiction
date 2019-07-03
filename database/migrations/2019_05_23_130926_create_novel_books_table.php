@@ -33,6 +33,8 @@ class CreateNovelBooksTable extends Migration
             $table->string('pc_read_url')->nullable();
             $table->string('m_read_url')->nullable();
             $table->integer('comment_id')->nullable();
+            $table->tinyInteger('is_up')->nullable();
+            $table->integer('info_id')->nullable();
             $table->timestamps();
         });
     }

@@ -119,6 +119,7 @@ class UpdateBooks{
                         $nobook->pc_read_url = '';
                         $nobook->m_read_url = $early_book->referral_link;
                         $nobook->comment_id = static ::getCommitId()??'';
+                        $nobook->info_id = $early_book->info_id;
                         $nobook->save();
 
                     }

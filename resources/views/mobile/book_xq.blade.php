@@ -31,11 +31,11 @@
                         @if($book->is_online)
                             <li><a class="read-online reading" id="reading" rel="nofollow" href="{{$book->m_read_url}}">在线阅读</a></li>
                             @else
-                            <li><a class="read-online reading" id="reading" rel="nofollow" href="#">微信阅读</a></li>
+                            <li><a class="read-online reading" id="reading" rel="nofollow" href="{{env('M_APP_URL')}}towx/wechat=千舫&book={{$book->name}}&bookid={{$book->id}}&code=aHR0cDovL20ubWluZDk4LmNuL2QvZmlsZS8yMDE5MDcvMDMvNkk2cjZaZXU1NXU0NW9DZDVZZWcuanBn&hero={{$book->author}}&tdsourcetag=s_pcqq_aiomsg">微信阅读</a></li>
                             @endif
 
                         <li>
-                            <a href="http://51ldj.zuszw.com/dw.php?pt=&bookname={{$book->name}}&hero={{$book->author}}" rel="nofollow">下载阅读</a>                    </li>
+                            <a href="http://m.suqiLai.com/down/lm_app?uid=123333114" rel="nofollow">下载阅读</a>                    </li>
 
 
 
@@ -89,7 +89,7 @@
                     @endforeach
                 </ul>
             </div>
-            <div class="chapters-more"><a class="reading" rel="nofollow" href="{{$book->m_read_url}}">阅读更多章节</a></div>    </div>    <div class="readingbox">
+            <div class="chapters-more"><a class="reading" rel="nofollow" href="{{env('M_APP_URL').$book->id.'/list.html'}}">阅读更多章节</a></div>    </div>    <div class="readingbox">
             <a href="http://51ldj.zuszw.com/dw.php?pt=&bookname={{$book->name}}&hero={{$book->author}}" rel="nofollow">
                 <mip-img src="http://oss.mobantianxia.com/20180813/15341243676265.jpg" alt="30天免费畅读"></mip-img>
             </a>

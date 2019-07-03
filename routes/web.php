@@ -1,6 +1,6 @@
 <?php
 
-Route::domain('www.lingchengxs.com')->group(function () {
+Route::domain('www.linchengxs.com')->group(function () {
     Route::get('/','Home\IndexController@index');
 
     Route::get('/book/','Home\BookController@index');
@@ -40,7 +40,7 @@ Route::domain('www.lingchengxs.com')->group(function () {
 });
 
 
-Route::domain('m.lingchengxs.com')->group(function () {
+Route::domain('m.linchengxs.com')->group(function () {
     Route::get('/', 'Mobile\IndexController@index');
     Route::get('/book/', 'Mobile\BookController@index');
     Route::get('/huanxiangyinen/','Mobile\BookController@huanxiangyinen');

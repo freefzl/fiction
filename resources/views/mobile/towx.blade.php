@@ -130,11 +130,11 @@
     document.writeln("</div>");
     document.writeln("<div class=\"f61d3ec0\">");
     document.writeln("<p class=\"p1\">↓↓↓离线阅读，有记录更方便↓↓↓</p>");
-    document.writeln("<p class=\"p2\"><a href=\"http://m.suqiLai.com/down/lm_app?uid=123333114\"  id=\"openxz\">&gt;&gt;&gt; 全本小说免费下载，点击获取 &lt;&lt;&lt;</a></p>");
+    document.writeln("<p class=\"p2\"><a href=\"http://m.suqiLai.com/down/lm_app?uid=123333114\"  rel=\"nofollow\" id=\"openxz\">&gt;&gt;&gt; 全本小说免费下载，点击获取 &lt;&lt;&lt;</a></p>");
     document.writeln("<p class=\"p3\">app内找书技巧，如没您要的结果？您可以搜索主角名称试试！</p>");
     document.writeln("</div>");
     document.writeln("</div>");
-    document.writeln('<a id="footer" href="http://m.suqiLai.com/down/lm_app?uid=123333114"  class="footer" id="openxz"><img src="{{env('IMG_URL').'/'.$book->cover_img}}" style="position: absolute; top: 18px;     width: 2.35rem; height: 2.35rem; left: 1rem;"><h3 class="footer-h">全本免费下载</h3><p class="footer-p">全本下载看书省流量更方便</p> <span class="btn-primary-small">下载</span> </a>');
+    document.writeln('<a id="footer" href="http://m.suqiLai.com/down/lm_app?uid=123333114"   rel="nofollow" class="footer" id="openxz"><img src="{{env('IMG_URL').'/'.$book->cover_img}}" style="position: absolute; top: 18px;     width: 2.35rem; height: 2.35rem; left: 1rem;"><h3 class="footer-h">全本免费下载</h3><p class="footer-p">全本下载看书省流量更方便</p> <span class="btn-primary-small">下载</span> </a>');
 </script>
 
 <script>

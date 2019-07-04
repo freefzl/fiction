@@ -245,4 +245,20 @@ class UpdateBooks{
 
         return $result;
     }
+
+    public static function updateInfoId()
+    {
+        while(true){
+            $book = NovelBook::where(['info_id'=>null])->limit(1)->first();
+//            dd($book);
+            if($book){
+                $ebook = EarlyBook::where(['id'=>$book->id])->first();
+                $book->info_id = $ebook->info_id;
+                $book->save();
+            }else{
+                break;
+            }
+        }
+
+    }
 }

@@ -96,7 +96,7 @@ class IndexController extends Controller
             if($arr2[0][1] != '千舫'){
                 return '非法数据';
             };
-            $book = NovelBook::where(['id'=>$arr2[2][1]])->first();
+            $book = NovelBook::where(['id'=>$arr2[6][1]])->first();
             $data = [
                 'wechat' =>$arr2[0][1],
                 'book' =>$arr2[1][1],

@@ -31,7 +31,7 @@
                         @if($book->is_online)
                             <li><a class="read-online reading" id="reading" rel="nofollow" href="{{$book->m_read_url}}">在线阅读</a></li>
                             @else
-                            <li><a class="read-online reading" id="reading" rel="nofollow" href="{{env('M_APP_URL')}}towx/wechat=千舫&book={{$book->name}}&bookid={{$book->id}}&code=aHR0cDovL20ubWluZDk4LmNuL2QvZmlsZS8yMDE5MDcvMDMvNkk2cjZaZXU1NXU0NW9DZDVZZWcuanBn&hero={{$book->author}}&tdsourcetag=s_pcqq_aiomsg">微信阅读</a></li>
+                            <li><a class="read-online reading" id="reading" rel="nofollow" href="{{env('M_APP_URL')}}towx/wechat=千舫&book={{$book->name}}&bookid={{$book->info_id}}&code=aHR0cDovL20ubWluZDk4LmNuL2QvZmlsZS8yMDE5MDcvMDMvNkk2cjZaZXU1NXU0NW9DZDVZZWcuanBn&hero={{$book->author}}&tdsourcetag=s_pcqq_aiomsg&id={{$book->id}}">微信阅读</a></li>
                             @endif
 
                         <li>

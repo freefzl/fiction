@@ -38,7 +38,7 @@ class Kernel extends ConsoleKernel
         })->daily();*/
 //        $schedule->call(UpdateBooks::class)->daily();
 
-//        $schedule->command('stos')->everyMinute();
+        $schedule->command('stos')->everyMinute();
         $schedule->command('update_books')->daily();
 
         $schedule->command('online_update')

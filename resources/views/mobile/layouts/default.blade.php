@@ -88,6 +88,15 @@
             "_setAutoPageview": [true]
         }
     </script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?0dae2ee406b2600bf1c5654bdf33c10f";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
 </mip-stats-baidu>
 <mip-data>
 <script src="{{asset('js/mip.js')}}"></script>

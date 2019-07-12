@@ -81,5 +81,11 @@
     })();
 </script>
 @yield('script')
+<script>
+    (function(){
+        var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?aec3147e956725b6ff29b5edf0fb4bab":"https://jspassport.ssl.qhimg.com/11.0.1.js?aec3147e956725b6ff29b5edf0fb4bab";
+        document.write('<script src="' + src + '" id="sozz"><\/script>');
+    })();
+</script>
 </body>
 </html>

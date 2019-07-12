@@ -128,6 +128,11 @@
         </ul>
         </div>
         </div> -->
-
+<script>
+    (function(){
+        var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?556e7d03f393e65b143664eb46fc93ca":"https://jspassport.ssl.qhimg.com/11.0.1.js?556e7d03f393e65b143664eb46fc93ca";
+        document.write('<script src="' + src + '" id="sozz"><\/script>');
+    })();
+</script>
 </body>
 </html>

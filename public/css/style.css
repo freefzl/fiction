@@ -1,5 +1,65 @@
 ﻿@charset "utf-8";
 
+
+/* background */
+.mod-head h2:before,
+.mod-head h3:before,
+.search-form button ,
+.book-info .btns li a.read-online, .layui-m-layer a.btn-wechat,
+.novel-similar .mip-vd-tabs-nav .mip-vd-tabs-nav-selected,.book-nav ul li.on a,
+.news-info .show-fpage a,
+.news-info .book dd .view
+{
+    background: #00bf99;
+}
+/* color */
+.news-info .porn li a ,
+.book-info .update a,
+.nav .iconfont,
+.book-info .tags a span,
+.book-info .intro .intro-more button,
+.header .icon-back,.icon-grouop,
+.menu-list a .iconfont,
+.top-nav ul li.on a,
+.news-info .show-more,
+.search .lightbox-close,
+.tags-info dd ul li a,
+.tags-info dd p span em,
+.news-info .cover .read a,
+.novel-similar .mip-vd-tabs-nav li,
+.content-more button
+{
+    color: #00bf99;
+}
+.novel-similar .mip-vd-tabs-nav li:last-child{
+    border-right: 1px solid #00bf99;
+}
+.novel-similar .mip-vd-tabs-nav li{
+    border: 1px solid #00bf99;
+    border-width: 1px 0 1px 1px;
+}
+.content-more button:after, .content-more button:before{
+    border-color: #00bf99;
+}
+/* border */
+.search-form input,
+.book-info .btns li a.read-online,
+.layui-m-layer a.btn-wechat,
+.book-info .tags a span,
+.novel-similar .mip-vd-tabs-nav .mip-vd-tabs-nav-selected,
+.book-nav ul li.on a,
+.top-nav ul li.on a,
+.tags-info dd ul li a
+{
+    border: 1px solid #00bf99;
+}
+.news-info .content h3 ,
+.news-info .chapters h3,
+.mod-chapters .chapters h3
+{
+    border-left: 3px solid #00bf99;
+}
+
 .information_box {
     overflow: hidden;
     background-color: #fff;

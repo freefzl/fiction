@@ -61,7 +61,7 @@
                 <h3>精彩章节试读：</h3>
             </div>
             <div class="read-content clearfix">
-                <mip-showmore maxheight='screen:0.5' bottomshadow="1" animatetime='.3' id="intro">
+                <mip-showmore maxheight='screen:0.9' bottomshadow="1" animatetime='.3' id="intro" >
                     @if($try_chapters!==null)
                         @foreach($try_chapters as $item)
                             <h3>{{$item->title}}</h3>

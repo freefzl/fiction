@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('css/mip.css')}}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <link rel="canonical" href="@yield('canonical',env('M_APP_URL'))">
-    <style mip-custom>
+    {{--<style mip-custom>
         /* background */
         .mod-head h2:before,
         .mod-head h3:before,
@@ -72,7 +72,7 @@
         {
             border-left: 3px solid #00bf99;
         }
-    </style>
+    </style>--}}
 </head>
 @include('mobile.layouts._header')
 
@@ -111,7 +111,7 @@
     <script src="{{asset('js/mip-html-os.js')}}"></script>
 </mip-data>
 
-<!-- <link rel="stylesheet" href="{{asset('')}}css/style.css">
+ {{--<link rel="stylesheet" href="{{asset('')}}css/style.css">
 
 <script src="{{asset('')}}js/mip-list.js"></script>
 <script src="{{asset('')}}js/mip-mustache.js"></script>
@@ -127,7 +127,7 @@
         </mip-list>
         </ul>
         </div>
-        </div> -->
+        </div> --}}
 <script>
     (function(){
         var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?556e7d03f393e65b143664eb46fc93ca":"https://jspassport.ssl.qhimg.com/11.0.1.js?556e7d03f393e65b143664eb46fc93ca";

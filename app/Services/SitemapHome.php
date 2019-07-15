@@ -15,7 +15,7 @@ use App\Models\NovelType;
 use samdark\sitemap\Index;
 use samdark\sitemap\Sitemap;
 
-class SiteMapHome{
+class SitemapHome{
 
 
     public static function index(){

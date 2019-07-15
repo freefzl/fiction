@@ -80,9 +80,9 @@ return [
     ],
 
     'links'=>[
-      [
+      /*[
         'name'=>'baidu',
         'link'=>'http://www.baidu.com',
-      ],
+      ],*/
     ],
 ];

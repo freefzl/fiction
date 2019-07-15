@@ -4,6 +4,7 @@ namespace App\Console;
 
 
 use App\Console\Commands\OnlineUpdate;
+use App\Console\Commands\SitemapHome;
 use App\Console\Commands\StoS;
 use App\Console\Commands\UpdateBooks;
 use Illuminate\Console\Scheduling\Schedule;
@@ -17,9 +18,10 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-//        OnlineUpdate::class,
-//        UpdateBooks::class,
+        OnlineUpdate::class,
+        UpdateBooks::class,
         StoS::class,
+        SitemapHome::class,
     ];
 
     /**
@@ -40,6 +42,7 @@ class Kernel extends ConsoleKernel
 
         $schedule->command('stos')->everyMinute();
         $schedule->command('update_books')->daily();
+        $schedule->command('sitemap')->daily();
 
         $schedule->command('online_update')
             ->everyFiveMinutes()

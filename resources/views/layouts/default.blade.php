@@ -19,7 +19,7 @@
     <script src="{{asset('js/jquery.js')}}"></script>
     <script src="{{asset('js/function.js')}}"></script>
 
-    <style>
+    {{--<style>
         .book-info .guess ol li:hover,.book-info .guess ul li p em,.book-info .tags a,.book-list h2,.book-list ul li .intro a,.book-list ul li .update a,.bookshelf-list ul li .update a,.box1 .category li a:hover,.box2 .top-news li h4 a,.box3 .carousel-nav li .info span.type,.box3 .hot-book .more a,.box3 .rec-list ul li .info em,.box3 .rec-list ul li .intro a,.header .bookcase .iconfont,.header .bookcase a:hover,.header .search .search-btn,.news-info .book dd .update a,.news-info .cover .read a,.news-info .porn li a,.news-list ul li .text a,.search-list ul li .intro a,.search-list ul li .update a,.top-list>ul>li .intro a,.top-list>ul>li .update a,a:hover ,.book-base .btns a,.show-more button,.search-list .result span,.search-list .result em,.book-info .review .more a:hover,.header .bookcase a,.bookshelf-list ul li .read a,.bookshelf-list ul li .del:hover{
             color: #00bf99}
         .book-info .attentions h3::before,.book-info .chapters h3::before,.book-info .guess h3::before,.book-info .reading-content h3::before,.book-info .review h3::before,.book-list ul li .view,.book-nav ul li.on a,.box1 .banner-nav li.selected,.box3 .carousel-nav li .view,.box4 .new-book ol li.on,.chapter-header,.news-info .book dd .view,.pages a:hover,.pages b,.pages span.current,.top-nav ul li.on a ,.book-base .btns .read-online a,.bookshelf-list ul li .pic i{
@@ -54,11 +54,24 @@
             color: #01a080;
         }
 
-    </style>
+    </style>--}}
 </head>
 
 <body  style="height:100%;">
-
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https'){
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else{
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
 @include('layouts._header')
 
 

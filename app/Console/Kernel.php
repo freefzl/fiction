@@ -40,6 +40,7 @@ class Kernel extends ConsoleKernel
         })->daily();*/
 //        $schedule->call(UpdateBooks::class)->daily();
 
+        $schedule->command('command:sitemap_post')->dailyAt('18:10');;
         $schedule->command('stos')->everyMinute();
         $schedule->command('update_books')->daily();
         $schedule->command('sitemap')->daily();

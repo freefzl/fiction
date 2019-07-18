@@ -27,11 +27,14 @@ class SitemapPost{
         foreach ($books as  $book){
             $urls[] = env('APP_URL')."/book/".$book->id.'.html';
             $urls[] = env('APP_URL')."/".$book->id.'/';
+            $urls[] = env('M_APP_URL')."book/".$book->id.'.html';
+            $urls[] = env('M_APP_URL').$book->id.'/';
         }
 
         $novel_chapters = NovelChapter::where(['is_up'=>1,'is_pay'=>0,'goId'=>'0'])->whereDate('updated_at',date('Y-m-d',time()))->get();
         foreach ($novel_chapters as  $chapter){
             $urls[] = env('APP_URL')."/article/".$chapter->id.'.html';
+            $urls[] = env('M_APP_URL')."article/".$chapter->id.'.html';
         }
 
         $urls = collect($urls);

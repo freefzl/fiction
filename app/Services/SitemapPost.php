@@ -34,19 +34,23 @@ class SitemapPost{
             $urls[] = env('APP_URL')."/article/".$chapter->id.'.html';
         }
 
+        $urls = collect($urls);
+        foreach ($urls->chunk(2000) as $items){
+            $items = $items->toArray();
+            $api = 'http://data.zz.baidu.com/urls?site=https://www.linchengxs.com&token=NLEsLBeowz04jEXB';
+            $ch = curl_init();
+            $options =  array(
+                CURLOPT_URL => $api,
+                CURLOPT_POST => true,
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_POSTFIELDS => implode("\n", $items),
+                CURLOPT_HTTPHEADER => array('Content-Type: text/plain'),
+            );
+            curl_setopt_array($ch, $options);
+            $result = curl_exec($ch);
+            echo $result;
+        }
 
-        $api = 'http://data.zz.baidu.com/urls?site=https://www.linchengxs.com&token=NLEsLBeowz04jEXB';
-        $ch = curl_init();
-        $options =  array(
-            CURLOPT_URL => $api,
-            CURLOPT_POST => true,
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_POSTFIELDS => implode("\n", $urls),
-            CURLOPT_HTTPHEADER => array('Content-Type: text/plain'),
-        );
-        curl_setopt_array($ch, $options);
-        $result = curl_exec($ch);
-        echo $result;
 
     }
 

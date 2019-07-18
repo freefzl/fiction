@@ -20,7 +20,7 @@ class SitemapHome{
 
     public static function index(){
 
-        $sitemap = new Sitemap(public_path('sitemap.xml'));
+        $sitemap = new Sitemap(public_path('lcxs_site_map.xml'));
 
         $sitemap->addItem(env('APP_URL'), time(),Sitemap::DAILY, 1);
         $sitemap->addItem(env('APP_URL').'/book/', time(),Sitemap::DAILY, 0.8);
@@ -62,7 +62,7 @@ class SitemapHome{
 
         $sitemap->write();
 
-        $index = new Index(public_path('/sitemap_index.xml'));
+        $index = new Index(public_path('/lcxssite_index.xml'));
         $sitemapFileUrls = $sitemap->getSitemapUrls(env('APP_URL').'/');
 
         foreach ($sitemapFileUrls as $sitemapUrl) {

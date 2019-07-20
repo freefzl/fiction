@@ -73,5 +73,89 @@ class SitemapHome{
     }
 
 
+    public static function getFile()
+    {
+        $files = scandir(public_path());
+
+        $xmls = [];
+        foreach ($files as $file){
+
+            $arr = explode('.',$file);
+            $arr1 = explode('_',$arr[0]);
+
+            foreach ($arr1 as $item){
+                if($item=='lcxs'){
+                    $xmls[] = $file;
+                }
+            }
+        }
+
+        foreach ($xmls as $xml){
+
+
+            $copy = copy(public_path().'\\'.$xml,public_path().'\\'.'m'.$xml);
+            if($copy){
+                $doc = new \DOMDocument();
+                $doc->load(public_path().'\\'.'m'.$xml);
+                $url = $doc->getElementsByTagName('url');
+
+                for($i=0;$i<$url->length;$i++){
+
+                    $loc = $url->item($i)->getElementsByTagName('loc')->item(0)->nodeValue;
+
+                    $loc= str_replace("www","m",$loc);
+                    $url->item($i)->getElementsByTagName('loc')->item(0)->nodeValue=$loc;
+
+
+                    $mobile_node = $doc->createElement("mobile:mobile");
+
+                    $url->item($i)->appendChild($mobile_node);
+
+
+                    $doc->save(public_path().'\\'.'m'.$xml);
+                }
+
+            }
+        }
+
+        $mxmls = [];
+        foreach ($files as $file){
+
+            $arr = explode('.',$file);
+            $arr1 = explode('_',$arr[0]);
+
+            foreach ($arr1 as $item){
+                if($item=='mlcxs'){
+                    $mxmls[] = $file;
+                }
+            }
+        }
+
+        $doc = new \DOMDocument('1.0','utf-8');//引入类并且规定版本编码
+        $grandFather = $doc->createElement("sitemapindex");//创建节点
+        $grandFather->setAttribute("xmlns","http://www.sitemaps.org/schemas/sitemap/0.9");//给Grandfather增加ID属性
+
+        foreach ($mxmls as $mxml){
+
+            $father = $doc->createElement("sitemap");//创建节点
+            $loc = $doc->createElement("loc");//创建节点
+            $content = $doc -> createTextNode(env('APP_URL').'/'.$mxml);//设置标签内容
+            $loc  -> appendChild($content);//将标签内容赋给标签
+            $father->appendChild($loc);
+            $grandFather->appendChild($father);//讲Father放到Grandfather下
+
+            $doc->appendChild($grandFather);//创建顶级节点
+            $doc->save(public_path().'\\'.'mlcxssite_index.xml');//保存代码
+        }
+
+
+
+
+
+
+
+    }
+
+
 
 }

@@ -101,20 +101,17 @@ class SitemapHome{
 
                 for($i=0;$i<$url->length;$i++){
 
-                    $loc = $url->item($i)->getElementsByTagName('loc')->item(0)->nodeValue;
-
-                    $loc= str_replace("www","m",$loc);
-                    $url->item($i)->getElementsByTagName('loc')->item(0)->nodeValue=$loc;
-
 
                     $mobile_node = $doc->createElement("mobile:mobile");
 
                     $url->item($i)->appendChild($mobile_node);
 
+                    $loc = $url->item($i)->getElementsByTagName('loc')->item(0)->nodeValue;
+                    $loc= str_replace("www","m",$loc);
+                    $url->item($i)->getElementsByTagName('loc')->item(0)->nodeValue=$loc;
 
-                    $doc->save(public_path().'/'.'m'.$xml);
                 }
-
+                $doc->save(public_path().'/'.'m'.$xml);
             }
         }
 
@@ -145,10 +142,10 @@ class SitemapHome{
             $grandFather->appendChild($father);//讲Father放到Grandfather下
 
             $doc->appendChild($grandFather);//创建顶级节点
-            $doc->save(public_path().'/'.'mlcxssite_index.xml');//保存代码
+
         }
 
-
+        $doc->save(public_path().'/'.'mlcxssite_index.xml');//保存代码
 
 
 

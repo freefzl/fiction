@@ -93,10 +93,10 @@ class SitemapHome{
         foreach ($xmls as $xml){
 
 
-            $copy = copy(public_path().'\\'.$xml,public_path().'\\'.'m'.$xml);
+            $copy = copy(public_path().'/'.$xml,public_path().'/'.'m'.$xml);
             if($copy){
                 $doc = new \DOMDocument();
-                $doc->load(public_path().'\\'.'m'.$xml);
+                $doc->load(public_path().'/'.'m'.$xml);
                 $url = $doc->getElementsByTagName('url');
 
                 for($i=0;$i<$url->length;$i++){
@@ -112,7 +112,7 @@ class SitemapHome{
                     $url->item($i)->appendChild($mobile_node);
 
 
-                    $doc->save(public_path().'\\'.'m'.$xml);
+                    $doc->save(public_path().'/'.'m'.$xml);
                 }
 
             }
@@ -145,7 +145,7 @@ class SitemapHome{
             $grandFather->appendChild($father);//讲Father放到Grandfather下
 
             $doc->appendChild($grandFather);//创建顶级节点
-            $doc->save(public_path().'\\'.'mlcxssite_index.xml');//保存代码
+            $doc->save(public_path().'/'.'mlcxssite_index.xml');//保存代码
         }
 
 

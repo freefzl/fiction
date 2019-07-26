@@ -15,7 +15,7 @@ use App\Models\NovelType;
 use samdark\sitemap\Index;
 use samdark\sitemap\Sitemap;
 
-class SitemapPost{
+class SitemapMobilePost{
 
 
     public static function index(){
@@ -25,19 +25,19 @@ class SitemapPost{
 
         $urls = [];
         foreach ($books as  $book){
-            $urls[] = env('APP_URL')."/book/".$book->id.'.html';
-            $urls[] = env('APP_URL')."/".$book->id.'/';
+            $urls[] = env('M_APP_URL')."book/".$book->id.'.html';
+            $urls[] = env('M_APP_URL').$book->id.'/';
         }
 
         $novel_chapters = NovelChapter::where(['is_up'=>1,'is_pay'=>0,'goId'=>'0'])->whereDate('updated_at',date('Y-m-d',time()))->get();
         foreach ($novel_chapters as  $chapter){
-            $urls[] = env('APP_URL')."/article/".$chapter->id.'.html';
+            $urls[] = env('M_APP_URL')."article/".$chapter->id.'.html';
         }
 
         $urls = collect($urls);
         foreach ($urls->chunk(2000) as $items){
             $items = $items->toArray();
-            $api = 'http://data.zz.baidu.com/urls?site='.env('APP_URL').'&token=NLEsLBeowz04jEXB';
+            $api = 'http://data.zz.baidu.com/urls?site=https://m.linchengxs.com&token=NLEsLBeowz04jEXB';
             $ch = curl_init();
             $options =  array(
                 CURLOPT_URL => $api,

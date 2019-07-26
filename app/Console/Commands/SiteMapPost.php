@@ -40,6 +40,7 @@ class SiteMapPost extends Command
         $this->info('[' . date('Y-m-d H:i:s', time()) . ']开始执行推送');
         try {
             \App\Services\SitemapPost::index();
+            \App\Services\SitemapMobilePost::index();
         } catch (\Exception $exception) {
             $this->error('推送sitemap失败：' . $exception->getMessage());
             return;

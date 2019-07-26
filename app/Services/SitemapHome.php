@@ -17,10 +17,12 @@ use samdark\sitemap\Sitemap;
 
 class SitemapHome{
 
+    protected static $setMaxUrls = 10000;
 
     public static function index(){
 
         $sitemap = new Sitemap(public_path('lcxs_site_map.xml'));
+        $sitemap->setMaxUrls(self::$setMaxUrls);
 
         $sitemap->addItem(env('APP_URL'), time(),Sitemap::DAILY, 1);
         $sitemap->addItem(env('APP_URL').'/book/', time(),Sitemap::DAILY, 0.8);

@@ -16,9 +16,9 @@
     <div class="wrap clearfix">
         <!--primary-->
         <div class="news-list">
-            <h2>共<em>{{$articles['total']}}</em>篇文章</h2>
+            <h2>共<em>{{$all[0]->new_all}}</em>篇文章</h2>
             <ul>
-                @foreach($articles['data'] as $article)
+                @foreach($articles as $article)
                     @if(!in_array($article['id'],$try_ids))
                 <li>
                     <a class="pic" href="/article/{{$article['id']}}.html" target="_blank"><img class="lazy" src="{{env('IMG_URL').'/'.$article['book']['cover_img']}}" alt="{{$article['t_title']}}"></a>

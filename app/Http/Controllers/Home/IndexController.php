@@ -74,7 +74,7 @@ class IndexController extends Controller
 
 
         //小说资讯
-        $chapters = NovelChapter::where(['is_up'=>1])->where(['is_pay'=>0])->where(['goId'=>0])->orderBy('id','desc')->limit(10)->get();
+        $chapters = NovelChapter::where(['is_up'=>1])->where(['is_pay'=>0])->where(['goId'=>0])->orderBy('id','desc')->offset(40)->limit(10)->get();
 
 //        $chapters = $chapters->random(10);
 

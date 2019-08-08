@@ -28,11 +28,11 @@ class ArticleController extends Controller
 
         if($curr_time >= $timeBegin1 )
         {
-            $chapters = NovelChapter::where(['is_up'=>1])->where(['goId'=>'0'])->where(['is_pay'=>0])->whereRaw("DATE_FORMAT(updated_at,'%Y-%m-%d')= DATE_SUB(CURDATE(), INTERVAL 1 DAY)")->with(['book'=>function($query){
+            $chapters = NovelChapter::where(['is_up'=>1])->where(['goId'=>'0'])->where(['is_pay'=>0])->whereRaw("DATE_FORMAT(updated_at,'%Y-%m-%d')= DATE_SUB(CURDATE(), INTERVAL 0 DAY)")->with(['book'=>function($query){
                 $query->with(['type'])->get();
             }])->orderBy('id','desc')->limit(30)->get();
         }else{
-            $chapters = NovelChapter::where(['is_up'=>1])->where(['goId'=>'0'])->where(['is_pay'=>0])->whereRaw("DATE_FORMAT(updated_at,'%Y-%m-%d')= DATE_SUB(CURDATE(), INTERVAL 2 DAY)")->with(['book'=>function($query){
+            $chapters = NovelChapter::where(['is_up'=>1])->where(['goId'=>'0'])->where(['is_pay'=>0])->whereRaw("DATE_FORMAT(updated_at,'%Y-%m-%d')= DATE_SUB(CURDATE(), INTERVAL 1 DAY)")->with(['book'=>function($query){
                 $query->with(['type'])->get();
             }])->orderBy('id','desc')->limit(30)->get();
         }
